@@ -1,0 +1,581 @@
+{
+  "source_apks": [
+    {
+      "apk_name": "com.facebook.orca_410.0.0.17.85-312007848_minAPI19(armeabi-v7a)(160,120dpi)_apkmirror.com.apk",
+      "standard_dex_count": 1,
+      "standard_dex_files": [
+        {
+          "entry": "classes.dex",
+          "class_defs": 4058,
+          "sha256": "69196307e837f9620d113ef67290dd6cb967a147736d0ac24cfca3a40f221fa6"
+        }
+      ],
+      "defined_class_count": 4058,
+      "top_namespace_prefixes": [
+        [
+          "com/facebook/common",
+          221
+        ],
+        [
+          "com/facebook/acra",
+          190
+        ],
+        [
+          "com/facebook/profilo",
+          52
+        ],
+        [
+          "com/facebook/redex",
+          26
+        ],
+        [
+          "com/facebook/jni",
+          24
+        ],
+        [
+          "com/facebook/secure",
+          21
+        ],
+        [
+          "com/facebook/fury",
+          20
+        ],
+        [
+          "androidx/core/view",
+          17
+        ],
+        [
+          "com/facebook/errorreporting",
+          15
+        ],
+        [
+          "com/facebook/messaging",
+          13
+        ],
+        [
+          "com/facebook/rti",
+          12
+        ],
+        [
+          "com/facebook/analytics2",
+          11
+        ],
+        [
+          "com/facebook/superpack",
+          11
+        ],
+        [
+          "androidx/fragment/app",
+          11
+        ],
+        [
+          "com/facebook/browser",
+          8
+        ]
+      ],
+      "markers": {
+        "e2ee": {
+          "matching_class_defs": 1,
+          "sample": [
+            "Lcom/facebook/endtoend/EndToEnd;"
+          ]
+        },
+        "labyrinth": {
+          "matching_class_defs": 0,
+          "sample": []
+        },
+        "secure_storage": {
+          "matching_class_defs": 0,
+          "sample": []
+        },
+        "signal_protocol": {
+          "matching_class_defs": 0,
+          "sample": []
+        },
+        "keystore": {
+          "matching_class_defs": 0,
+          "sample": []
+        },
+        "login_auth": {
+          "matching_class_defs": 0,
+          "sample": []
+        },
+        "messaging": {
+          "matching_class_defs": 37,
+          "sample": [
+            "Lcom/facebook/acra/anr/processmonitor/ProcessAnrErrorMonitor$MonitorThread;",
+            "Lcom/facebook/acra/anr/processmonitor/detector/ProcessErrorMonitorANRDetector$ThreadProvider;",
+            "Lcom/facebook/analytics2/logger/DefaultHandlerThreadFactory;",
+            "Lcom/facebook/analytics2/logger/HandlerThreadFactory;",
+            "Lcom/facebook/battery/metrics/threadcpu/ThreadCpuMetricsCollector;",
+            "Lcom/facebook/common/activitythreadhook/ActivityThreadBinderHooker$ApplicationThreadBinderHook;",
+            "Lcom/facebook/common/activitythreadhook/IApplicationThreadBinderHookWrapper;",
+            "Lcom/facebook/common/activitythreadhook/IApplicationThreadFactory;"
+          ]
+        },
+        "transport": {
+          "matching_class_defs": 5,
+          "sample": [
+            "Lcom/facebook/hyperthrift/HyperThriftBase;",
+            "Lcom/facebook/rti/mqtt/manager/MqttBackgroundServiceDelegate;",
+            "Lcom/facebook/rti/mqtt/manager/MqttPushServiceDelegate;",
+            "Lcom/facebook/rti/mqtt/protocol/messages/SubscribeTopic;",
+            "Lcom/facebook/rti/mqtt/protocol/messages/TopicExtraInfo;"
+          ]
+        }
+      }
+    },
+    {
+      "apk_name": "com.facebook.orca_410.0.0.17.85-312007866_minAPI21(x86)(nodpi)_apkmirror.com.apk",
+      "standard_dex_count": 8,
+      "standard_dex_files": [
+        {
+          "entry": "classes.dex",
+          "class_defs": 4030,
+          "sha256": "527e2df32385bbaac0f88bd7ce626dc96e54a9dcb6f5fe13c3f61a8445a16f9b"
+        },
+        {
+          "entry": "classes2.dex",
+          "class_defs": 7428,
+          "sha256": "24bfab69c074e057721f0dee193512420aba4fb617dcb916209e4ea9dbc0e38e"
+        },
+        {
+          "entry": "classes3.dex",
+          "class_defs": 6089,
+          "sha256": "8f2f0b85185cac19853defbe9a2dfa118d536025fff1d3b6d3b08a745f47d7e0"
+        },
+        {
+          "entry": "classes4.dex",
+          "class_defs": 14814,
+          "sha256": "4aa6f016aab9ed1016c331beafe6c8732c19e9e757036f0f424ba2e7be6cb4d3"
+        },
+        {
+          "entry": "classes5.dex",
+          "class_defs": 12696,
+          "sha256": "76c6df6402a95b3e62b9532fdd666719b4c486b789749c0d677fdecbb901586f"
+        },
+        {
+          "entry": "classes6.dex",
+          "class_defs": 12808,
+          "sha256": "b534f92fcdbe69c41840f1da71618dd0c9ddd21d702116217cc7af01a9b9e29f"
+        },
+        {
+          "entry": "classes7.dex",
+          "class_defs": 10980,
+          "sha256": "10951c53350779d47e797edba49c2602c2db489e72e275b388f6f5e43268df1d"
+        },
+        {
+          "entry": "classes8.dex",
+          "class_defs": 10499,
+          "sha256": "dc031f070ed04e771d1603a335554767f5cebab563f41c0fe9ae32538e9af130"
+        }
+      ],
+      "defined_class_count": 79344,
+      "top_namespace_prefixes": [
+        [
+          "com/facebook/messaging",
+          3379
+        ],
+        [
+          "com/facebook/graphql",
+          1632
+        ],
+        [
+          "com/facebook/redex",
+          1128
+        ],
+        [
+          "com/facebook/rsys",
+          776
+        ],
+        [
+          "com/facebook/payments",
+          607
+        ],
+        [
+          "com/google/android",
+          453
+        ],
+        [
+          "com/facebook/common",
+          400
+        ],
+        [
+          "com/facebook/ipc",
+          384
+        ],
+        [
+          "com/facebook/inspiration",
+          369
+        ],
+        [
+          "com/mapbox/mapboxsdk",
+          354
+        ],
+        [
+          "com/facebook/cameracore",
+          288
+        ],
+        [
+          "com/google/common",
+          221
+        ],
+        [
+          "com/fasterxml/jackson",
+          217
+        ],
+        [
+          "com/facebook/acra",
+          190
+        ],
+        [
+          "com/facebook/video",
+          155
+        ]
+      ],
+      "markers": {
+        "e2ee": {
+          "matching_class_defs": 13,
+          "sample": [
+            "Lcom/facebook/endtoend/EndToEnd;",
+            "Lcom/facebook/fbwebrtc/multiway/E2eeData;",
+            "Lcom/facebook/fbwebrtc/multiway/E2eeEnforcement;",
+            "Lcom/facebook/messaging/advancedcrypto/plugins/core/privacysettings/endtoendchats/PrivacySettingsEndToEndChats;",
+            "Lcom/facebook/messaging/cutover/plugins/threadsettingse2eesubtitle/E2EEPrivacyDisclosureThreadSettingsContextSubheading;",
+            "Lcom/facebook/messaging/msys/thread/admin/plugins/actiongetter/linkaction/E2eeLearnMoreAction;",
+            "Lcom/facebook/messaging/rtc/incall/impl/coplay/views/CoplayE2eeDisclaimerLabelView;",
+            "Lcom/facebook/rsys/crypto/gen/CryptoE2eeModel;"
+          ]
+        },
+        "labyrinth": {
+          "matching_class_defs": 0,
+          "sample": []
+        },
+        "secure_storage": {
+          "matching_class_defs": 3,
+          "sample": [
+            "Lcom/facebook/crypto/keychain/KeyChain;",
+            "Lcom/facebook/crypto/keychain/UserStorageKeyChainLegacy;",
+            "Lcom/facebook/crypto/keychain/UserStorageKeyChainV2;"
+          ]
+        },
+        "signal_protocol": {
+          "matching_class_defs": 0,
+          "sample": []
+        },
+        "keystore": {
+          "matching_class_defs": 0,
+          "sample": []
+        },
+        "login_auth": {
+          "matching_class_defs": 579,
+          "sample": [
+            "Lcom/facebook/account/common/model/ContactPointSuggestion;",
+            "Lcom/facebook/account/common/model/ContactPointSuggestionDeserializer;",
+            "Lcom/facebook/account/common/model/ContactPointSuggestions;",
+            "Lcom/facebook/account/common/model/ContactPointSuggestionsDeserializer;",
+            "Lcom/facebook/account/common/service/AccountCommonQueue;",
+            "Lcom/facebook/account/login/encryption/protocol/PasswordEncryptionKeyFetchMethod$Params;",
+            "Lcom/facebook/account/login/encryption/protocol/PasswordEncryptionKeyFetchResult;",
+            "Lcom/facebook/account/login/encryption/protocol/PasswordEncryptionKeyFetchResultDeserializer;"
+          ]
+        },
+        "messaging": {
+          "matching_class_defs": 3927,
+          "sample": [
+            "Landroidx/core/app/NotificationCompat$MessagingStyle;",
+            "Lcom/facebook/acra/anr/processmonitor/ProcessAnrErrorMonitor$MonitorThread;",
+            "Lcom/facebook/acra/anr/processmonitor/detector/ProcessErrorMonitorANRDetector$ThreadProvider;",
+            "Lcom/facebook/advancedcryptotestmessagesend/mca/MailboxAdvancedCryptoTestMessageSendJNI;",
+            "Lcom/facebook/advancedcryptotransport/LigerStreamEventBaseThread;",
+            "Lcom/facebook/advancedcryptotransport/MNSStreamThread;",
+            "Lcom/facebook/analytics2/logger/DefaultHandlerThreadFactory;",
+            "Lcom/facebook/analytics2/logger/HandlerThreadFactory;"
+          ]
+        },
+        "transport": {
+          "matching_class_defs": 1880,
+          "sample": [
+            "Lcom/etsdk/models/serializer/hyperthriftserializer/IDxMSerializerShape15S0000000_6_I3;",
+            "Lcom/etsdk/models/serializer/hyperthriftserializer/TBinaryActivityUpdate;",
+            "Lcom/etsdk/models/serializer/hyperthriftserializer/TPlaybackActivityUpdate;",
+            "Lcom/etsdk/models/serializer/hyperthriftserializer/TPlaybackPosition;",
+            "Lcom/etsdk/models/serializer/hyperthriftserializer/TSessionInfo;",
+            "Lcom/etsdk/models/serializer/hyperthriftserializer/TSessionModel;",
+            "Lcom/etsdk/models/serializer/hyperthriftserializer/TSessionParticipant;",
+            "Lcom/etsdk/models/serializer/hyperthriftserializer/TSessionServerConfig;"
+          ]
+        }
+      }
+    },
+    {
+      "apk_name": "com.facebook.orca_588.1.0.66.98-347617515_minAPI28(arm64-v8a)(nodpi)_apkmirror.com.apk",
+      "standard_dex_count": 18,
+      "standard_dex_files": [
+        {
+          "entry": "classes.dex",
+          "class_defs": 4386,
+          "sha256": "d12b54af0d5946c03bfd750e55086d64ebc3d7b9e3b3f86c42d0b152d4cd8f7c"
+        },
+        {
+          "entry": "classes10.dex",
+          "class_defs": 10366,
+          "sha256": "2cd31a02139bb8107b7b89011017ded02c13babb1ae5585874ad290d3b734bb9"
+        },
+        {
+          "entry": "classes11.dex",
+          "class_defs": 9382,
+          "sha256": "68979cfa4da6b40bd7ef8cb4bbb8342213f693ba693c86ca8d2d74b9c542de12"
+        },
+        {
+          "entry": "classes12.dex",
+          "class_defs": 12161,
+          "sha256": "95a9871485a106d9d4b52247525fc7d78733136522a16c95dfde56b143ccd400"
+        },
+        {
+          "entry": "classes13.dex",
+          "class_defs": 11172,
+          "sha256": "d37a6c74347d1c8c1846897ed745f2db130cbb2d23d6f1c620b191b81f166822"
+        },
+        {
+          "entry": "classes14.dex",
+          "class_defs": 15625,
+          "sha256": "ea3b7875c9800dcb546bd80b99e724a45041df911dc7c68631fb92aacdffc025"
+        },
+        {
+          "entry": "classes15.dex",
+          "class_defs": 11667,
+          "sha256": "1c15afb5f3c67e80c47d0a19edafcaabe1be476cd79009613b76bd918f6f85ee"
+        },
+        {
+          "entry": "classes16.dex",
+          "class_defs": 8597,
+          "sha256": "55383c94a9a117880c3409acbe016967df9671940869eedfca9d404694be70fb"
+        },
+        {
+          "entry": "classes17.dex",
+          "class_defs": 2,
+          "sha256": "00f7f3ac3e3974fc7b90304f8ae7e2304a147bf079f4e019708219ce7140563a"
+        },
+        {
+          "entry": "classes18.dex",
+          "class_defs": 2001,
+          "sha256": "9d13ebfb77f07a7cd3bc33ecd8523ef5917fec08533ed87950662d4e60cf6ecb"
+        },
+        {
+          "entry": "classes2.dex",
+          "class_defs": 12076,
+          "sha256": "7c86cf7d8ea8691c4f7850c476bf8ebce2f8e1673d7a7e99c7bd4b58b45a83ac"
+        },
+        {
+          "entry": "classes3.dex",
+          "class_defs": 11181,
+          "sha256": "e85baacc6cb64e3be9efcfd427de03bbc965db9b105ce936c01d51344bcec515"
+        },
+        {
+          "entry": "classes4.dex",
+          "class_defs": 12250,
+          "sha256": "70cbe9a59e5564a544504082c3e2dbe0c43180a122fb6f8aab15497c3987aa29"
+        },
+        {
+          "entry": "classes5.dex",
+          "class_defs": 12788,
+          "sha256": "d41ab39260de254cdff5e4db096328571a6ee5d5ada8c9c6b0ab8c1a4a5b1302"
+        },
+        {
+          "entry": "classes6.dex",
+          "class_defs": 8516,
+          "sha256": "e6de65583cb8d043d60fcf6123491554b51b6220ab60eda33868c3ca7a7cc938"
+        },
+        {
+          "entry": "classes7.dex",
+          "class_defs": 7386,
+          "sha256": "0ee3843e47f2dc36185a79e06595c7c7474770c0c5c80cd7f896ee9546c5dd76"
+        },
+        {
+          "entry": "classes8.dex",
+          "class_defs": 12568,
+          "sha256": "8aecb3a7f2cf2066f6c21d6a7018ebdbf915ffa2b75e4bf492fcd71c8c327785"
+        },
+        {
+          "entry": "classes9.dex",
+          "class_defs": 9618,
+          "sha256": "ede3deebe97f9f215a37837a7d744e3b59ddc688e2936f7699a3e7317ff2ffc6"
+        }
+      ],
+      "defined_class_count": 171742,
+      "top_namespace_prefixes": [
+        [
+          "com/facebook/messaging",
+          6446
+        ],
+        [
+          "com/meta/hatch",
+          1627
+        ],
+        [
+          "com/facebook/xapp",
+          1509
+        ],
+        [
+          "com/facebook/rsys",
+          729
+        ],
+        [
+          "com/facebook/inspiration",
+          641
+        ],
+        [
+          "com/facebook/wearable",
+          630
+        ],
+        [
+          "com/facebook/ipc",
+          609
+        ],
+        [
+          "com/meta/maps",
+          578
+        ],
+        [
+          "com/crossapp/graphql",
+          525
+        ],
+        [
+          "com/google/android",
+          499
+        ],
+        [
+          "com/facebook/payments",
+          396
+        ],
+        [
+          "com/mapbox/mapboxsdk",
+          362
+        ],
+        [
+          "com/facebook/common",
+          323
+        ],
+        [
+          "com/facebook/cameracore",
+          285
+        ],
+        [
+          "com/fasterxml/jackson",
+          258
+        ]
+      ],
+      "markers": {
+        "e2ee": {
+          "matching_class_defs": 353,
+          "sample": [
+            "Lcom/aria/mdcore/MDCoreE2EEMessageSenderMCFBridgejniDispatcher;",
+            "Lcom/facebook/bloks/messenger/implementations/plugins/ulstatic/bkactionypsupervisioninvitesende2eexma/BKBloksActionYpSupervisionInviteSendE2eeXmaImpl$evaluate$1;",
+            "Lcom/facebook/e2eexmareceiverfetch/mca/MailboxE2EEXmaReceiverFetchJNI;",
+            "Lcom/facebook/endtoend/EndToEnd;",
+            "Lcom/facebook/fbwebrtc/multiway/E2eeData;",
+            "Lcom/facebook/fbwebrtc/multiway/E2eeEnforcement;",
+            "Lcom/facebook/messaging/advancedcrypto/plugins/core/privacysettings/endtoendchats/PrivacySettingsEndToEndChats;",
+            "Lcom/facebook/messaging/aiagent/messagingconsent/MobiClawE2EESearchRunner$MsysBackend;"
+          ]
+        },
+        "labyrinth": {
+          "matching_class_defs": 1,
+          "sample": [
+            "Lcom/facebook/messenger/plugins/ariauploadbackupplugin/OrcaAriaUploadBackupPluginCallbacks$MEBLabyrinthAriaUploadTaskCompletion;"
+          ]
+        },
+        "secure_storage": {
+          "matching_class_defs": 3,
+          "sample": [
+            "Lcom/facebook/crypto/keychain/KeyChain;",
+            "Lcom/facebook/crypto/keychain/UserStorageKeyChainLegacy;",
+            "Lcom/facebook/crypto/keychain/UserStorageKeyChainV2;"
+          ]
+        },
+        "signal_protocol": {
+          "matching_class_defs": 0,
+          "sample": []
+        },
+        "keystore": {
+          "matching_class_defs": 6,
+          "sample": [
+            "Lcom/facebook/privacy/e2ee/PeerPublicKeyStore;",
+            "Lcom/facebook/privacy/e2ee/genericimpl/store/PublicKeyStoreImpl$Companion;",
+            "Lcom/facebook/privacy/e2ee/genericimpl/store/PublicKeyStoreImpl$readFromStore$typeRef$1;",
+            "Lcom/facebook/privacy/e2ee/genericimpl/store/PublicKeyStoreImpl;",
+            "Lcom/facebook/privacy/e2ee/genericimpl/store/PublicKeyStoreImplKt;",
+            "Lcom/meta/genai/c2pa/AndroidKeystoreProvenanceSigner;"
+          ]
+        },
+        "login_auth": {
+          "matching_class_defs": 826,
+          "sample": [
+            "Landroidx/credentials/playservices/controllers/identityauth/HiddenActivity$Companion;",
+            "Landroidx/credentials/playservices/controllers/identityauth/HiddenActivity;",
+            "Landroidx/credentials/playservices/controllers/identityauth/beginsignin/BeginSignInControllerUtility$Companion;",
+            "Landroidx/credentials/playservices/controllers/identityauth/beginsignin/BeginSignInControllerUtility;",
+            "Landroidx/credentials/playservices/controllers/identityauth/beginsignin/CredentialProviderBeginSignInController$$ExternalSyntheticLambda0;",
+            "Landroidx/credentials/playservices/controllers/identityauth/beginsignin/CredentialProviderBeginSignInController$$ExternalSyntheticLambda10;",
+            "Landroidx/credentials/playservices/controllers/identityauth/beginsignin/CredentialProviderBeginSignInController$$ExternalSyntheticLambda11;",
+            "Landroidx/credentials/playservices/controllers/identityauth/beginsignin/CredentialProviderBeginSignInController$$ExternalSyntheticLambda12;"
+          ]
+        },
+        "messaging": {
+          "matching_class_defs": 8665,
+          "sample": [
+            "Landroidx/camera/camera2/internal/compat/quirk/Preview3AThreadCrashQuirk;",
+            "Landroidx/core/app/NotificationCompat$MessagingStyle;",
+            "Lcom/aria/mdcore/MDCoreE2EEMessageSenderMCFBridgejniDispatcher;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLContextualMessagingRequestStateSet;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLExtensibleMessageAdminTextTypeSet;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLGemstoneMessageTabNullStatesSet;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLGroupAppealMessageTypeSet;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLIGMessageMediaTypeSet;"
+          ]
+        },
+        "transport": {
+          "matching_class_defs": 867,
+          "sample": [
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLAATConceptCategorySet;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLAATConceptPositionSet;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLAATConceptSizeSet;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLACEFeedbackSurveyCardTypeSet;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLARAdsExperimentalFeaturesSet;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLAREffectFailureCodeSet;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLAREffectMLModelAssetTypeSet;",
+            "Lcom/crossapp/graphql/facebook/enums/stringdefs/GraphQLAREffectMLModelTypeSet;"
+          ]
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "left_index": 0,
+      "right_index": 1,
+      "common_defined_class_names": 3733,
+      "union_defined_class_names": 79669,
+      "jaccard": 0.046856,
+      "caution": "Class-name overlap measures symbol identity only, not behavioral compatibility; incomplete for Superpacked APKs."
+    },
+    {
+      "left_index": 0,
+      "right_index": 2,
+      "common_defined_class_names": 3354,
+      "union_defined_class_names": 172446,
+      "jaccard": 0.01945,
+      "caution": "Class-name overlap measures symbol identity only, not behavioral compatibility; incomplete for Superpacked APKs."
+    },
+    {
+      "left_index": 1,
+      "right_index": 2,
+      "common_defined_class_names": 62651,
+      "union_defined_class_names": 188435,
+      "jaccard": 0.332481,
+      "caution": "Class-name overlap measures symbol identity only, not behavioral compatibility; incomplete for Superpacked APKs."
+    }
+  ],
+  "limits": "Read only standard classes*.dex. KitKat seven secondary Superpacked DEX files are NOT decompressed; class counts are therefore severely incomplete for that APK. Matching keyword names do NOT establish working E2EE or login."
+}

@@ -1,0 +1,238 @@
+{
+  "apks": [
+    {
+      "filename": "com.facebook.orca_410.0.0.17.85-312007848_minAPI19(armeabi-v7a)(160,120dpi)_apkmirror.com.apk",
+      "locators": {
+        "secondary-program-dex-jars": [
+          {
+            "output": "secondary-1.dex",
+            "sha1": "41a986a0e12f451221a9bc5af3658d2e4f48b5ef",
+            "locator": "secondary.dex01.Canary"
+          },
+          {
+            "output": "secondary-2.dex",
+            "sha1": "0fd84a073f0a8046a3569e0f226531b5f689be8c",
+            "locator": "secondary.dex02.Canary"
+          },
+          {
+            "output": "secondary-3.dex",
+            "sha1": "a869993cc35c0e20dd89ecb3226e05181c6f250d",
+            "locator": "secondary.dex03.Canary"
+          },
+          {
+            "output": "secondary-4.dex",
+            "sha1": "801b56434e986bb50ab7578bc1ce4f2c91b65f92",
+            "locator": "secondary.dex04.Canary"
+          },
+          {
+            "output": "secondary-5.dex",
+            "sha1": "10cb8579fed8bf38b79c533955e24931b7414902",
+            "locator": "secondary.dex05.Canary"
+          },
+          {
+            "output": "secondary-6.dex",
+            "sha1": "742f7e7afd6aa429547a0304a4827c15e9407923",
+            "locator": "secondary.dex06.Canary"
+          },
+          {
+            "output": "secondary-7.dex",
+            "sha1": "a16e803f8f93ad259745aecce8aadcf7480fd06c",
+            "locator": "secondary.dex07.Canary"
+          }
+        ],
+        "effects": [
+          {
+            "output": "effects-1.dex",
+            "sha1": "63b7533989cddcb59bb80f4b8d21404b0775481b",
+            "locator": "store7902.dex01.Canary"
+          }
+        ],
+        "longtail": [
+          {
+            "output": "longtail-1.dex",
+            "sha1": "cb8db29f43b9fcf646df998023bfcb9855db3b54",
+            "locator": "store5ccc.dex01.Canary"
+          }
+        ]
+      }
+    },
+    {
+      "filename": "com.facebook.orca_410.0.0.17.85-312007866_minAPI21(x86)(nodpi)_apkmirror.com.apk",
+      "locators": {
+        "secondary-program-dex-jars": [
+          {
+            "output": "classes2.dex",
+            "sha1": "60d11ca06179100d665f598fb0a33b6218eef2d8",
+            "locator": "secondary.dex01.Canary"
+          },
+          {
+            "output": "classes3.dex",
+            "sha1": "d97fb796c4944aacdd706e6f9141924fee960c3a",
+            "locator": "secondary.dex02.Canary"
+          },
+          {
+            "output": "classes4.dex",
+            "sha1": "e47295fcc907d15c15c706ad7cbc0113a4029ab3",
+            "locator": "secondary.dex03.Canary"
+          },
+          {
+            "output": "classes5.dex",
+            "sha1": "2c7ba1da8d18757a870ff8315fd62f81d61dbb7a",
+            "locator": "secondary.dex04.Canary"
+          },
+          {
+            "output": "classes6.dex",
+            "sha1": "69489100dc15ef42fa174d2892ded00cd33e4028",
+            "locator": "secondary.dex05.Canary"
+          },
+          {
+            "output": "classes7.dex",
+            "sha1": "1eb605276fee0af3df0be8c0736fb27e530144ec",
+            "locator": "secondary.dex06.Canary"
+          },
+          {
+            "output": "classes8.dex",
+            "sha1": "7d23b26ef3cdc2ede711ceeee52f60c3c3e90433",
+            "locator": "secondary.dex07.Canary"
+          }
+        ],
+        "effects": [
+          {
+            "output": "effects2.dex",
+            "sha1": "ae40e8efedf0abb7a544f553c8240f3020298814",
+            "locator": "store7902.dex01.Canary"
+          }
+        ],
+        "longtail": [
+          {
+            "output": "longtail2.dex",
+            "sha1": "cb8db29f43b9fcf646df998023bfcb9855db3b54",
+            "locator": "store5ccc.dex01.Canary"
+          },
+          {
+            "output": "longtail3.dex",
+            "sha1": "e9fe53fa9b971a31936cdaef1e0155b15c27e965",
+            "locator": "store5ccc.dex02.Canary"
+          }
+        ]
+      }
+    },
+    {
+      "filename": "com.facebook.orca_588.1.0.66.98-347617515_minAPI28(arm64-v8a)(nodpi)_apkmirror.com.apk",
+      "locators": {
+        "secondary-program-dex-jars": [
+          {
+            "output": "classes2.dex",
+            "sha1": "521c78ce725594f29b82c2220e2e308178fc25b6",
+            "locator": "secondary.dex01.Canary"
+          },
+          {
+            "output": "classes3.dex",
+            "sha1": "88842afb474dfbba797dbfa6aca0535164a47477",
+            "locator": "secondary.dex02.Canary"
+          },
+          {
+            "output": "classes4.dex",
+            "sha1": "7002f6524f4006357627bcb138fb06ad51169d55",
+            "locator": "secondary.dex03.Canary"
+          },
+          {
+            "output": "classes5.dex",
+            "sha1": "839b5b6278c834e8d1b9a750008eb3e966497029",
+            "locator": "secondary.dex04.Canary"
+          },
+          {
+            "output": "classes6.dex",
+            "sha1": "1e216986159ad1715470b79d30ce283360ca50cf",
+            "locator": "secondary.dex05.Canary"
+          },
+          {
+            "output": "classes7.dex",
+            "sha1": "e8287d9eb6dd1bc4c827a88ac62644c586430d93",
+            "locator": "secondary.dex06.Canary"
+          },
+          {
+            "output": "classes8.dex",
+            "sha1": "8d4d184ce10a76ccc26d2966729de03aa3d96863",
+            "locator": "secondary.dex07.Canary"
+          },
+          {
+            "output": "classes9.dex",
+            "sha1": "ddb521c67b2ab6f9386f50ba530bc9140c4296f4",
+            "locator": "secondary.dex08.Canary"
+          },
+          {
+            "output": "classes10.dex",
+            "sha1": "038f30a90ebe3f92bb3d6faaa7da6c7ff4112c8d",
+            "locator": "secondary.dex09.Canary"
+          },
+          {
+            "output": "classes11.dex",
+            "sha1": "d2d964fc2b411f57e142677cbcde70de4620d95a",
+            "locator": "secondary.dex10.Canary"
+          },
+          {
+            "output": "classes12.dex",
+            "sha1": "36906450612886b3ad2311dc9cdb2ea8ea7141d9",
+            "locator": "secondary.dex11.Canary"
+          },
+          {
+            "output": "classes13.dex",
+            "sha1": "45ac157dc8594fabd6088e74c11cd33043d3513e",
+            "locator": "secondary.dex12.Canary"
+          },
+          {
+            "output": "classes14.dex",
+            "sha1": "8efb628c3f162bebd6a256cf637e70cbc74a0ce5",
+            "locator": "secondary.dex13.Canary"
+          },
+          {
+            "output": "classes15.dex",
+            "sha1": "fe45e8fbe405ef9c3d25eaa77516d608faf09bfc",
+            "locator": "secondary.dex14.Canary"
+          },
+          {
+            "output": "classes16.dex",
+            "sha1": "399e282fc4bcb8ef379b27d069db653d4e83fe82",
+            "locator": "secondary.dex15.Canary"
+          },
+          {
+            "output": "classes17.dex",
+            "sha1": "8c49b8c35ba988b6c3c2dca027c122fbcfd2bdae",
+            "locator": "secondary.dex16.Canary"
+          },
+          {
+            "output": "classes18.dex",
+            "sha1": "685783442078622d7185aeecc73ecd287379c28a",
+            "locator": "secondary.dex17.Canary"
+          }
+        ],
+        "effects": [
+          {
+            "output": "classes.dex",
+            "sha1": "9a140a09d5ec115b27bb194f6c6c863d23ce618d",
+            "locator": "store7902.dex01.Canary"
+          }
+        ],
+        "longtail": [
+          {
+            "output": "classes.dex",
+            "sha1": "52e08d7d37c0637f5eee46a186d90094a068078b",
+            "locator": "store5ccc.dex01.Canary"
+          }
+        ]
+      }
+    }
+  ],
+  "cross_variant_matching_declared_hashes": [
+    {
+      "left_apk_index": 0,
+      "right_apk_index": 1,
+      "category": "longtail",
+      "left_output": "longtail-1.dex",
+      "right_output": "longtail2.dex",
+      "matching_declared_sha1": "cb8db29f43b9fcf646df998023bfcb9855db3b54"
+    }
+  ],
+  "interpretation": "Hashes are declared in APK package metadata. Identical values indicate expected content identity, not proof of actually extracted identical code."
+}

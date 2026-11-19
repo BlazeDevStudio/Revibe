@@ -1,0 +1,11 @@
+*.apk
+*.aab
+*.apks
+*.dex
+*.so
+*.pyc
+__pycache__/
+*.keystore
+*.jks
+.env
+*.log

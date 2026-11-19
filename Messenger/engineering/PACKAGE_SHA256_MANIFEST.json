@@ -1,0 +1,22 @@
+{
+  "MANUAL_ACCEPTANCE_TEMPLATE.json": "100c36fdd68d9b1e45250a85fddf4475ab9f7004a2e9800992b996c83a26b953",
+  "MILESTONE_4_MESSENGER_ANDROID44.md": "37534f304af5aa49961b9026144e253c6d6bc14ddf2af254e04946e36687dbd2",
+  "README_STAGE3.md": "29b9ae320a750eca0604fa40b2daeab6bdc9b7c2221bbb005f874ff13bb2084a",
+  "README_STAGE4.md": "d0422a2224be0b7c85d9dc4d1fe88c73e9e5e9d8b68b43758fdb85cc5762e1b2",
+  "STAGE4_STATIC_GATE_RESULT.json": "eb9b87ea1205c488ac5531ae9c06fc994d33528370da45eb51bae6ca3fe16de1",
+  "android44_apk_preflight.py": "cee0f3198dc554cf7f7522dd451ded5d10536406e1d7c25071c6be25a991ccf9",
+  "apk_static_audit.py": "4bd5933e1245ea166e7cc26e2718d041a2cb9736aeb519249a3cd9805a0b5535",
+  "compare_410_variants.py": "f04dbe150939651f9bc19524b2590c34dfdcc7b1f83cec50c4f9a01a680f0eb8",
+  "cross_variant_spo.py": "5fdb40dd728a79e28b0d65f693f8595608747fb68dda0b44002c0510fa0bc475",
+  "dex_api_inventory.py": "dce765631d668f31f247003e64f76d4bf2f879f80e1a9679798aac72db40f0c5",
+  "dex_class_matrix.py": "f1cd0db142b3e6c5bd849f5b52e1ccf453f2d81b61d20641060c39dd0362e18d",
+  "inspect_superpack.py": "eac57f6cdce21b66a72558184fd0908eb213e1c5e32ccbe5e7e5e790e49ae519",
+  "kitkat_device_probe.py": "0abf48b334b617a522fa063c1eeddc837fbc52df3396108d3e3e25714a51c024",
+  "messenger_log_sieve.py": "0ff437dc120a2780ba8e85a3724600a4b47760b869b8305c25be7a851b54fc1e",
+  "run_stage3.py": "dadc1dfaaa57be9f1f82a5bdfc1359fa9dde0fcd95595487816be5ca57ecd8b8",
+  "stage4_kitkat_gate.py": "9520510e94013e4aff2323de869e886745196e88ab92ea3a3f47d8d2eb918c24",
+  "superpack_native_surface.py": "abe89042954568ea96de56c58d39897429023b4c43e56c0655502b23e1c07bb9",
+  "tests/test_stage3.py": "b944801372b7cf62079f0fe9a754dcd2a5163e04a3390adfc82fcd422495c7c4",
+  "tests/test_stage4.py": "125b4624183efb0c9ff637f04d390afbf597b6e56db1a944afd2080a9adaf370",
+  "tests/test_tools.py": "e7e106edce97b23f62a60c94b3757706d558a1007236331304b3423271e0ba43"
+}

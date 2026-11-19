@@ -1,0 +1,16 @@
+{
+  "project": "Messenger Android 4.4 functional smoke test",
+  "privacy": "No real names, phone numbers, login credentials, tokens, screenshots of chats, or message text.",
+  "test_account_type": "authorized_disposable_account_only",
+  "status_choices": ["NOT_TESTED", "PASS", "FAIL", "BLOCKED"],
+  "checks": {
+    "install": {"status": "NOT_TESTED", "failure_category": null},
+    "launch_ui": {"status": "NOT_TESTED", "failure_category": null},
+    "login": {"status": "NOT_TESTED", "failure_category": null},
+    "e2ee_send": {"status": "NOT_TESTED", "failure_category": null},
+    "e2ee_receive": {"status": "NOT_TESTED", "failure_category": null},
+    "resume": {"status": "NOT_TESTED", "failure_category": null},
+    "family_call_optional": {"status": "NOT_TESTED", "failure_category": null}
+  },
+  "ready_for_community_rollout": false
+}

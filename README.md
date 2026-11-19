@@ -1,7 +1,12 @@
 # Revibe
 
-Revibe investigates ways to give aging apps and devices a second life through compatibility engineering and AI-assisted development.
+Revibe brings a second life to aging apps and devices through compatibility research, reverse engineering, repair, and AI-assisted development.
 
-First project: [Messenger](Messenger/README.md). Working Android 4.4 Messenger is **not yet available**.
+## Projects
 
-Independent project; not affiliated with Meta.
+- [Messenger](Messenger/README.md) — investigating modern Messenger compatibility with Android 4.4–10.
+
+**Project status:** Research and diagnostic tooling. No modified, working Messenger APK has been released.
+
+Revibe is an independent community project and is not affiliated with Meta.
+Third-party APKs and proprietary native libraries are intentionally not included.

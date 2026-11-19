@@ -1,0 +1,45 @@
+{
+  "project": "Messenger 410 Android 4.4 compatibility",
+  "phase": "Stage 4 \u2014 original APK runtime gate",
+  "captured_utc": "2026-11-19T21:03:24.081138+00:00",
+  "apk_sha256": "006ca274cf2a2569cf8e5c68c94c2317377c6406957fe4e4daedc0436ee790c8",
+  "is_known_original_kitkat_apk": true,
+  "device_test_completed": false,
+  "modern_login_verified": false,
+  "encrypted_chat_send_receive_verified": false,
+  "kitkat_arm_preflight": {
+    "apk_filename": "com.facebook.orca_410.0.0.17.85-312007848_minAPI19(armeabi-v7a)(160,120dpi)_apkmirror.com.apk",
+    "package": "com.facebook.orca",
+    "version": "410.0.0.17.85",
+    "manifest_min_sdk": 19,
+    "manifest_target_sdk": 33,
+    "device_api": 19,
+    "device_supported_abis": [
+      "armeabi-v7a",
+      "armeabi"
+    ],
+    "apk_native_abis": [
+      "armeabi-v7a"
+    ],
+    "legacy_v1_signature_file_present": true,
+    "checks": {
+      "api_minimum": true,
+      "native_abi": true,
+      "legacy_signature_artifact_for_old_android": true
+    },
+    "preflight_passes": true,
+    "warnings": [
+      "A certificate entry being present does not cryptographically validate v1 signing.",
+      "Passing static checks does not guarantee install, launch, authentication, encrypted chats or current-server compatibility.",
+      "Never distribute altered Meta APKs as official Messenger."
+    ]
+  },
+  "apk_v1_signature_integrity": {
+    "status": "verified_v1_integrity",
+    "signed_contents_verified": true,
+    "self_signed_certificate_warning": true,
+    "certificate_trust_established": false,
+    "weak_signing_key_warning": true,
+    "explanation": "JAR/v1 integrity only; not APK v2 verification, store provenance, or proof of server functionality."
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "android44_apk": "com.facebook.orca_410.0.0.17.85-312007848_minAPI19(armeabi-v7a)(160,120dpi)_apkmirror.com.apk",
+  "android50_x86_apk": "com.facebook.orca_410.0.0.17.85-312007866_minAPI21(x86)(nodpi)_apkmirror.com.apk",
+  "results": [
+    {
+      "kitkat_file": "secondary-1.dex",
+      "kitkat_manifest_sha1": "41a986a0e12f451221a9bc5af3658d2e4f48b5ef",
+      "x86_file": "classes2.dex",
+      "x86_size": 7360932,
+      "x86_sha1": "60d11ca06179100d665f598fb0a33b6218eef2d8",
+      "binary_identical_by_sha1": false
+    },
+    {
+      "kitkat_file": "secondary-2.dex",
+      "kitkat_manifest_sha1": "0fd84a073f0a8046a3569e0f226531b5f689be8c",
+      "x86_file": "classes3.dex",
+      "x86_size": 5627832,
+      "x86_sha1": "d97fb796c4944aacdd706e6f9141924fee960c3a",
+      "binary_identical_by_sha1": false
+    },
+    {
+      "kitkat_file": "secondary-3.dex",
+      "kitkat_manifest_sha1": "a869993cc35c0e20dd89ecb3226e05181c6f250d",
+      "x86_file": "classes4.dex",
+      "x86_size": 9502800,
+      "x86_sha1": "e47295fcc907d15c15c706ad7cbc0113a4029ab3",
+      "binary_identical_by_sha1": false
+    },
+    {
+      "kitkat_file": "secondary-4.dex",
+      "kitkat_manifest_sha1": "801b56434e986bb50ab7578bc1ce4f2c91b65f92",
+      "x86_file": "classes5.dex",
+      "x86_size": 9028428,
+      "x86_sha1": "2c7ba1da8d18757a870ff8315fd62f81d61dbb7a",
+      "binary_identical_by_sha1": false
+    },
+    {
+      "kitkat_file": "secondary-5.dex",
+      "kitkat_manifest_sha1": "10cb8579fed8bf38b79c533955e24931b7414902",
+      "x86_file": "classes6.dex",
+      "x86_size": 8603832,
+      "x86_sha1": "69489100dc15ef42fa174d2892ded00cd33e4028",
+      "binary_identical_by_sha1": false
+    },
+    {
+      "kitkat_file": "secondary-6.dex",
+      "kitkat_manifest_sha1": "742f7e7afd6aa429547a0304a4827c15e9407923",
+      "x86_file": "classes7.dex",
+      "x86_size": 8154868,
+      "x86_sha1": "1eb605276fee0af3df0be8c0736fb27e530144ec",
+      "binary_identical_by_sha1": false
+    },
+    {
+      "kitkat_file": "secondary-7.dex",
+      "kitkat_manifest_sha1": "a16e803f8f93ad259745aecce8aadcf7480fd06c",
+      "x86_file": "classes8.dex",
+      "x86_size": 7624300,
+      "x86_sha1": "7d23b26ef3cdc2ede711ceeee52f60c3c3e90433",
+      "binary_identical_by_sha1": false
+    }
+  ],
+  "sha1_match_count": 0,
+  "caution": "Different SHA1s mean x86 DEX cannot be substituted as-is for ARM packed DEX. Class-level overlap not measured."
+}

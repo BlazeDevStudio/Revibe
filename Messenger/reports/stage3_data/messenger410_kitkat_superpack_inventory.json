@@ -1,0 +1,241 @@
+{
+  "apk_name": "com.facebook.orca_410.0.0.17.85-312007848_minAPI19(armeabi-v7a)(160,120dpi)_apkmirror.com.apk",
+  "apk_sha256": "006ca274cf2a2569cf8e5c68c94c2317377c6406957fe4e4daedc0436ee790c8",
+  "archives": [
+    {
+      "archive_path": "assets/effects/store-0.dex.spo",
+      "sha256": "1aca031be686139e14563a99de127ee042f56678f571c856e302e10f871a249d",
+      "magic": "50c00100",
+      "version_hex": "05abaf01",
+      "stream_count_header": 88,
+      "file_count": 1,
+      "archive_bytes": 16401,
+      "entry_table_offset": 40,
+      "entry_table_end": 78,
+      "entries": [
+        {
+          "name": "effects-1.dex",
+          "format": "dex",
+          "declared_uncompressed_size": 16476,
+          "archive_checksum64": "162ec6136f360993"
+        }
+      ],
+      "metadata_locator_names": [
+        "effects-1.dex"
+      ],
+      "locator_names_match": true,
+      "xz_independent_stream_count": 46,
+      "xz_magic_count_scanned": 46,
+      "xz_begins_with_dex_header": 1,
+      "xz_decoded_segment_total_bytes": 5808,
+      "xz_sample": [
+        {
+          "offset": 2602,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 1548,
+          "compressed_bytes": 964,
+          "decoded_starts_with_dex_magic": false
+        },
+        {
+          "offset": 3596,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 656,
+          "compressed_bytes": 336,
+          "decoded_starts_with_dex_magic": false
+        },
+        {
+          "offset": 4247,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 236,
+          "compressed_bytes": 248,
+          "decoded_starts_with_dex_magic": true
+        },
+        {
+          "offset": 5764,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 236,
+          "compressed_bytes": 180,
+          "decoded_starts_with_dex_magic": false
+        },
+        {
+          "offset": 6561,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 108,
+          "compressed_bytes": 156,
+          "decoded_starts_with_dex_magic": false
+        }
+      ]
+    },
+    {
+      "archive_path": "assets/longtail/store-0.dex.spo",
+      "sha256": "d89856b603b8599c86e5c0dc0aa2ee020b7cc9dd346aa0ca53b963753ad3ee70",
+      "magic": "50c00100",
+      "version_hex": "05abaf01",
+      "stream_count_header": 88,
+      "file_count": 1,
+      "archive_bytes": 2295,
+      "entry_table_offset": 40,
+      "entry_table_end": 79,
+      "entries": [
+        {
+          "name": "longtail-1.dex",
+          "format": "dex",
+          "declared_uncompressed_size": 320,
+          "archive_checksum64": "f6b49ff41584b890"
+        }
+      ],
+      "metadata_locator_names": [
+        "longtail-1.dex"
+      ],
+      "locator_names_match": true,
+      "xz_independent_stream_count": 15,
+      "xz_magic_count_scanned": 15,
+      "xz_begins_with_dex_header": 1,
+      "xz_decoded_segment_total_bytes": 272,
+      "xz_sample": [
+        {
+          "offset": 109,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 144,
+          "compressed_bytes": 152,
+          "decoded_starts_with_dex_magic": true
+        },
+        {
+          "offset": 1109,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 44,
+          "compressed_bytes": 92,
+          "decoded_starts_with_dex_magic": false
+        },
+        {
+          "offset": 1231,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 24,
+          "compressed_bytes": 68,
+          "decoded_starts_with_dex_magic": false
+        },
+        {
+          "offset": 1329,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 8,
+          "compressed_bytes": 56,
+          "decoded_starts_with_dex_magic": false
+        },
+        {
+          "offset": 1415,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 8,
+          "compressed_bytes": 56,
+          "decoded_starts_with_dex_magic": false
+        }
+      ]
+    },
+    {
+      "archive_path": "assets/secondary-program-dex-jars/store-0.dex.spo",
+      "sha256": "6fcd95a42494c0cd9e593d672ba142af45159d8a4dc437985c6d11b7dac03ef7",
+      "magic": "50c00100",
+      "version_hex": "05abaf01",
+      "stream_count_header": 88,
+      "file_count": 7,
+      "archive_bytes": 11445517,
+      "entry_table_offset": 40,
+      "entry_table_end": 320,
+      "entries": [
+        {
+          "name": "secondary-1.dex",
+          "format": "dex",
+          "declared_uncompressed_size": 7481688,
+          "archive_checksum64": "ab8369690fe363d6"
+        },
+        {
+          "name": "secondary-2.dex",
+          "format": "dex",
+          "declared_uncompressed_size": 5760200,
+          "archive_checksum64": "989c468d3b9f8d52"
+        },
+        {
+          "name": "secondary-3.dex",
+          "format": "dex",
+          "declared_uncompressed_size": 9891896,
+          "archive_checksum64": "f9615dfe6af74061"
+        },
+        {
+          "name": "secondary-4.dex",
+          "format": "dex",
+          "declared_uncompressed_size": 9300892,
+          "archive_checksum64": "60d620fbf526daef"
+        },
+        {
+          "name": "secondary-5.dex",
+          "format": "dex",
+          "declared_uncompressed_size": 9310792,
+          "archive_checksum64": "82aab79f8224ccd0"
+        },
+        {
+          "name": "secondary-6.dex",
+          "format": "dex",
+          "declared_uncompressed_size": 8606192,
+          "archive_checksum64": "b09146787c7873be"
+        },
+        {
+          "name": "secondary-7.dex",
+          "format": "dex",
+          "declared_uncompressed_size": 7611604,
+          "archive_checksum64": "092daf4dfe428b98"
+        }
+      ],
+      "metadata_locator_names": [
+        "secondary-1.dex",
+        "secondary-2.dex",
+        "secondary-3.dex",
+        "secondary-4.dex",
+        "secondary-5.dex",
+        "secondary-6.dex",
+        "secondary-7.dex"
+      ],
+      "locator_names_match": true,
+      "xz_independent_stream_count": 79,
+      "xz_magic_count_scanned": 79,
+      "xz_begins_with_dex_header": 1,
+      "xz_decoded_segment_total_bytes": 19361468,
+      "xz_sample": [
+        {
+          "offset": 4044755,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 4838912,
+          "compressed_bytes": 1244904,
+          "decoded_starts_with_dex_magic": false
+        },
+        {
+          "offset": 7575220,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 978528,
+          "compressed_bytes": 212320,
+          "decoded_starts_with_dex_magic": false
+        },
+        {
+          "offset": 8506382,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 397432,
+          "compressed_bytes": 152152,
+          "decoded_starts_with_dex_magic": false
+        },
+        {
+          "offset": 9212013,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 3409352,
+          "compressed_bytes": 97256,
+          "decoded_starts_with_dex_magic": false
+        },
+        {
+          "offset": 9309299,
+          "status": "valid_xz_stream",
+          "decoded_bytes": 978528,
+          "compressed_bytes": 88784,
+          "decoded_starts_with_dex_magic": false
+        }
+      ]
+    }
+  ],
+  "limitations": "XZ block recognition is not Superpack DEX reconstruction; decoded payloads are never exported."
+}

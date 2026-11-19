@@ -1,0 +1,85 @@
+{
+  "checks": [
+    {
+      "apk_filename": "com.facebook.orca_410.0.0.17.85-312007848_minAPI19(armeabi-v7a)(160,120dpi)_apkmirror.com.apk",
+      "package": "com.facebook.orca",
+      "version": "410.0.0.17.85",
+      "manifest_min_sdk": 19,
+      "manifest_target_sdk": 33,
+      "device_api": 19,
+      "device_supported_abis": [
+        "armeabi-v7a",
+        "armeabi"
+      ],
+      "apk_native_abis": [
+        "armeabi-v7a"
+      ],
+      "legacy_v1_signature_file_present": true,
+      "checks": {
+        "api_minimum": true,
+        "native_abi": true,
+        "legacy_signature_artifact_for_old_android": true
+      },
+      "preflight_passes": true,
+      "warnings": [
+        "A certificate entry being present does not cryptographically validate v1 signing.",
+        "Passing static checks does not guarantee install, launch, authentication, encrypted chats or current-server compatibility.",
+        "Never distribute altered Meta APKs as official Messenger."
+      ]
+    },
+    {
+      "apk_filename": "com.facebook.orca_410.0.0.17.85-312007866_minAPI21(x86)(nodpi)_apkmirror.com.apk",
+      "package": "com.facebook.orca",
+      "version": "410.0.0.17.85",
+      "manifest_min_sdk": 21,
+      "manifest_target_sdk": 33,
+      "device_api": 19,
+      "device_supported_abis": [
+        "armeabi-v7a",
+        "armeabi"
+      ],
+      "apk_native_abis": [
+        "x86"
+      ],
+      "legacy_v1_signature_file_present": true,
+      "checks": {
+        "api_minimum": false,
+        "native_abi": false,
+        "legacy_signature_artifact_for_old_android": true
+      },
+      "preflight_passes": false,
+      "warnings": [
+        "A certificate entry being present does not cryptographically validate v1 signing.",
+        "Passing static checks does not guarantee install, launch, authentication, encrypted chats or current-server compatibility.",
+        "Never distribute altered Meta APKs as official Messenger."
+      ]
+    },
+    {
+      "apk_filename": "com.facebook.orca_588.1.0.66.98-347617515_minAPI28(arm64-v8a)(nodpi)_apkmirror.com.apk",
+      "package": "com.facebook.orca",
+      "version": "588.1.0.66.98",
+      "manifest_min_sdk": 28,
+      "manifest_target_sdk": 37,
+      "device_api": 19,
+      "device_supported_abis": [
+        "armeabi-v7a",
+        "armeabi"
+      ],
+      "apk_native_abis": [
+        "arm64-v8a"
+      ],
+      "legacy_v1_signature_file_present": false,
+      "checks": {
+        "api_minimum": false,
+        "native_abi": false,
+        "legacy_signature_artifact_for_old_android": false
+      },
+      "preflight_passes": false,
+      "warnings": [
+        "A certificate entry being present does not cryptographically validate v1 signing.",
+        "Passing static checks does not guarantee install, launch, authentication, encrypted chats or current-server compatibility.",
+        "Never distribute altered Meta APKs as official Messenger."
+      ]
+    }
+  ]
+}
