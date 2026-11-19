@@ -1,0 +1,31 @@
+{
+  "stage": 11,
+  "scope": "static_native_elf_and_safe_diagnostics",
+  "original_336_arm64_api21": {
+    "sha256": "70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab",
+    "native_libraries": 18,
+    "android_api_note_distribution": {
+      "21": 18
+    }
+  },
+  "original_410_armv7_api19": {
+    "native_libraries": 23,
+    "android_api_note_distribution": {
+      "19": 22
+    },
+    "unreadable": 1
+  },
+  "original_588_arm64_api28": {
+    "native_libraries": 14,
+    "android_api_note_distribution": {
+      "21": 3,
+      "23": 1,
+      "28": 10
+    }
+  },
+  "offline_test_count": 23,
+  "device_install_tested": false,
+  "account_login_tested": false,
+  "encrypted_messaging_tested": false,
+  "update_gate_fixed": false
+}
