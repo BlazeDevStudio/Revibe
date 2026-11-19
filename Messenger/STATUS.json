@@ -1,6 +1,6 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "Stage 11: verified API21 ELF notes in original ARM64 Messenger 336; hardened device smoke runner",
+  "latest_milestone": "Stage 12: user-reported Android installation failure; diagnostic priority",
   "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
   "stage6_armv7": {
     "source_version": "410.0.0.17.85",
@@ -64,7 +64,7 @@
     "preflight": "Messenger/engineering/android56_abi_check.py",
     "tests": "six new source-level unit tests in GitHub; 7 local expanded tool tests passed separately"
   },
-  "next_blocker": "Observe genuine Messenger 336 install/start and update/login failure on authorized spare Android 5/6 ARM64 phone; without credentials or message logs; patch only demonstrated client failure",
+  "next_blocker": "Obtain non-sensitive Android INSTALL_FAILED_* code on authorized spare Android 5/6 device; first check original Meta-signed Messenger336 API21 ARM64 and existing-package conflicts.",
   "stage9_native_android5_arm64": {
     "candidate": "Messenger 336.0.0.13.142, versionCode 297217556, arm64-v8a nodpi single APK minAPI21",
     "archive_url": "https://www.apkmirror.com/apk/facebook-2/messenger/messenger-336-0-0-13-142-release/facebook-messenger-text-and-video-chat-for-free-336-0-0-13-142-8-android-apk-download/",
@@ -109,5 +109,14 @@
     "authenticated_login": false,
     "e2ee_send_receive": false,
     "changed_meta_application_code": false
+  },
+  "installation_feedback_2026_11_20": {
+    "reported_message": "App not installed",
+    "reported_targets": "supplied Revibe APKs (exact variants not identified)",
+    "observed_by_user": true,
+    "package_manager_error_code": null,
+    "root_cause_confirmed": false,
+    "status": "FAILED install per user report; unclassified",
+    "note": "Offline ZIP/signature/preflight checks did not prove on-device installability."
   }
 }
