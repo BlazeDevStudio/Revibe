@@ -1,12 +1,65 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "Stage 7: separate ARM64/API28 v1+v2-signed research candidate and Messenger Lite research",
+  "latest_milestone": "Stage 8: Android 5/6 on ARM64 CPU through verified ARM32 ABI compatibility preflight",
   "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
-  "stage6_armv7": {"source_version":"410.0.0.17.85", "min_api":19, "abi":"armeabi-v7a", "research_apk_only":true, "real_login_tested":false},
-  "stage7_arm64": {"source_version":"588.1.0.66.98", "min_api":28, "target_api":37, "abi":"arm64-v8a", "research_apk_only":true, "source_sha256":"30ad524ac1c06efd75b5fd123efc89c4f61462a7eeb7b666c4f71cfd24de3aa7", "app_code_changed":false, "modified_ui_strings":1, "zip_crc_passed":true, "v1_verified":true, "v2_rsa_sha256_digest_verified_locally":true, "android_sdk_apksigner_verified":false, "device_install_tested":false, "real_login_tested":false, "encrypted_chat_tested":false, "update_gate_fixed":false},
-  "messenger_lite": {"package":"com.facebook.mlite", "shutdown_date":"2023-09-18", "historical_apk_candidate":"338.0.0.3.102 Android 4.0.3+ per archives", "actual_apk_audited":false, "messaging_service_2026_verified":false},
-  "abi_goal": ["armeabi-v7a", "arm64-v8a", "x86"],
+  "stage6_armv7": {
+    "source_version": "410.0.0.17.85",
+    "min_api": 19,
+    "abi": "armeabi-v7a",
+    "research_apk_only": true,
+    "real_login_tested": false
+  },
+  "stage7_arm64": {
+    "source_version": "588.1.0.66.98",
+    "min_api": 28,
+    "target_api": 37,
+    "abi": "arm64-v8a",
+    "research_apk_only": true,
+    "source_sha256": "30ad524ac1c06efd75b5fd123efc89c4f61462a7eeb7b666c4f71cfd24de3aa7",
+    "app_code_changed": false,
+    "modified_ui_strings": 1,
+    "zip_crc_passed": true,
+    "v1_verified": true,
+    "v2_rsa_sha256_digest_verified_locally": true,
+    "android_sdk_apksigner_verified": false,
+    "device_install_tested": false,
+    "real_login_tested": false,
+    "encrypted_chat_tested": false,
+    "update_gate_fixed": false
+  },
+  "messenger_lite": {
+    "package": "com.facebook.mlite",
+    "shutdown_date": "2023-09-18",
+    "historical_apk_candidate": "338.0.0.3.102 Android 4.0.3+ per archives",
+    "actual_apk_audited": false,
+    "messaging_service_2026_verified": false
+  },
+  "abi_goal": [
+    "armeabi-v7a",
+    "arm64-v8a",
+    "x86"
+  ],
   "android_goal": "Android 4.4/API19 through Android 10/API29; actual artifact support differs",
-  "remaining": ["test KitKat launch on spare phone", "test ARM64 v588 launch on spare Android 9/10+", "verify ARM64 artifact with Android SDK apksigner", "confirm real Meta login, E2EE messaging, notifications", "audit authentic Messenger Lite APK", "determine actual update gate origin"],
-  "publication_policy": "Never push modified or original Meta APKs, native libraries, credentials, messages or signing keys to public Revibe repo."
+  "remaining": [
+    "test KitKat launch on spare phone",
+    "test ARM64 v588 launch on spare Android 9/10+",
+    "verify ARM64 artifact with Android SDK apksigner",
+    "confirm real Meta login, E2EE messaging, notifications",
+    "audit authentic Messenger Lite APK",
+    "determine actual update gate origin"
+  ],
+  "publication_policy": "Never push modified or original Meta APKs, native libraries, credentials, messages or signing keys to public Revibe repo.",
+  "stage8_android5_6_arm64_cpu": {
+    "candidate": "Stage 6 Messenger 410 ARMv7/API19 research APK; byte-identical re-labeled test download",
+    "candidate_sha256": "7e1a128728935ca3b9afd4079a7018b31c00b6215067514dfee8adc6ca5e66dd",
+    "supports_natively_arm64": false,
+    "conditional_compatibility": "Android API21-23 with armeabi-v7a listed in supported device ABIs",
+    "install_tested": false,
+    "login_tested": false,
+    "encrypted_messaging_tested": false,
+    "gate_removed": false,
+    "preflight": "Messenger/engineering/android56_abi_check.py",
+    "tests": "six new source-level unit tests in GitHub; 7 local expanded tool tests passed separately"
+  },
+  "next_blocker": "Real Android 5/6 ARM64 device OS ABI list and safe installation/launch test; then observed signed-client or Meta server errors without collecting credentials"
 }
