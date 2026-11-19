@@ -98,7 +98,8 @@ def run(apk, install=False, launch=False, ack=False, observed_screen="not_checke
     report = {
         "original_apk_sha256": PINNED_SHA256,
         "privacy": "no identifiers, logcat, account credentials or message content captured",
-        "original_meta_signature_preserved": True,
+        "source_original_meta_signature_preserved": True,
+        "installed_package_identity_verified": False,
         "install_attempted": False,
         "install_succeeded": False,
         "launch_attempted": False,
@@ -121,10 +122,10 @@ def run(apk, install=False, launch=False, ack=False, observed_screen="not_checke
     if report["status"] != "device_platform_eligible":
         return report
     report["package_preexisting"] = package_installed()
+    if (install or launch) and report["package_preexisting"]:
+        report["status"] = "existing_messenger_identity_unverified_action_skipped"
+        return report
     if install:
-        if report["package_preexisting"]:
-            report["status"] = "existing_messenger_not_overwritten"
-            return report
         report["install_attempted"] = True
         r = execute("install", str(apk), timeout=180)
         if not r or r.returncode != 0:
