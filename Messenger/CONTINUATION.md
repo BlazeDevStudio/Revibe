@@ -33,3 +33,13 @@ Third-party APKs must remain off GitHub. No signed APK is distributed by the pub
 - The test download is the **same binary** as the Stage 6 candidate, SHA-256 `7e1a128728935ca3b9afd4079a7018b31c00b6215067514dfee8adc6ca5e66dd`.
 - No real hardware install, login, end-to-end messaging, deprecation-gate repair or native ARM64/API21 port is established.
 - See `Messenger/ANDROID_5_6_ARM64_COMPATIBILITY.md` and continue toward a real, safely observed device error.
+
+
+## Stage 9: genuinely native Android 5/6 ARM64 baseline
+- Read `Messenger/NATIVE_ARM64_ANDROID5_BASELINE.md` and `Messenger/reports/STAGE9_NATIVE_ARM64_FINDINGS.md`.
+- APKMirror archived original Messenger 336.0.0.13.142, versionCode 297217556, single APK for arm64-v8a/nodpi/Android 5.0 API21+.
+- **We have not obtained or executed the 336 APK**. Do not mistake an archive listing for verified client compatibility or a new APK deliverable.
+- Run the read-only `Messenger/engineering/native_arm64_gate.py` with --verify-signature --verify-meta-cert once the authentic original file is available.
+- Fourteen new offline unit tests pass locally; the known ARMv7, x86, and API28 ARM64 source APKs all fail the API21 native ARM64 gate as expected.
+- Next decisive gate: obtain and validate exact APK bytes; test on spare authorized Android 5/6 ARM64 hardware; classify auth/version/E2EE blockers before any patch.
+- Never commit Meta APKs, keys, personal-account data or chat contents. A package that installs is not a functioning Messenger revival.
