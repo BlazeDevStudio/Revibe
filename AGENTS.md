@@ -22,3 +22,7 @@ Revibe is an independent, AI-assisted compatibility and accessibility project gi
 - Understand experimental Stage 6 APK: rebuilt from user-supplied original with two *string changes only*, v1 signed with temporary test key; **not a Messenger compatibility fix**. No public binary is committed.
 - Prioritize actual observed Android 4.4 runtime behavior: install, launch, login/update gate origin, encryption send+receive. Only then pursue targeted code compatibility changes and additional ABIs.
 - The next chat can start with: **"Continue Revibe from GitHub. Read AGENTS.md and run scripts/revibe_init.py --check, then work on Messenger's latest verified blocker. Do not restart or invent successful tests."**
+
+## Stage 7 extension (2026-11-20)
+
+Continue ARM64/API28 research only after checking `Messenger/STATUS.json`, `Messenger/CONTINUATION.md`, `Messenger/engineering/README_STAGE7.md`, and the latest main commit. An ARM64 research package was derived from the user's original Messenger 588; it is v1+experimental-v2 signed and **requires Android 9+, not KitKat**. A separate Lite research track (`com.facebook.mlite`) has been opened; Messenger Lite was discontinued in September 2023. These are research leads only. Prioritize real device diagnostics, authentic encrypted messaging, compatibility, and privacy. Do not publish proprietary Meta APKs or pretend the update gate is fixed.
