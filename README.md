@@ -1,16 +1,12 @@
 # Revibe
 
-Revibe brings a second life to aging apps and devices through compatibility research, reverse engineering, repair, and AI-assisted development.
+Revibe is an independent AI-assisted software preservation and accessibility project to help aging apps and refurbished devices remain useful. The first project is **Messenger**.
 
-## Projects
+- [Messenger engineering and current status](Messenger/CONTINUATION.md)
+- [Verified status (machine-readable)](Messenger/STATUS.json)
+- [Contributor/agent instructions](AGENTS.md)
+- [Session initialization script](scripts/revibe_init.py)
 
-- [Messenger](Messenger/README.md) — investigating modern Messenger compatibility with Android 4.4–10.
+**Current status: no functioning Messenger replacement or release yet.** Stage 6 provides a locally reproducible API19/ARMv7 research APK which changes two UI strings only. It is not verified to run on-device, authenticate, send messages, or suppress a real mandatory version gate.
 
-**Project status:** Research and diagnostic tooling. No modified, working Messenger APK has been released.
-
-Revibe is an independent community project and is not affiliated with Meta.
-Third-party APKs and proprietary native libraries are intentionally not included.
-
-### Latest progress
-
-Revibe Messenger Stage 5 provides a read-only update/deprecation prompt classifier for Android 4.4–10 compatibility research. [Engineering details](Messenger/engineering/README_STAGE5.md). The project still has **no verified restored Messenger login or messaging**, and no modified three-ABI APK release.
+Run `python scripts/revibe_init.py --check` for next-session handoff and offline tests. Revibe is independent and is not affiliated with or endorsed by Meta.
