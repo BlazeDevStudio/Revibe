@@ -51,7 +51,15 @@ class OriginalArm64SmokeTests(unittest.TestCase):
     def test_do_not_overwrite_preexisting(self):
         with patch.object(s,'package_installed',return_value=True), patch.object(s,'execute') as command:
             r=s.run(self.path,install=True,ack=True)
-            self.assertEqual(r['status'],'existing_messenger_not_overwritten')
+            self.assertEqual(r['status'],'existing_messenger_identity_unverified_action_skipped')
+            command.assert_not_called()
+
+    def test_preexisting_other_messenger_never_launched(self):
+        with patch.object(s, 'package_installed', return_value=True), patch.object(s, 'execute') as command:
+            r = s.run(self.path, launch=True)
+            self.assertEqual(r['status'], 'existing_messenger_identity_unverified_action_skipped')
+            self.assertFalse(r['launch_attempted'])
+            self.assertFalse(r['installed_package_identity_verified'])
             command.assert_not_called()
 
     def test_install_success_still_unverified(self):
