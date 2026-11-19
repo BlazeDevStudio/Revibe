@@ -1,6 +1,6 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "Stage 10: user-provided original Meta-signed Messenger 336 ARM64/API21 acquired and verified",
+  "latest_milestone": "Stage 11: verified API21 ELF notes in original ARM64 Messenger 336; hardened device smoke runner",
   "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
   "stage6_armv7": {
     "source_version": "410.0.0.17.85",
@@ -64,7 +64,7 @@
     "preflight": "Messenger/engineering/android56_abi_check.py",
     "tests": "six new source-level unit tests in GitHub; 7 local expanded tool tests passed separately"
   },
-  "next_blocker": "Test original Meta-signed Messenger 336 on disposable Android 5 or 6 native ARM64 device; collect redacted install, launch and deprecation-screen outcomes; diagnose server messaging separately",
+  "next_blocker": "Observe genuine Messenger 336 install/start and update/login failure on authorized spare Android 5/6 ARM64 phone; without credentials or message logs; patch only demonstrated client failure",
   "stage9_native_android5_arm64": {
     "candidate": "Messenger 336.0.0.13.142, versionCode 297217556, arm64-v8a nodpi single APK minAPI21",
     "archive_url": "https://www.apkmirror.com/apk/facebook-2/messenger/messenger-336-0-0-13-142-release/facebook-messenger-text-and-video-chat-for-free-336-0-0-13-142-8-android-apk-download/",
@@ -96,5 +96,18 @@
     "encrypted_chat_tested": false,
     "update_gate_fixed": false,
     "decision": "Use original signed APK for first controlled device test; no modified stage10 APK created"
+  },
+  "stage11": {
+    "baseline": "Unmodified, Meta-signed Messenger 336.0.0.13.142 ARM64/API21",
+    "original_native_library_api_notes": "18/18 API21",
+    "earlier_native_api_comparison": "Messenger 410 ARMv7: 22/23 API19; Messenger 588 ARM64: 10/14 API28, other notes API21/23",
+    "original_update_resource_keyword_matches": 5,
+    "runner_safety_fix": "Do not launch or overwrite any preexisting com.facebook.orca without installed-package identity proof",
+    "new_elf_audit": "Messenger/engineering/elf_android_api_audit.py",
+    "tests_local": "23 passed in Stage 11 subset",
+    "device_installed": false,
+    "authenticated_login": false,
+    "e2ee_send_receive": false,
+    "changed_meta_application_code": false
   }
 }
