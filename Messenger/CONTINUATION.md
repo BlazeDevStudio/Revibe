@@ -43,3 +43,11 @@ Third-party APKs must remain off GitHub. No signed APK is distributed by the pub
 - Fourteen new offline unit tests pass locally; the known ARMv7, x86, and API28 ARM64 source APKs all fail the API21 native ARM64 gate as expected.
 - Next decisive gate: obtain and validate exact APK bytes; test on spare authorized Android 5/6 ARM64 hardware; classify auth/version/E2EE blockers before any patch.
 - Never commit Meta APKs, keys, personal-account data or chat contents. A package that installs is not a functioning Messenger revival.
+
+
+## Stage 10 — verified ORIGINAL ARM64 Android 5/6 baseline
+- User supplied Messenger 336.0.0.13.142 API21 ARM64. SHA256 `70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab`.
+- APK manifest, ARM64 ELF libraries, ZIP CRC, Meta certificate identity and JAR/v1 cryptographic signature verified offline. Static Android 5/API21 and Android 6/API23 gates pass.
+- This is an **original Meta-signed APK**, NOT a modified/revived Messenger. Use it for first device test; don't re-sign just to remove an update warning.
+- New privacy-preserving runner: `python Messenger/engineering/original_arm64_smoke.py --apk /path/to/original336.apk --output /tmp/preflight.json`; optional authorized spare-device install requires `--install --ack-test-device --launch`. It never overwrites an existing package or logs private data.
+- 14 new runner unit tests passed locally; previous Stage 9's 14 tests also passed. No ADB device connected, no live login/E2EE or notification test. See `Messenger/reports/STAGE10_NATIVE_ARM64_336.md`.

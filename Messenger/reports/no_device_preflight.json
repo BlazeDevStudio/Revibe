@@ -1,0 +1,13 @@
+{
+  "original_apk_sha256": "70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab",
+  "privacy": "no identifiers, logcat, account credentials or message content captured",
+  "original_meta_signature_preserved": true,
+  "install_attempted": false,
+  "install_succeeded": false,
+  "launch_attempted": false,
+  "process_observed": false,
+  "messenger_login_verified": false,
+  "encrypted_message_exchange_verified": false,
+  "observed_screen_manual_category": "not_checked",
+  "status": "requires_exactly_one_authorized_adb_device"
+}

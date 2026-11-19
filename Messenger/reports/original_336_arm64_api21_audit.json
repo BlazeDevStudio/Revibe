@@ -1,0 +1,38 @@
+{
+  "apk_filename": "com.facebook.orca_336.0.0.13.142-297217556_minAPI21(arm64-v8a)(nodpi)_apkmirror.com.apk",
+  "apk_sha256": "70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab",
+  "package_name": "com.facebook.orca",
+  "version_name": "336.0.0.13.142",
+  "version_code": 297217556,
+  "manifest_min_android_api": 21,
+  "manifest_target_android_api": 30,
+  "native_abis": [
+    "arm64-v8a"
+  ],
+  "arm64_native_libraries": 18,
+  "device_api": 21,
+  "device_abis": [
+    "arm64-v8a"
+  ],
+  "known_2021_arm64_api21_baseline_metadata_match": true,
+  "checks": {
+    "messenger_package": true,
+    "android_minimum": true,
+    "native_arm64_present": true,
+    "native_arm64_elf_valid": true,
+    "device_supports_arm64": true,
+    "legacy_apk_v1_signature_artifact": true,
+    "known_original_meta_certificate": true,
+    "legacy_signature_cryptographically_verified": true
+  },
+  "static_platform_gate_passed": true,
+  "signer_verification": "jar_v1_verified",
+  "meta_certificate_check": "matches_known_meta_certificate",
+  "warnings": [
+    "Static eligibility is not proof of installation or Android runtime behavior.",
+    "Neither Meta login nor end-to-end encrypted communication is verified.",
+    "A v1 signature FILE is not cryptographic verification; use --verify-signature.",
+    "Meta signer identity and cryptographic content integrity are separate checks.",
+    "Original Meta signature should remain intact for an initial controlled test."
+  ]
+}

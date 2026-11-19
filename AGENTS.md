@@ -26,3 +26,8 @@ Revibe is an independent, AI-assisted compatibility and accessibility project gi
 ## Stage 7 extension (2026-11-20)
 
 Continue ARM64/API28 research only after checking `Messenger/STATUS.json`, `Messenger/CONTINUATION.md`, `Messenger/engineering/README_STAGE7.md`, and the latest main commit. An ARM64 research package was derived from the user's original Messenger 588; it is v1+experimental-v2 signed and **requires Android 9+, not KitKat**. A separate Lite research track (`com.facebook.mlite`) has been opened; Messenger Lite was discontinued in September 2023. These are research leads only. Prioritize real device diagnostics, authentic encrypted messaging, compatibility, and privacy. Do not publish proprietary Meta APKs or pretend the update gate is fixed.
+
+
+## Stage 10 checkpoint (2026-11-20)
+- Verified original Messenger 336 API21 ARM64 binary available to the researcher; SHA256 `70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab`. This **is not** a restored Messenger release.
+- On next continuation, use `Messenger/reports/STAGE10_NATIVE_ARM64_336.md` and `Messenger/engineering/original_arm64_smoke.py` to classify real Android 5/6 runtime failures before modifying APKs. Do not commit third-party binaries.
