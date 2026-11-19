@@ -1,0 +1,20 @@
+{
+  "artifact": "Revibe_Messenger_API19_ARMv7_RESEARCH_ONLY.apk",
+  "source_apk": "Messenger 410.0.0.17.85 API19 ARMv7, owner-supplied locally",
+  "source_sha256": "006ca274cf2a2569cf8e5c68c94c2317377c6406957fe4e4daedc0436ee790c8",
+  "candidate_sha256": "7e1a128728935ca3b9afd4079a7018b31c00b6215067514dfee8adc6ca5e66dd",
+  "candidate_bytes": 44548271,
+  "changed_resource": "assets/strings/default.frsc",
+  "modified_english_prompt_strings": 2,
+  "code_changed": false,
+  "version_update_gate_removed": false,
+  "zip_crc": "pass",
+  "v1_signature": "pass using TEMPORARY independent research certificate, NOT Meta",
+  "android44_armv7_static_preflight": "pass",
+  "real_device_install": "not tested",
+  "login": "not tested",
+  "modern_personal_chat_e2ee": "not tested",
+  "notifications": "not tested",
+  "release_usable_for_charity": false,
+  "warning": "This is an experimental packaging artifact; it is not working Messenger and must not be distributed to beneficiaries. No proprietary APK binary is committed to GitHub."
+}
