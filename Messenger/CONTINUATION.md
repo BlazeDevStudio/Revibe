@@ -24,3 +24,12 @@ python Messenger/engineering/build_arm64_research.py --original /path/to/your/Me
 ```
 
 Third-party APKs must remain off GitHub. No signed APK is distributed by the public repository.
+
+## Stage 8 correction: Android 5 and 6 on a 64-bit CPU
+
+- Use the **ARMv7/API19 Stage 6 research APK** on Android 5 or 6 only if the device OS lists `armeabi-v7a` among supported ABIs.
+- Never label the Messenger 588 ARM64/API28 package compatible with Android 5 or 6; changing `minSdkVersion` is not a valid fix.
+- ABI checker: `python Messenger/engineering/android56_abi_check.py --apk /path/to/ARM32-research.apk` (read-only, requires ADB unless manual API/ABI flags supplied).
+- The test download is the **same binary** as the Stage 6 candidate, SHA-256 `7e1a128728935ca3b9afd4079a7018b31c00b6215067514dfee8adc6ca5e66dd`.
+- No real hardware install, login, end-to-end messaging, deprecation-gate repair or native ARM64/API21 port is established.
+- See `Messenger/ANDROID_5_6_ARM64_COMPATIBILITY.md` and continue toward a real, safely observed device error.
