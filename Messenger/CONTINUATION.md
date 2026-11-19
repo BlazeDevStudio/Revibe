@@ -51,3 +51,12 @@ Third-party APKs must remain off GitHub. No signed APK is distributed by the pub
 - This is an **original Meta-signed APK**, NOT a modified/revived Messenger. Use it for first device test; don't re-sign just to remove an update warning.
 - New privacy-preserving runner: `python Messenger/engineering/original_arm64_smoke.py --apk /path/to/original336.apk --output /tmp/preflight.json`; optional authorized spare-device install requires `--install --ack-test-device --launch`. It never overwrites an existing package or logs private data.
 - 14 new runner unit tests passed locally; previous Stage 9's 14 tests also passed. No ADB device connected, no live login/E2EE or notification test. See `Messenger/reports/STAGE10_NATIVE_ARM64_336.md`.
+
+## Stage 11 — Verified ARM64 native notes / safer device smoke test
+- Re-read this repository's root AGENTS.md and run scripts/revibe_init.py --check before doing work.
+- The original Meta-signed Messenger 336 ARM64/API21 has 18 native libraries. Each carries a native Android API21 ELF note. This is a static platform confirmation, **not** a restored Messenger login or runtime test.
+- New source: Messenger/engineering/elf_android_api_audit.py. Its eight offline tests run through the existing test discovery workflow.
+- Diagnostic safety fix: original_arm64_smoke.py now refuses **both** install and launch if com.facebook.orca already exists because the installed variant's signature/version are not verified. New regression test covers this case.
+- Stage 11 subset: 23 local unit tests passed; no ADB/hardware tests, login, messages, notifications, update-gate bypass or modified new Messenger APK.
+- The old APK includes mandatory-update keyword matches; their mere presence cannot establish a client-side or server-side block.
+- NEXT GATE: first authorized Android 5/6 device install/launch and non-sensitive failure-category observation, followed only by a targeted proven compatibility repair. Keep third-party APKs off GitHub.
