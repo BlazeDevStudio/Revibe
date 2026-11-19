@@ -26,3 +26,9 @@ See `engineering/README_STAGE4.md`. Run `python -m unittest discover -s engineer
 
 ## Safeguards
 No credentials, tokens, message text, or private conversation logs should be committed. Do not distribute proprietary Meta APKs or bundled native libraries from this repository.
+
+## Stage 5: update/deprecation barrier diagnostics
+
+The [Stage 5 toolkit](engineering/README_STAGE5.md) inventories warning-related APK resources and can classify the warning displayed on an authorized Android test device without retaining messages or credentials. [Stage 5 findings](reports/MILESTONE_5_MESSENGER_ANDROID44.md) include three original APK inventories. **It does not fix server enforcement or create an APK.**
+
+Offline tests: 27 passing locally as of 2026-11-20; GitHub Actions tests run without APK binaries. No device or real-account test has been conducted here.
