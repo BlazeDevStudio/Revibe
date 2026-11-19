@@ -1,0 +1,26 @@
+{
+  "original_version": "Messenger 588.1.0.66.98",
+  "original_sha256": "30ad524ac1c06efd75b5fd123efc89c4f61462a7eeb7b666c4f71cfd24de3aa7",
+  "output_file": "Revibe_Messenger_ARM64_API28_RESEARCH_ONLY.apk",
+  "output_sha256": "ff4e5e9abb00b11ffead50cdf51409a75cb09c4f5bf86acbb0577a9483cf306f",
+  "output_size_bytes": 184849348,
+  "package": "com.facebook.orca",
+  "abi": "arm64-v8a",
+  "minSdkVersion": 28,
+  "targetSdkVersion": 37,
+  "modified": "one English string in assets/strings/default.frsc: Update Messenger -> Revibe test app ",
+  "app_code_changed": false,
+  "update_gate_fixed": false,
+  "meta_login_verified": false,
+  "e2ee_messaging_verified": false,
+  "device_install_verified": false,
+  "v1_jarsigner": "verified",
+  "v2_integrity": {
+    "v2_signature": "RSA-SHA256 verified",
+    "content_digest": "passed",
+    "signing_certificate_sha256": "007f9e298411fdc5b3a27c461c2fd1d632b924347c95d6b3e624b583227edcfa"
+  },
+  "zip_crc": "passed",
+  "release_status": "RESEARCH ONLY \u2014 DO NOT DISTRIBUTE TO CHARITY RECIPIENTS",
+  "limitations": "ARM64 v588 requires Android 9+, not Android 4.4. Meta certificate is lost on re-signing; self-check and server login may fail."
+}

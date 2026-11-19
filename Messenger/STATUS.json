@@ -1,32 +1,12 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "Stage 6: API19 ARMv7 research APK repackaging and candidate diagnostics",
-  "release_status": "NO FUNCTIONAL MESSENGER RELEASE",
-  "baseline": "Messenger 410.0.0.17.85 API19 ARMv7 original SHA256 006ca274cf2a2569cf8e5c68c94c2317377c6406957fe4e4daedc0436ee790c8",
-  "stage6_trial": {
-    "type": "re-signed Meta Messenger APK for isolated interoperability research",
-    "source_original_required": true,
-    "apk_distributed_via_github": false,
-    "changes": "two English UI strings in assets/strings/default.frsc",
-    "DEX_changed": false,
-    "gate_removed": false,
-    "signature": "temporary Revibe test key, not Meta",
-    "api_min": 19,
-    "architecture": "armeabi-v7a",
-    "checks": "ZIP CRC, JAR/v1 signature, static API/ABI preflight",
-    "tested_on_device": false
-  },
-  "not_verified": [
-    "device installation",
-    "visible UI launch",
-    "Meta login",
-    "end-to-end encrypted send/receive",
-    "background notifications",
-    "calls",
-    "ARM64 or x86 outputs",
-    "Android 10 support",
-    "update-gate removal"
-  ],
-  "next_blocker": "Obtain authorized runtime feedback on disposable Android 4.4 ARMv7 device; investigate observed login, version gate, and encryption errors before a targeted repair",
-  "note": "Do not distribute Stage 6 trial to elderly/charity recipients as functioning Messenger"
+  "latest_milestone": "Stage 7: separate ARM64/API28 v1+v2-signed research candidate and Messenger Lite research",
+  "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
+  "stage6_armv7": {"source_version":"410.0.0.17.85", "min_api":19, "abi":"armeabi-v7a", "research_apk_only":true, "real_login_tested":false},
+  "stage7_arm64": {"source_version":"588.1.0.66.98", "min_api":28, "target_api":37, "abi":"arm64-v8a", "research_apk_only":true, "source_sha256":"30ad524ac1c06efd75b5fd123efc89c4f61462a7eeb7b666c4f71cfd24de3aa7", "app_code_changed":false, "modified_ui_strings":1, "zip_crc_passed":true, "v1_verified":true, "v2_rsa_sha256_digest_verified_locally":true, "android_sdk_apksigner_verified":false, "device_install_tested":false, "real_login_tested":false, "encrypted_chat_tested":false, "update_gate_fixed":false},
+  "messenger_lite": {"package":"com.facebook.mlite", "shutdown_date":"2023-09-18", "historical_apk_candidate":"338.0.0.3.102 Android 4.0.3+ per archives", "actual_apk_audited":false, "messaging_service_2026_verified":false},
+  "abi_goal": ["armeabi-v7a", "arm64-v8a", "x86"],
+  "android_goal": "Android 4.4/API19 through Android 10/API29; actual artifact support differs",
+  "remaining": ["test KitKat launch on spare phone", "test ARM64 v588 launch on spare Android 9/10+", "verify ARM64 artifact with Android SDK apksigner", "confirm real Meta login, E2EE messaging, notifications", "audit authentic Messenger Lite APK", "determine actual update gate origin"],
+  "publication_policy": "Never push modified or original Meta APKs, native libraries, credentials, messages or signing keys to public Revibe repo."
 }
