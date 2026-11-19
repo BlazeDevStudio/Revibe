@@ -1,0 +1,27 @@
+name: Messenger offline tests
+on:
+  push:
+    paths:
+      - 'Messenger/**'
+      - '.github/workflows/messenger-offline-tests.yml'
+  pull_request:
+    paths:
+      - 'Messenger/**'
+      - '.github/workflows/messenger-offline-tests.yml'
+permissions:
+  contents: read
+jobs:
+  python-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Messenger/engineering
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run offline tests (no APKs or accounts required)
+        run: python -m unittest discover -s tests -v
