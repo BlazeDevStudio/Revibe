@@ -1,0 +1,33 @@
+{
+  "project": "Revibe Messenger",
+  "phase": "Stage 5 — Update Barrier Classification",
+  "not_a_functionality_test": true,
+  "offline_apk": {
+    "apk_sha256": "30ad524ac1c06efd75b5fd123efc89c4f61462a7eeb7b666c4f71cfd24de3aa7",
+    "apk_basename": "com.facebook.orca_588.1.0.66.98-347617515_minAPI28(arm64-v8a)(nodpi)_apkmirror.com.apk",
+    "resources": {
+      "assets/strings/default.frsc": {
+        "status": "scanned",
+        "category_hits": {
+          "encryption_problem": 108,
+          "google_play_services": 5,
+          "login_or_session": 64,
+          "mandatory_app_update": 2,
+          "network_problem": 23,
+          "optional_app_update": 5
+        },
+        "extraction_note": "Pattern scan, not a complete Android/FRSC resource parser; false positives/negatives possible."
+      },
+      "resources.arsc": {
+        "status": "scanned",
+        "category_hits": {
+          "optional_app_update": 1,
+          "unsupported_android_or_device": 4
+        },
+        "extraction_note": "Pattern scan, not a complete Android/FRSC resource parser; false positives/negatives possible."
+      }
+    },
+    "original_apk_modified": false,
+    "runtime_or_server_compatibility_tested": false
+  }
+}
