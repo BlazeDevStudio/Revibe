@@ -10,3 +10,7 @@ Revibe brings a second life to aging apps and devices through compatibility rese
 
 Revibe is an independent community project and is not affiliated with Meta.
 Third-party APKs and proprietary native libraries are intentionally not included.
+
+### Latest progress
+
+Revibe Messenger Stage 5 provides a read-only update/deprecation prompt classifier for Android 4.4–10 compatibility research. [Engineering details](Messenger/engineering/README_STAGE5.md). The project still has **no verified restored Messenger login or messaging**, and no modified three-ABI APK release.
