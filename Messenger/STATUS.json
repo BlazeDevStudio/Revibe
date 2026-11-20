@@ -1,6 +1,6 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "Stage 15: Android 5 ARM64 side-by-side APK built from Messenger 336 to test package conflicts",
+  "latest_milestone": "Stage16: Mi side-by-side installer failure, original Meta-signed ARM32/API19 alternative verified",
   "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
   "stage6_armv7": {
     "source_version": "410.0.0.17.85",
@@ -64,7 +64,7 @@
     "preflight": "Messenger/engineering/android56_abi_check.py",
     "tests": "six new source-level unit tests in GitHub; 7 local expanded tool tests passed separately"
   },
-  "next_blocker": "Observe installation/launch result for Stage15 side-by-side research APK on spare Mi Android 5/6 ARM64 phone. If install succeeds but launch fails, diagnose changed package identity. If install still rejected, obtain Android installer error without requiring user to run ADB. Meta login and E2EE unverified.",
+  "next_blocker": "User cannot perform complex/ADB install; try byte-identical original Meta-signed ARM32/API19 only as a hypothesis-driven no-ADB fallback; if it fails, need simple phone model/Android OS/storage observations or reliable on-device error classification before new APK changes.",
   "stage9_native_android5_arm64": {
     "candidate": "Messenger 336.0.0.13.142, versionCode 297217556, arm64-v8a nodpi single APK minAPI21",
     "archive_url": "https://www.apkmirror.com/apk/facebook-2/messenger/messenger-336-0-0-13-142-release/facebook-messenger-text-and-video-chat-for-free-336-0-0-13-142-8-android-apk-download/",
@@ -175,6 +175,24 @@
     "secure_login_verified": false,
     "e2ee_messages_verified": false,
     "original_meta_signature_preserved": false,
-    "goal": "One-tap package-collision isolation test without uninstalling an existing official Messenger; trial only"
+    "goal": "One-tap package-collision isolation test without uninstalling an existing official Messenger; trial only",
+    "user_reported_install_result": "App not installed on Mi phone; package rename did not fix installation"
+  },
+  "stage16": {
+    "reported_mi_result": "App not installed on Stage15 side-by-side ARM64 APK",
+    "root_cause_confirmed": false,
+    "new_install_test_artifact": "Original Meta-signed Messenger410 ARM32/API19, byte-identical to supplied original; not a new code port",
+    "sha256": "006ca274cf2a2569cf8e5c68c94c2317377c6406957fe4e4daedc0436ee790c8",
+    "min_api": 19,
+    "abi": "armeabi-v7a",
+    "meta_v1_signature_verified_offline": true,
+    "same_meta_cert_as_original_336": true,
+    "on_device_tested": false,
+    "auth_login_tested": false,
+    "encryption_tested": false,
+    "new_source_tool": "Messenger/engineering/prepare_original_abi_candidate.py",
+    "source_unit_tests_passed_locally": 13,
+    "github_ci_status": "pending verification",
+    "limitation": "A 64-bit CPU may have a 32-bit OS, but phone's OS ABIs are unknown. This candidate is not a repaired Messenger."
   }
 }
