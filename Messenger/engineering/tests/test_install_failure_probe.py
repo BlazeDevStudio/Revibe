@@ -103,5 +103,23 @@ class InstallFailureProbeTests(unittest.TestCase):
             self.assertEqual(r["status"], "platform_does_not_match_original_336_test_target")
             cmd.assert_not_called()
 
+
+    def test_android5_absent_package_does_not_block_probe(self):
+        fake = SimpleNamespace(returncode=0, stdout="", stderr="")
+        with patch.object(f, "command", return_value=fake) as c:
+            self.assertIs(f.installed_package("adb"), False)
+            c.assert_called_once_with("adb", "shell", "pm", "list", "packages", "com.facebook.orca")
+
+    def test_android5_existing_exact_package_is_detected(self):
+        fake = SimpleNamespace(returncode=0, stdout="package:com.facebook.orca\n", stderr="")
+        with patch.object(f, "command", return_value=fake):
+            self.assertIs(f.installed_package("adb"), True)
+
+    def test_android5_package_manager_error_is_not_absence(self):
+        fake = SimpleNamespace(returncode=1, stdout="", stderr="Error: Could not access Package Manager")
+        with patch.object(f, "command", return_value=fake):
+            self.assertIsNone(f.installed_package("adb"))
+
+
 if __name__ == "__main__":
     unittest.main()
