@@ -73,3 +73,8 @@ Continue ARM64/API28 research only after checking `Messenger/STATUS.json`, `Mess
 - Source `Messenger/install-probe/` added a sanitized **Copy result** UI and native Android instrumentation for PackageInstaller callback categories. Updated diagnostic ID `org.revibe.installcheck2` avoids a debug-signer conflict with Stage19; no private release signing key exists yet.
 - See `Messenger/reports/STAGE20_CALLBACK_VERIFICATION.md`. Emulator workflow executes a Bash script `scripts/emulator_verify.sh` so its if/fi conditional is not broken by `android-emulator-runner` running each workflow line separately.
 - Do not call synthetic callback assertions a real APK installation error test. Collect actual user-selected file approval and final callback only through user authorization. No Facebook login, end-to-end encryption or chat is present. Continue prioritizing supported personal Meta Messenger interoperability and genuine device-independent Android 4.4+ compatibility.
+
+## Stage 20 security / CI handoff
+- Never authorize an install from package name alone. Stage20 uses `AllowedApks.matches(package,sha256)` against four pinned, audited APK digests; reject changed files before calling `PackageInstaller.Session`.
+- The Android API21 custom instrumentation reports `PASS: N on-emulator assertions` via stream, not always `INSTRUMENTATION_CODE: 0`. The CI script was fixed to check its explicit PASS marker; inspect latest rerun, and don't conflate a test harness failure with app logic failure.
+- Latest compiled diagnostic source: run `44760714269`, APK SHA256 `9ca9132eea21fdc2221527c6dbfc46c3d3d63b0aba15d6697a4ea975b4d114a5`. Still not Messenger; no Meta chat service interoperability.
