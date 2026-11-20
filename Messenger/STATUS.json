@@ -1,6 +1,6 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "Stage 12 follow-up: installed-package and Android 5/6 ARM64 installation error diagnostic added",
+  "latest_milestone": "Stage 13: byte-identical Meta-signed Messenger 336 Lollipop ARM64 installation candidate prepared",
   "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
   "stage6_armv7": {
     "source_version": "410.0.0.17.85",
@@ -64,7 +64,7 @@
     "preflight": "Messenger/engineering/android56_abi_check.py",
     "tests": "six new source-level unit tests in GitHub; 7 local expanded tool tests passed separately"
   },
-  "next_blocker": "Read exact Android package-manager INSTALL_FAILED_* / INSTALL_PARSE_FAILED_* code on authorized spare Android 5/6 ARM64 hardware with original Meta-signed Messenger336 APK; user has reported generic 'App not installed'.",
+  "next_blocker": "On disposable Android 5 Lollipop ARM64 OS, capture exact Android package-manager INSTALL_FAILED_* code for unchanged original Meta-signed Messenger336 before any repair; real service is unverified.",
   "stage9_native_android5_arm64": {
     "candidate": "Messenger 336.0.0.13.142, versionCode 297217556, arm64-v8a nodpi single APK minAPI21",
     "archive_url": "https://www.apkmirror.com/apk/facebook-2/messenger/messenger-336-0-0-13-142-release/facebook-messenger-text-and-video-chat-for-free-336-0-0-13-142-8-android-apk-download/",
@@ -128,5 +128,22 @@
     "original_apk_modified": false,
     "repair_apk_produced": false,
     "device_pm_error_code": null
+  },
+  "stage13_lollipop_arm64": {
+    "artifact": "Revibe_Lollipop_ARM64_INSTALL_TEST_Original_MetaSigned.apk (distributed in chat only, NOT GitHub)",
+    "source": "user-supplied original Meta-signed Messenger 336.0.0.13.142",
+    "sha256": "70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab",
+    "api_min": 21,
+    "native_abi": "arm64-v8a",
+    "modified_code": false,
+    "resigned": false,
+    "original_v1_signature_verified": true,
+    "zip_crc_passed": true,
+    "source_preparation": "Messenger/engineering/prepare_lollipop_test.py",
+    "offline_preparation_tests_local": 6,
+    "on_device_installed": false,
+    "current_meta_login_verified": false,
+    "e2ee_verified": false,
+    "update_gate_removed": false
   }
 }
