@@ -53,3 +53,50 @@ jobs:
           path: Messenger/install-probe/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 30
+
+  emulator-install-smoke:
+    name: Install + launch on Android API ${{ matrix.api }}
+    needs: build-apk
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - api: 19
+            arch: x86
+            target: default
+          - api: 23
+            arch: x86_64
+            target: google_apis
+          - api: 35
+            arch: x86_64
+            target: google_apis
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: Revibe-API19-Installation-Probe-NOT-MESSENGER
+          path: install-artifact
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Enable KVM access
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Boot emulator; install and launch independent APK
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          arch: ${{ matrix.arch }}
+          target: ${{ matrix.target }}
+          emulator-boot-timeout: 600
+          script: |
+            set -e
+            adb install install-artifact/app-debug.apk
+            adb shell am start -W -n org.revibe.installprobe/.MainActivity
+            sleep 3
+            adb shell ps | grep -F 'org.revibe.installprobe'
