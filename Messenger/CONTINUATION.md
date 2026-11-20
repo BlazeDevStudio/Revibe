@@ -67,3 +67,10 @@ Third-party APKs must remain off GitHub. No signed APK is distributed by the pub
 - Run without arguments to collect only API level, ARM64 ABI availability, and whether `com.facebook.orca` already exists (no serials/chat data). An opt-in install test requires the pinned original Meta-signed Messenger336 APK plus `--install --ack-test-device`; it refuses to overwrite a pre-existing package.
 - New offline tests: `Messenger/engineering/tests/test_install_failure_probe.py`; check GitHub CI completion before claiming passing results.
 - Next blocker: obtain Android's actual `INSTALL_FAILED_*` or `INSTALL_PARSE_FAILED_*` rejection code from an authorized spare device. Compare original Meta-signed 336 vs any re-signed APK only AFTER documenting the exact cause. No revived Messenger release exists.
+
+## Stage 13 — Lollipop 64-bit test package (2026-11-20)
+- Prepared **byte-identical** original Meta-signed Messenger 336 `arm64-v8a` Android API21 test download. Verified pinned SHA256 `70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab`; it is NOT a modified Messenger or functional revival.
+- New reproducible source: `Messenger/engineering/prepare_lollipop_test.py`; source/target hash, ZIP CRC, native ABI, original JAR/v1 signing required, no source edit or output overwrite. Six new offline unit tests passed locally in Stage 13.
+- Documents `Messenger/LOLLIPOP_ARM64_INSTALL_TRIAL.md` and `Messenger/reports/lollipop_arm64_test_manifest.json`.
+- Test on authorized disposable Android 5.0/5.1 native ARM64 OS, not merely a 64-bit CPU with 32-bit OS. Do not uninstall existing Messenger with important data. Do not ask recipients to use experimental APKs.
+- **No device install or modern Messenger messages verified.** The user's earlier “App not installed” report still lacks an exact Android `INSTALL_FAILED_*` category. That must be captured before patching code or resigning anything.
