@@ -1,3 +1,15 @@
+## V21 current handoff — 2026-11-21 (supersedes earlier pending matrix statements)
+
+Review branch: `revibe/v21-release-truth-gate-20261121`, based on verified `main` 5ec2fbdc410a0e0c50b56cb3273914e64484753a. Previous Stage20 documentation said the final CI matrix was pending; **run 44760999284 actually PASSED** on x86/x86_64 emulators API19/21/23/35 for the *independent install-check diagnostic only*. The most recent pre-branch Messenger offline run 44776277527 also passed. These were not tests of this review branch, ARM hardware, live Meta accounts, or end-to-end user-selected install sessions.
+
+Product decision: no `Messenger/client/` exists and no signed Revibe Messenger release is verified. The official Page token APIs cannot serve consumer accounts. A Meta DMA/EEA partner interoperability route exists with eligibility/region restrictions, but does not establish ordinary personal Messenger login or working E2EE for Revibe. See `reports/V21_FEASIBILITY_AND_RELEASE_GATE.md` and `COMPATIBILITY_MATRIX.md`.
+
+Changes made: new `tools/release_gate.py` and isolated unit tests; updated CI to run preflight, diagnostic source tests, and release truth gates; updated `STATUS.json` and the compatibility report. No source APKs or old reports were moved/deleted; all prior tested diagnostic code is preserved. **This is release engineering and safety work, not a functional Messenger implementation.** A proposed Messenger artifact is rejected by CI until authorized server interoperability, real E2EE tests, source/build identity, APK signing verification and platform evidence exist.
+
+Next blocker: demonstrate a supported authorized consumer Messenger or eligible provider interoperability interface for the intended users, then implement real Android code and prove independent signed APK installs and two-way Meta E2EE messages. Do not invent a simulated backend or repackage Meta originals. Review CI and merge only if the new contract tests pass.
+
+---
+
 # Revibe Messenger — continuation handoff (Stage 7)
 
 **Always start:** read root `AGENTS.md`, run `python scripts/revibe_init.py --check`, inspect GitHub latest main, `Messenger/STATUS.json`, and current APK/report status. Preserve previous work, never invent a successful login or build.
