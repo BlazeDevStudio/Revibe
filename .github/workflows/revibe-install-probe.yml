@@ -35,7 +35,7 @@ jobs:
         run: python3 -m unittest discover -s Messenger/install-probe/tests -v
       - name: Build independently authored Android app
         working-directory: Messenger/install-probe
-        run: gradle :app:assembleDebug --no-daemon --stacktrace
+        run: gradle :app:assembleDebug :app:assembleDebugAndroidTest --no-daemon --stacktrace
       - name: Verify APK signature, zip alignment and Android SDK floor
         shell: bash
         run: |
@@ -51,6 +51,12 @@ jobs:
         with:
           name: Revibe-API19-Install-Check-NOT-MESSENGER
           path: Messenger/install-probe/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Revibe-Install-Check-Instrumentation-Tests
+          path: Messenger/install-probe/app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
           if-no-files-found: error
           retention-days: 30
 
@@ -81,6 +87,10 @@ jobs:
         with:
           name: Revibe-API19-Install-Check-NOT-MESSENGER
           path: install-artifact
+      - uses: actions/download-artifact@v4
+        with:
+          name: Revibe-Install-Check-Instrumentation-Tests
+          path: instrument-artifact
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -100,6 +110,15 @@ jobs:
           script: |
             set -e
             adb install install-artifact/app-debug.apk
-            adb shell am start -W -n org.revibe.installcheck/org.revibe.installprobe.MainActivity
+            adb shell am start -W -n org.revibe.installcheck2/org.revibe.installprobe.MainActivity
             sleep 3
-            adb shell ps | grep -F 'org.revibe.installcheck'
+            adb shell ps | grep -F 'org.revibe.installcheck2'
+            API="$(adb shell getprop ro.build.version.sdk | tr -d '\\r')"
+            if [ "$API" -ge 21 ]; then
+              adb install instrument-artifact/app-debug-androidTest.apk
+              RESULT="$(adb shell am instrument -w org.revibe.installcheck2.test/org.revibe.installprobe.InstallCallbackInstrumentation)"
+              printf '%s\\n' "$RESULT"
+              printf '%s\\n' "$RESULT" | grep -F 'INSTRUMENTATION_CODE: 0'
+            else
+              echo "API19: PackageInstaller callbacks are API21+; clean install/launch passed"
+            fi
