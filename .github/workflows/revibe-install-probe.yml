@@ -113,12 +113,12 @@ jobs:
             adb shell am start -W -n org.revibe.installcheck2/org.revibe.installprobe.MainActivity
             sleep 3
             adb shell ps | grep -F 'org.revibe.installcheck2'
-            API="$(adb shell getprop ro.build.version.sdk | tr -d '\\r')"
+            API="$(adb shell getprop ro.build.version.sdk | tr -d '\r')"
             if [ "$API" -ge 21 ]; then
               adb install instrument-artifact/app-debug-androidTest.apk
               RESULT="$(adb shell am instrument -w org.revibe.installcheck2.test/org.revibe.installprobe.InstallCallbackInstrumentation)"
-              printf '%s\\n' "$RESULT"
-              printf '%s\\n' "$RESULT" | grep -F 'INSTRUMENTATION_CODE: 0'
+              printf '%s\n' "$RESULT"
+              printf '%s\n' "$RESULT" | grep -F 'INSTRUMENTATION_CODE: 0'
             else
               echo "API19: PackageInstaller callbacks are API21+; clean install/launch passed"
             fi
