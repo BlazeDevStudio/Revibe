@@ -17,6 +17,7 @@ class ProbeContractTests(unittest.TestCase):
         cls.helper = (base / "SessionHelper.java").read_text()
         cls.receiver = (base / "InstallResultReceiver.java").read_text()
         cls.status = (base / "InstallStatus.java").read_text()
+        cls.instrumentation = (MAIN.parent / "androidTest/java/org/revibe/installprobe/InstallCallbackInstrumentation.java").read_text()
 
     def test_sdk_floor_and_target(self):
         self.assertRegex(self.gradle, r"\bminSdk\s+19\b")
@@ -25,7 +26,7 @@ class ProbeContractTests(unittest.TestCase):
         self.assertGreaterEqual(int(target.group(1)), 35)
 
     def test_new_package_id_avoids_stage18_signing_collision(self):
-        self.assertIn("applicationId 'org.revibe.installcheck'", self.gradle)
+        self.assertIn("applicationId 'org.revibe.installcheck2'", self.gradle)
         self.assertNotIn("applicationId 'com.facebook.orca'", self.gradle)
 
     def test_no_native_libraries(self):
@@ -78,6 +79,16 @@ class ProbeContractTests(unittest.TestCase):
         self.assertIn("InstallStatus.failureCode(", self.receiver)
         self.assertIn("matcher.group()", self.status)
         self.assertIn("No network access", (ROOT / "README.md").read_text()) if False else None
+
+    def test_instrumented_callback_privacy_check_exists(self):
+        self.assertIn("InstallResultReceiver().onReceive", self.instrumentation)
+        self.assertIn("private_example", self.instrumentation)
+        self.assertIn("finish(0, result)", self.instrumentation)
+
+    def test_copy_button_exposes_only_saved_category(self):
+        self.assertIn('copyResult.setText("Copy result")', self.activity)
+        self.assertIn('InstallerState.lastResult(MainActivity.this)', self.activity)
+        self.assertIn('ClipData.newPlainText', self.activity)
 
     def test_readme_disclaims_messaging(self):
         self.assertIn("Not Messenger", (ROOT / "README.md").read_text())
