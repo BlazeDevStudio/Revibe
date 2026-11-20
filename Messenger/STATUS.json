@@ -290,6 +290,14 @@
     "current_complete_matrix_run": null,
     "no_network_permission": true,
     "current_messenger_interoperability": false,
-    "debug_signing_not_stable_for_inplace_upgrades": true
+    "debug_signing_not_stable_for_inplace_upgrades": true,
+    "known_sha256_allowlist": true,
+    "allowlisted_candidate_count": 4,
+    "selected_apk_sha256_checked_before_install": true,
+    "github_reproducible_compile_run": 44760714269,
+    "last_download_verified_apk_sha256": "9ca9132eea21fdc2221527c6dbfc46c3d3d63b0aba15d6697a4ea975b4d114a5",
+    "last_download_verified_apk_bytes": 17983,
+    "emulator_api21_callbacks_synthetic_result": "11 assertions PASS in earlier run 44760393315, but workflow job failed due expecting absent footer",
+    "current_matrix_status": "corrected CI harness rerun pending"
   }
 }
