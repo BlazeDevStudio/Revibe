@@ -47,7 +47,7 @@ class ProbeContractTests(unittest.TestCase):
 
     def test_explicit_disclaimer(self):
         self.assertIn("does not log into Facebook", self.java)
-        self.assertIn("not a Messenger", (ROOT / "README.md").read_text())
+        self.assertIn("Not Messenger.", (ROOT / "README.md").read_text())
 
     def test_api21_guard_for_supported_abis(self):
         self.assertIn("Build.VERSION.SDK_INT >= 21", self.java)
