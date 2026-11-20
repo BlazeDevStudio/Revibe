@@ -95,3 +95,10 @@ Third-party APKs must remain off GitHub. No signed APK is distributed by the pub
 - New source and tests: `Messenger/engineering/prepare_original_abi_candidate.py` and `Messenger/engineering/tests/test_prepare_original_abi_candidate.py` (13 local tests). Report: `Messenger/reports/STAGE16_MI_INSTALL_FALLBACK.md`.
 - The original ARM64/API21 Messenger336 remains valid only on OS images with `arm64-v8a`. Do not infer device OS ABI from CPU marketing.
 - NEVER claim that original 410 or 336 restores Meta login, E2EE, messages or deprecation compatibility. Do not publish proprietary APK files/keys. Next investigate field install/launch with simple, non-invasive user feedback; avoid ADB requirement.
+
+## Stage 17 — Xiaomi original ARM32 fails immediately; ARM64 takes longer (2026-11-20)
+- Firsthand user feedback: the original Meta-signed Messenger410 ARMv7/API19 trial immediately says **App not installed**. Previously tested original and separate-package ARM64/API21 APKs take longer, then say **App not installed**.
+- Treat *time to failure* as non-diagnostic: file sizes, verification paths and OEM installer behavior vary. Do not assert ARM32 is unsupported or ARM64 is supported based on this observation alone.
+- Static manifests verified: source Messenger410 is API19 + armeabi-v7a, 44,136,716 bytes; Messenger336 is API21 + arm64-v8a, 60,954,119 bytes; side-by-side 336 remains API21/ARM64 with changed installer identity and signer. No known mandatory hardware feature other than OpenGL ES 2.0.
+- Under no circumstances claim a successful install, login, update-gate bypass or E2EE; the UI failure occurs before app launch. The user does not want ADB or complicated installation.
+- Next low-friction evidence: ask only for a screenshot of **Settings > About phone** showing model and Android version; do not request IMEI/serial. Before creating any further APK, establish actual Android OS and ABI policy. Official Android package installer uses generic **App not installed** text for different underlying failures.
