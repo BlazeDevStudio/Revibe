@@ -53,3 +53,8 @@ Continue ARM64/API28 research only after checking `Messenger/STATUS.json`, `Mess
 - **Do not request a phone model, ADB, or manual ABI selection from the user.** The user explicitly requires one-tap functionality from Android 4.4/API19 onward. The product must handle OS/ABI differences without imposing a device-specific diagnosis on end users.
 - Read `Messenger/DEVICE_INDEPENDENT_COMPATIBILITY.md` and use it as the current release acceptance contract. One universal APK is preferred; fallback automatic packaging may be needed. The minimum API is a target, not proof of compatibility on newer Android.
 - Existing Messenger APK variants repeatedly failed install on a Mi phone; **no new fixed installer is available yet**. Stop relabeling originals and claiming repaired compatibility. Actual independent code/build and representative OS/ABI installation + full messaging tests are required.
+
+## Stage 18: GitHub Android build / independent install probe
+- Read `Messenger/reports/STAGE18_CLEAN_INSTALL_PROBE.md`. Real native Android source in `Messenger/install-probe/`, compiled with AGP 8.7.3 and API35, minSdk19/targetSdk35, no native libraries and no permissions. GitHub build `44684505264` passed, with signed APK and archive verification.
+- **This is a diagnostic installer, NOT Messenger or a messaging demo.** Do not confuse an install probe with requested secure Meta-to-Meta messaging. The separate app must not gather personal data, contact Meta, or ask for a password.
+- Check latest `.github/workflows/revibe-install-probe.yml` API19/23/35 emulator matrix and its actual conclusions; do not make unsupported install claims. Continue toward consistent APK signing, genuine API19+ platform support, and viable authorized secure messaging interoperability.
