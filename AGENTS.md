@@ -31,3 +31,9 @@ Continue ARM64/API28 research only after checking `Messenger/STATUS.json`, `Mess
 ## Stage 10 checkpoint (2026-11-20)
 - Verified original Messenger 336 API21 ARM64 binary available to the researcher; SHA256 `70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab`. This **is not** a restored Messenger release.
 - On next continuation, use `Messenger/reports/STAGE10_NATIVE_ARM64_336.md` and `Messenger/engineering/original_arm64_smoke.py` to classify real Android 5/6 runtime failures before modifying APKs. Do not commit third-party binaries.
+
+## Stage 14 continuation checkpoint
+- First hardware feedback is `App not installed` for supplied research APKs. See `Messenger/reports/STAGE14_LOLLIPOP_INSTALL_DIAGNOSIS.md`; do not invent root causes.
+- Run the corrected `Messenger/engineering/install_failure_probe.py` on one authorized spare Android 5/6 phone. Its filtered package check now distinguishes missing `com.facebook.orca` from package-manager errors. It refuses to overwrite existing Messenger or test a wrong APK hash.
+- The original Messenger 336 ARM64/API21 remains the **unchanged** baseline; do not resubmit a relabeled, identical APK as a code fix.
+- No live messaging or deprecation-warning removal is verified. Obtain exact install rejection, then test startup, then authentication/E2EE. Never publish Meta APKs in this public repo.
