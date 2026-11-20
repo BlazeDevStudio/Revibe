@@ -1,0 +1,16 @@
+{
+  "version": "336.0.0.13.142",
+  "minimum_android_api": 21,
+  "native_abi": "arm64-v8a",
+  "sha256": "70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab",
+  "zip_crc": "pass",
+  "original_v1_signature": "verified",
+  "test_artifact": "Revibe_Lollipop_ARM64_INSTALL_TEST_Original_MetaSigned.apk",
+  "unchanged_original_meta_signed_apk": true,
+  "modified_app_code": false,
+  "update_gate_removed": false,
+  "installation_on_physical_device_verified": false,
+  "real_messenger_login_verified": false,
+  "encrypted_message_delivery_verified": false,
+  "warning": "APK installs only if OS/ABI, package signature conflicts, storage and other device rules permit it."
+}
