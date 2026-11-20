@@ -1,28 +1,21 @@
-# Revibe native installation probe
+# Revibe Install Check — Stage 19
 
-**Not Messenger. Not a messenger clone.** This is a separate, tiny, independently authored Android APK used only to separate Android-package-install failures from issues caused by historic proprietary Meta APKs.
+**Not Messenger. Not a messaging client.** Independent Android app for a safe installation diagnostic, without ADB or a PC.
 
-- Application ID: `org.revibe.installprobe` (never `com.facebook.orca`)
-- Minimum Android API: **19** (KitKat 4.4)
-- Target API: **35** (supports Android 15's minimum target-SDK install rule)
-- Native dependencies: **none**; Android runtimes select platform Java/Dex automatically
-- Permissions: **none** (no INTERNET, storage, contacts, logs, or accounts)
-- On-device UI: a large-text installation success screen with Android API and supported OS ABIs shown locally. Never transmits information.
-- No Facebook/Meta code or binary resources.
+- Android 4.4+ (minSdk 19), targets Android 15/API35; no native libraries, so ARM32, ARM64, and x86 use the same APK.
+- Own package ID `org.revibe.installcheck`, different from Stage18 (`org.revibe.installprobe`) to avoid an upgrade signing collision.
+- Android 5+ users can voluntarily select an existing `com.facebook.orca` or `org.revibe.orca01` APK, and Android's official PackageInstaller handles the request.
+- If the selected package is already installed, this app REFUSES to overwrite it. This protects existing accounts and app data.
+- On Android 8+ installation-source permission requires explicit user approval in Settings; no security protections are bypassed.
+- Only generic installer statuses are shown, e.g., conflict, invalid package, incompatible device, storage or blocked installation. No raw logs, credentials, chats, contacts, account identifiers, analytics or network access.
+- Selected APK is temporarily copied to app-private cache (up to 250 MiB) and then deleted. No Meta binary is published in this GitHub repository.
+- On Android 4.4 the tool only verifies that Revibe installs/opens and shows OS information; session-level installer diagnostics require Android 5+.
 
-## Why this is useful
+## Security
+`REQUEST_INSTALL_PACKAGES` is declared solely for explicitly user-selected local diagnostics; the APK has **no INTERNET permission**. The status receiver is non-exported and uses an explicit mutable PendingIntent on newer Android. A successful install of this tool does not establish working Messenger login or encrypted messaging.
 
-The Mi phone rejected multiple signed historical Messenger APKs, including an original ARM32 build and a modified ARM64 side-by-side build. The exact Android package-manager error remains unavailable. If an independent Android 4.4+ package installs, the operating system's general sideload pathway functions; failures in Meta APKs may involve incompatible manifest/signatures/ABI or OEM rules. **Installation of this probe does NOT prove anything about Messenger login, encryption, updates, or messaging.**
+## Reproducible build
+GitHub Actions workflow `.github/workflows/revibe-install-probe.yml` compiles, signs and verifies the APK, then tests launching on Android emulators. Source regression tests are in `tests/`.
 
-## Build (on GitHub Actions)
-
-See `.github/workflows/revibe-install-probe.yml`. That workflow produces a signed **debug** APK, checks ZIP alignment, `apksigner` verification back to API19, and manifest API range, and uploads the APK as a workflow artifact. Debug keys are ephemeral per runner; reinstallations from other runs may require removal of this *diagnostic-only* app. Do not use it for messaging or collect user passwords.
-
-Local building requires Android SDK 35 and Gradle 8.9:
-
-```sh
-cd Messenger/install-probe
-gradle :app:assembleDebug
-```
-
-Do not publish this diagnostic APK as a working Revibe Messenger release. The broader Revibe Messenger application remains an unverified feasibility project.
+## Important limitation
+Meta's public Messenger Platform is based on Facebook Page access tokens. It does not establish consumer personal Messenger-to-Messenger chat interoperability for an unauthorized third-party client. This diagnostic is **not** a revived Messenger.
