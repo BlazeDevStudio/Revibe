@@ -130,3 +130,10 @@ The user explicitly declines phone-specific details. Do not ask for Mi model, sc
 
 ### Stage 19 verified emulator follow-up
 API21 / Android 5 Lollipop emulator in GitHub run `44751936662`: app installed and launched. Other platform jobs and the interactive in-app package-install callback need separate evidence. The binary is `org.revibe.installcheck`, SHA256 `1a83b5cfa52c426540d03a4449df2fe8fa708aa7c90d7bc5dcc3a7cf0fa6bc02`. No Meta communication has been restored.
+
+## Stage 20 — Android runtime callback validation (2026-11-20)
+- Read `Messenger/reports/STAGE20_CALLBACK_VERIFICATION.md`.
+- The independently built diagnostic now has package `org.revibe.installcheck2`, avoids Stage 19's ephemeral debug-signature upgrade conflict, and adds user-friendly **Copy result** of only the sanitized local install-error category. It still has no INTERNET or private data permissions.
+- An actual Android instrumentation package executes simulated `InstallResultReceiver` callbacks for incompatibility, signature conflict, blocked, storage, missing user approval, and success; it checks sanitized error output and no INTERNET permission. It does NOT test file picker, external APK data or actual installer UI interactions.
+- Added `Messenger/install-probe/scripts/emulator_verify.sh` to fix the emulator runner's per-line command execution, which caused a shell syntax failure despite successful API19 installation/launch in an earlier job. New test matrix uses one Bash invocation per emulator.
+- GitHub Actions builds signed main+test APKs and tests Android API19/21/23/35. Inspect latest `.github/workflows/revibe-install-probe.yml` run conclusions **before** declaring the matrix verified. No Messenger code or secure Meta communication is implemented; old Meta APK install failures remain unclassified.
