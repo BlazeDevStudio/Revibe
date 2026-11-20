@@ -81,3 +81,10 @@ Third-party APKs must remain off GitHub. No signed APK is distributed by the pub
 - Stage14 report: `Messenger/reports/STAGE14_LOLLIPOP_INSTALL_DIAGNOSIS.md`.
 - Offline tests in local Stage14 sample: 51 passed. Confirm CI for latest GitHub HEAD before claiming remote green.
 - **Still no physical-device install result or repaired login/E2EE protocol.** Next run should prioritize an exact `INSTALL_FAILED_*` code with the safe, opt-in probe on authorized spare hardware. Do not infer a cause from the generic UI prompt.
+
+## Stage 15 — one-tap native ARM64 Lollipop installation experiment
+- User explicitly cannot perform complicated installation/ADB. Honor simple tap-to-install testing. Never require commands as prerequisite for trying the APK.
+- Built new **side-by-side experimental APK** from supplied Messenger336 original with package `org.revibe.orca01`, rewriting 18 provider authorities and 6 declared custom permissions to avoid collisions; DEX files unchanged. SHA256 `4eaf15fe989b62c51f86a5145d848f12fe63ccef581ee0d6c5ffd964b4a9b1ec`.
+- Builder and synthetic tests: `Messenger/engineering/build_side_by_side_lollipop.py`, `Messenger/engineering/tests/test_side_by_side_lollipop.py`; report: `Messenger/reports/STAGE15_SIDE_BY_SIDE_LOLLIPOP.md`. The original Meta APK and re-signed outputs must NOT be committed to public GitHub.
+- Offline checks passed, but **hardware installation, startup, Meta login, E2EE and notifications are NOT demonstrated**. Changing package/signature could make the app crash or be rejected by Meta. Do not request or collect real passwords.
+- This is a narrow collision-isolation hypothesis, not a repaired Messenger release. Next step is the user's installation/launch outcome, then a targeted fix.
