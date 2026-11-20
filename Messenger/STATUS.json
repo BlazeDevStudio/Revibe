@@ -1,6 +1,6 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "Stage16: Mi side-by-side installer failure, original Meta-signed ARM32/API19 alternative verified",
+  "latest_milestone": "Stage 17 field evidence: immediate ARM32 failure vs delayed ARM64 failure, no installable Revibe Messenger yet",
   "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
   "stage6_armv7": {
     "source_version": "410.0.0.17.85",
@@ -64,7 +64,7 @@
     "preflight": "Messenger/engineering/android56_abi_check.py",
     "tests": "six new source-level unit tests in GitHub; 7 local expanded tool tests passed separately"
   },
-  "next_blocker": "User cannot perform complex/ADB install; try byte-identical original Meta-signed ARM32/API19 only as a hypothesis-driven no-ADB fallback; if it fails, need simple phone model/Android OS/storage observations or reliable on-device error classification before new APK changes.",
+  "next_blocker": "Obtain device model and actual Android OS version with a Settings > About phone screenshot; use that to select correct ABI/API baseline or identify installer restrictions. Exact package-manager reason remains unobserved. No more speculative APKs.",
   "stage9_native_android5_arm64": {
     "candidate": "Messenger 336.0.0.13.142, versionCode 297217556, arm64-v8a nodpi single APK minAPI21",
     "archive_url": "https://www.apkmirror.com/apk/facebook-2/messenger/messenger-336-0-0-13-142-release/facebook-messenger-text-and-video-chat-for-free-336-0-0-13-142-8-android-apk-download/",
@@ -194,5 +194,21 @@
     "source_unit_tests_passed_locally": 13,
     "github_ci_status": "pending verification",
     "limitation": "A 64-bit CPU may have a 32-bit OS, but phone's OS ABIs are unknown. This candidate is not a repaired Messenger."
+  },
+  "stage17_mi_install_feedback": {
+    "field_observation": "Original Meta-signed Messenger410 ARM32/API19 immediately shows App not installed; Messenger336 ARM64/API21 and isolated Stage15 trial take longer then show same generic message",
+    "evidence_source": "user direct report on Xiaomi/Mi phone, 2026-11-20",
+    "device_model": null,
+    "actual_android_version": null,
+    "android_supported_abis": null,
+    "install_error_code": null,
+    "root_cause_confirmed": false,
+    "conclusions": [
+      "none of tested APKs installed",
+      "different UI timing alone does not identify reason",
+      "package rename and ABI switch not sufficient fixes"
+    ],
+    "caution": "Do not issue a new renamed/identical APK as an installation fix; no claim about signers/OS ABI or Meta server acceptance is possible from this prompt alone.",
+    "low_friction_next_evidence": "One screenshot of Settings > About phone showing model and Android version (hide serial/IMEI), plus free internal storage if readily available; no ADB requested."
   }
 }
