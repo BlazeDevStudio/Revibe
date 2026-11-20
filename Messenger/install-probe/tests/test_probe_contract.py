@@ -95,7 +95,6 @@ class ProbeContractTests(unittest.TestCase):
         self.assertIn('MessageDigest.getInstance("SHA-256")', self.activity)
         self.assertIn('sha256.update(buffer, 0, n)', self.activity)
         self.assertIn('AllowedApks.matches(pkg, AllowedApks.hex(sha256.digest()))', self.activity)
-        self.assertIn('No', self.allowlist) if False else None
 
     def test_exact_package_checksum_whitelist(self):
         self.assertIn('70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab', self.allowlist)
