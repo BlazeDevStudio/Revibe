@@ -88,3 +88,10 @@ Third-party APKs must remain off GitHub. No signed APK is distributed by the pub
 - Builder and synthetic tests: `Messenger/engineering/build_side_by_side_lollipop.py`, `Messenger/engineering/tests/test_side_by_side_lollipop.py`; report: `Messenger/reports/STAGE15_SIDE_BY_SIDE_LOLLIPOP.md`. The original Meta APK and re-signed outputs must NOT be committed to public GitHub.
 - Offline checks passed, but **hardware installation, startup, Meta login, E2EE and notifications are NOT demonstrated**. Changing package/signature could make the app crash or be rejected by Meta. Do not request or collect real passwords.
 - This is a narrow collision-isolation hypothesis, not a repaired Messenger release. Next step is the user's installation/launch outcome, then a targeted fix.
+
+## Stage 16 — Mi installer still rejects side-by-side ARM64 (2026-11-20)
+- Actual field result: the user reports `App not installed` for the Stage15 `org.revibe.orca01` install trial on Mi. This falsifies changing package ID as a sufficient fix.
+- Alternative no-ADB path: an **unchanged Meta-signed original** Messenger 410 ARMv7/API19 APK, checksum `006ca274cf2a2569cf8e5c68c94c2317377c6406957fe4e4daedc0436ee790c8`, signature fingerprint `e3f9e1e0cf99d0e56a055ba65e241b3399f7cea524326b0cdd6ec1327ed0fdc1`. It is smaller and supports 32-bit Android OS images that may run on marketed 64-bit CPUs. Prior Stage6 ARM32 Revibe APK was **modified/re-signed**; this original is a distinct test. No live install guarantee.
+- New source and tests: `Messenger/engineering/prepare_original_abi_candidate.py` and `Messenger/engineering/tests/test_prepare_original_abi_candidate.py` (13 local tests). Report: `Messenger/reports/STAGE16_MI_INSTALL_FALLBACK.md`.
+- The original ARM64/API21 Messenger336 remains valid only on OS images with `arm64-v8a`. Do not infer device OS ABI from CPU marketing.
+- NEVER claim that original 410 or 336 restores Meta login, E2EE, messages or deprecation compatibility. Do not publish proprietary APK files/keys. Next investigate field install/launch with simple, non-invasive user feedback; avoid ADB requirement.
