@@ -63,3 +63,8 @@ Continue ARM64/API28 research only after checking `Messenger/STATUS.json`, `Mess
 - **Real CI evidence:** `Revibe independent API19+ installation probe` workflow run `44684869636` passed APK signature/zipalign and emulator install+launch on API19 (KitKat), API23 (Android 6), API35 (Android 15). Artifact SHA256 `5945cd715fdf414639d140341b5073eca00d2d30fa1f591dcba80f10ae3947d5`.
 - The probe is independent Android code, **not** a Messenger implementation. No Meta auth/chat functionality exists. Do not call this a finished revival or distribute it as one. Keep original Meta APKs outside repo.
 - On continuation: use this working API19+ build/CI foundation, then implement verified **actual** messaging functionality only through authorized service interfaces; track separate login, E2EE, message exchange, background notifications and accessible UI milestones.
+
+## Stage 19 — portable Android installer error checker
+- Continue from `Messenger/install-probe` and `Messenger/reports/STAGE19_INSTALLER_ERROR_DIAGNOSIS.md`. New independent diagnostic package ID `org.revibe.installcheck` uses `PackageInstaller.Session` on API21+ to capture install errors locally without ADB. Android 4.4 still supported for app install/launch.
+- New APK SHA256 `1a83b5cfa52c426540d03a4449df2fe8fa708aa7c90d7bc5dcc3a7cf0fa6bc02`, 16,753 bytes, GitHub run `44751936662`. Track emulator and actual interactive flow separately; don't infer user device results from CI.
+- Never require phone model/serial/ADB. Preserve existing Messenger installations; never use personal passwords, access Meta servers without authorization, or claim this diagnostic is Messenger.
