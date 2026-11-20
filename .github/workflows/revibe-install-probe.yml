@@ -23,9 +23,12 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - uses: android-actions/setup-android@v3
-      - name: Install Android SDK for API 35 build
-        run: sdkmanager --install 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Use runner Android SDK and install API 35 build tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          sdkmanager --install 'platforms;android-35' 'build-tools;35.0.0'
       - name: Offline source/manifest regression tests
         run: python3 -m unittest discover -s Messenger/install-probe/tests -v
       - name: Build independently authored Android app
