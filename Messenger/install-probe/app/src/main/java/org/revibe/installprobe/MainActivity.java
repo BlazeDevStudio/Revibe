@@ -22,6 +22,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.security.MessageDigest;
 
 /** A real independent Android diagnostic, NOT Messenger. No network access. */
 public final class MainActivity extends Activity {
@@ -183,6 +184,7 @@ public final class MainActivity extends Activity {
     private void processSelectedApk(Uri uri) {
         File copy = new File(getCacheDir(), "temporary-selected.apk");
         try {
+            MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
             InputStream source = getContentResolver().openInputStream(uri);
             if (source == null) throw new IllegalStateException("APK cannot be read");
             try {
@@ -195,6 +197,7 @@ public final class MainActivity extends Activity {
                         total += n;
                         if (total > APK_LIMIT) throw new IllegalArgumentException("APK larger than limit");
                         target.write(buffer, 0, n);
+                        sha256.update(buffer, 0, n);
                     }
                 } finally { target.close(); }
             } finally { source.close(); }
@@ -207,6 +210,10 @@ public final class MainActivity extends Activity {
             String pkg = info.packageName;
             if (!"com.facebook.orca".equals(pkg) && !"org.revibe.orca01".equals(pkg)) {
                 tell("Only known Messenger research APKs can be tested. Nothing installed.");
+                return;
+            }
+            if (!AllowedApks.matches(pkg, AllowedApks.hex(sha256.digest()))) {
+                tell("Selected APK does not match an audited research test file. Nothing installed.");
                 return;
             }
             if (isAlreadyInstalled(pkg)) {
