@@ -67,6 +67,24 @@ public final class InstallCallbackInstrumentation extends Instrumentation {
             assertThat(success.equals("Installed successfully"), "unexpected success detail");
             assertThat(!success.contains("private-data-to-hide"), "success path leaked details");
 
+            assertThat(AllowedApks.matches("com.facebook.orca",
+                "70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab"),
+                "audited original ARM64 APK rejected");
+            assertThat(AllowedApks.matches("com.facebook.orca",
+                "006ca274cf2a2569cf8e5c68c94c2317377c6406957fe4e4daedc0436ee790c8"),
+                "audited original ARM32 APK rejected");
+            assertThat(AllowedApks.matches("org.revibe.orca01",
+                "4eaf15fe989b62c51f86a5145d848f12fe63ccef581ee0d6c5ffd964b4a9b1ec"),
+                "audited isolated APK rejected");
+            assertThat(!AllowedApks.matches("com.facebook.orca",
+                "0000000000000000000000000000000000000000000000000000000000000000"),
+                "lookalike APK checksum accepted");
+            assertThat(!AllowedApks.matches("com.example.malware",
+                "70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab"),
+                "unexpected package name accepted");
+            assertThat("abcd".equals(AllowedApks.hex(new byte[]{(byte)0xab, (byte)0xcd})),
+                "SHA256 hex encoding corrupted");
+
             assertThat(app.getPackageManager().checkPermission(
                 "android.permission.INTERNET", app.getPackageName())
                 == PackageManager.PERMISSION_DENIED, "network permission present");
