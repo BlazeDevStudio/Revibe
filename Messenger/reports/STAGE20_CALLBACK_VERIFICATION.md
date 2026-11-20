@@ -25,3 +25,10 @@ Do not reset existing Messenger profiles, uninstall real chat apps, give account
 ## Remaining product blocker
 
 The primary Revibe goal is functional personal Meta Messenger interoperability from Android 4.4 upward. That is not established by the public Facebook Page messaging API or historical Meta APKs; availability of a supported user-facing API plus modern authentication, encrypted send/receive, reconnect and notifications must be independently verified. No finished Revibe Messenger release exists.
+
+## Stage 20 integrity hardening / current runtime evidence
+- Package-name checks alone are insufficient: the selected file must also match the exact SHA-256 of the known original Messenger336 ARM64, original Messenger410 ARM32, Stage6 ARM32 research or Stage15 isolated ARM64 research test APK. The app reads, hashes and validates the selected file **before** beginning any installation session. Unknown packages or altered bytes are rejected.
+- `AllowedApks.java` contains only public digests; no signing keys, Meta proprietary code or private data. Instrumentation includes positive and negative allowlist tests, plus hex encoding verification.
+- GitHub compiled the updated source and APK signature/zipalign/API19 checks passed in run `44760714269`. Exact download from that run was verified locally: 17,983 bytes, SHA256 `9ca9132eea21fdc2221527c6dbfc46c3d3d63b0aba15d6697a4ea975b4d114a5`.
+- Earlier API21 emulator runtime job `44760393315` displayed `PASS: 11 on-emulator assertions` for simulated callback categories. Its CI job was marked failure because the shell harness incorrectly expected an `INSTRUMENTATION_CODE` footer not emitted by this custom runner; this was **not** an assertion failure. `scripts/emulator_verify.sh` now checks the explicit assertion PASS marker. Await a fully green rerun before claiming the entire current matrix passed.
+- **Not verified:** complete file-picker/user approval/final real-package callback on a physical Mi device; Meta login, real messages or end-to-end encryption. This APK is an installer diagnostic only.
