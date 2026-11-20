@@ -105,3 +105,11 @@ Third-party APKs must remain off GitHub. No signed APK is distributed by the pub
 
 ## Device-independent scope directive — KitKat onward
 The user explicitly declines phone-specific details. Do not ask for Mi model, screen info, ADB or commands again as a prerequisite. Product goal is **one-tap Android 4.4/API19 and up**, with ARMv7, ARM64, x86 support and modern Android forward-compatibility verified separately. Prefer a single universal APK; if not feasible, ensure ABI-specific delivery is selected automatically. Read `Messenger/DEVICE_INDEPENDENT_COMPATIBILITY.md`. Avoid more renamed/re-signed historical APK trial downloads without a demonstrated package-compatibility repair. No real functioning Messenger restored yet. Tests across Android versions and actual Meta E2EE service are required, not merely `minSdk=19`.
+
+## Stage 18 — Actual Android source and APK compilation (2026-11-20)
+- Read `Messenger/reports/STAGE18_CLEAN_INSTALL_PROBE.md`. Independently implemented `Messenger/install-probe/`: NO Meta code, native libraries, network, permissions or user data.
+- True Android Gradle compiled and signed diagnostic APK, `org.revibe.installprobe`, `minSdk19`, `targetSdk35`. GitHub Actions successful build https://github.com/BlazeDevStudio/Revibe/actions/runs/44684505264, 9 source tests passed, SDK apksigner for API19 and ZIP alignment passed; compiled APK SHA256 `3fd07a210318ae7f69541d5ae61ccb685ef2a4250ba4defdc02a3ced72122ec5`, 10,042 bytes.
+- GitHub workflow now includes API19/API23/API35 emulator install+launch matrix; **inspect actual run results before claiming hardware/emulator success**.
+- The probe is an installability diagnostic only; no Facebook login/chat. Never describe it as a Messenger revival or suggest users enter credentials.
+- Next: resolve any emulator installation or startup failures. If APK works, use the reproducible API19+ app/build pipeline as a foundation for independent app features; real Meta interoperability requires authorized supported APIs and demonstrated E2EE.
+- Do not request phone model/ADB from user; product is device-independent and one-tap.
