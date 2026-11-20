@@ -78,3 +78,6 @@ Continue ARM64/API28 research only after checking `Messenger/STATUS.json`, `Mess
 - Never authorize an install from package name alone. Stage20 uses `AllowedApks.matches(package,sha256)` against four pinned, audited APK digests; reject changed files before calling `PackageInstaller.Session`.
 - The Android API21 custom instrumentation reports `PASS: N on-emulator assertions` via stream, not always `INSTRUMENTATION_CODE: 0`. The CI script was fixed to check its explicit PASS marker; inspect latest rerun, and don't conflate a test harness failure with app logic failure.
 - Latest compiled diagnostic source: run `44760714269`, APK SHA256 `9ca9132eea21fdc2221527c6dbfc46c3d3d63b0aba15d6697a4ea975b4d114a5`. Still not Messenger; no Meta chat service interoperability.
+
+## V21 master continuation directive (2026-11-21)
+For continuation of the user's actual goal, **start by reading `Messenger/MASTER_CONTINUATION_V21.md`** along with this file and current repository state. Reconcile and safely clean historical research, keep the installer diagnostic distinct from the product, pursue authorized real personal Messenger interoperability, and require verified ARM32, ARM64 and x86 artifacts with separate install/launch and real messaging evidence. Never relabel a diagnostic, historic APK or simulated chat as a working Messenger release.
