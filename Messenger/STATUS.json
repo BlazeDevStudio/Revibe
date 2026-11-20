@@ -1,6 +1,6 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "V21 release-truth reconciliation: Meta consumer interoperability BLOCKED; installer diagnostic emulator matrix reverified",
+  "latest_milestone": "V21 non-destructive release guard merged on main; 163 Python CI tests PASS; Messenger product still BLOCKED",
   "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
   "stage6_armv7": {
     "source_version": "410.0.0.17.85",
@@ -295,10 +295,11 @@
     "allowlisted_candidate_count": 4,
     "selected_apk_sha256_checked_before_install": true,
     "github_reproducible_compile_run": 44760714269,
-    "last_download_verified_apk_sha256": "9ca9132eea21fdc2221527c6dbfc46c3d3d63b0aba15d6697a4ea975b4d114a5",
-    "last_download_verified_apk_bytes": 17983,
+    "last_download_verified_apk_sha256": "37564c69b9a0a9018e6513a29156e9d0ca1278bace11a7d5ffeebba74d5d9dfb",
+    "last_download_verified_apk_bytes": 17982,
     "emulator_api21_callbacks_synthetic_result": "11 assertions PASS in earlier run 44760393315, but workflow job failed due expecting absent footer",
-    "current_matrix_status": "PASS: independent installcheck2 build and API19/21/23/35 x86/x86_64 emulator smoke+synthetic callbacks; DOES NOT demonstrate ARM, physical devices, interactive installer or Meta messaging"
+    "current_matrix_status": "PASS: CI run 44760999284 compiled and tested independent diagnostic on x86/x86_64 emulator API19/21/23/35; binary SHA-256 verified in V21. Not real Messenger.",
+    "last_download_verified_from_run": 44760999284
   },
   "product_release": {
     "canonical_product": "REVIBE MESSENGER CLIENT",
@@ -326,6 +327,21 @@
     "release_guard": "python3 Messenger/tools/release_gate.py --check",
     "live_personal_messenger_e2ee_qa": false,
     "last_reconciliation_reference_main": "5ec2fbdc410a0e0c50b56cb3273914e64484753a",
-    "validation_limit": "Release guard verifies presence, packaging and signing evidence, not factual truth of manual Meta tests"
+    "validation_limit": "Release guard verifies presence, packaging and signing evidence, not factual truth of manual Meta tests",
+    "v21_merged_commit": "e9bac43099b18ed8e5971f705c278c48da9b6d2b",
+    "v21_verified_source_head": "5e7b49416838a8dae5a8e9b5d299ffa841ab1504",
+    "v21_verified_ci_run": 44811888443,
+    "v21_regression_test_counts": {
+      "engineering_offline": 137,
+      "diagnostic_source": 19,
+      "release_gate": 7,
+      "total": 163,
+      "failures": 0
+    },
+    "diagnostic_artifact_name": "Revibe-API19-Install-Check-NOT-MESSENGER",
+    "diagnostic_artifact_run": 44760999284,
+    "diagnostic_apk_bytes": 17982,
+    "diagnostic_apk_sha256": "37564c69b9a0a9018e6513a29156e9d0ca1278bace11a7d5ffeebba74d5d9dfb",
+    "diagnostic_zip_sha256": "4d2d47ee07c944814eb6d7152a32e764f8144c7ffa798cfe0e2712b64b03c1fd"
   }
 }
