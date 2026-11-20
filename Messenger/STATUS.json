@@ -1,6 +1,6 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "Stage 18: compiled, independently verified and emulator-installed API19+ installation probe; Messenger still unverified",
+  "latest_milestone": "Stage 19: native on-device installer-error diagnostic APK built and verified (interactive flow not yet confirmed)",
   "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
   "stage6_armv7": {
     "source_version": "410.0.0.17.85",
@@ -64,7 +64,7 @@
     "preflight": "Messenger/engineering/android56_abi_check.py",
     "tests": "six new source-level unit tests in GitHub; 7 local expanded tool tests passed separately"
   },
-  "next_blocker": "Build functional independent secure messaging code and determine whether Meta allows authorized interoperability; KitKat+ app-install pipeline validated on API19,23,35 emulators. User phone installation remains untested for probe and old Messenger APKs rejected.",
+  "next_blocker": "Confirm on-device user-selected PackageInstaller session feedback, including API21 and API35; original Meta consumer-Messenger login/E2EE feasibility remains unresolved, Meta's documented platform APIs require Page access tokens.",
   "stage9_native_android5_arm64": {
     "candidate": "Messenger 336.0.0.13.142, versionCode 297217556, arm64-v8a nodpi single APK minAPI21",
     "archive_url": "https://www.apkmirror.com/apk/facebook-2/messenger/messenger-336-0-0-13-142-release/facebook-messenger-text-and-video-chat-for-free-336-0-0-13-142-8-android-apk-download/",
@@ -247,5 +247,31 @@
       23,
       35
     ]
+  },
+  "stage19_android5_installer_diagnostic": {
+    "android_minimum_api": 19,
+    "diagnostic_install_session_minimum_api": 21,
+    "app_package": "org.revibe.installcheck",
+    "artifact": "Revibe_Install_Check_Android44_Up_Stage19.apk",
+    "apk_size_bytes": 16753,
+    "apk_sha256": "1a83b5cfa52c426540d03a4449df2fe8fa708aa7c90d7bc5dcc3a7cf0fa6bc02",
+    "build_run": 44751936662,
+    "build_and_jar_signature_verified": true,
+    "android_sdk_apksigner_verified_for_min_api19": true,
+    "zipalign_verified": true,
+    "no_native_libraries": true,
+    "declared_permissions": [
+      "android.permission.REQUEST_INSTALL_PACKAGES"
+    ],
+    "network_permission": false,
+    "existing_messenger_overwrite_guard": true,
+    "package_identifier_allowlist": [
+      "com.facebook.orca",
+      "org.revibe.orca01"
+    ],
+    "on_device_installer_status_flow_verified": false,
+    "physical_phone_install_verified": false,
+    "meta_messenger_personal_chat_restored": false,
+    "note": "Test APK is a dedicated safety-restricted installation diagnostic, not a Messenger revival"
   }
 }
