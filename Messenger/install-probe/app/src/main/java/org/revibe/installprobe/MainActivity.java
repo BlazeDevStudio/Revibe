@@ -3,6 +3,9 @@ package org.revibe.installprobe;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -15,6 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -84,6 +88,21 @@ public final class MainActivity extends Activity {
         }
         status = text(InstallerState.lastResult(this), 16, Color.rgb(0, 73, 115));
         column.addView(status);
+        Button copyResult = new Button(this);
+        copyResult.setText("Copy result");
+        copyResult.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                // Copy only the category we store, never a URI, device ID or raw log.
+                ClipboardManager clipboard =
+                    (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                if (clipboard == null) return;
+                clipboard.setPrimaryClip(ClipData.newPlainText(
+                    "Revibe install result", InstallerState.lastResult(MainActivity.this)));
+                Toast.makeText(MainActivity.this,
+                    "Error category copied", Toast.LENGTH_SHORT).show();
+            }
+        });
+        column.addView(copyResult);
         column.addView(text("Privacy: no internet permission, no contacts, chat data or uploads. Results stay on this phone.", 13, Color.DKGRAY));
         scroll.addView(column);
         setContentView(scroll);
