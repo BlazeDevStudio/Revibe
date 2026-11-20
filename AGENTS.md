@@ -48,3 +48,8 @@ Continue ARM64/API28 research only after checking `Messenger/STATUS.json`, `Mess
 - User's Mi phone still shows `App not installed` for the side-by-side `org.revibe.orca01` package. No exact Android installer code is known. Avoid claiming that changing the app ID fixed anything.
 - Verifiably prepared a **different original** Meta-signed Messenger 410 API19 ARMv7 APK for one-tap testing (SHA256 `006ca274cf2a2569cf8e5c68c94c2317377c6406957fe4e4daedc0436ee790c8`) as conditional fallback if the Android OS supports ARM32. This is NOT a repaired application. Source `Messenger/engineering/prepare_original_abi_candidate.py`; 13 local tests.
 - Read `Messenger/reports/STAGE16_MI_INSTALL_FALLBACK.md`; do not demand ADB or complex phone steps. Preserve truthful separation between **package verification**, **actual device installation**, and **real server messaging**.
+
+## Product-scope correction — device-independent KitKat onward (2026-11-20)
+- **Do not request a phone model, ADB, or manual ABI selection from the user.** The user explicitly requires one-tap functionality from Android 4.4/API19 onward. The product must handle OS/ABI differences without imposing a device-specific diagnosis on end users.
+- Read `Messenger/DEVICE_INDEPENDENT_COMPATIBILITY.md` and use it as the current release acceptance contract. One universal APK is preferred; fallback automatic packaging may be needed. The minimum API is a target, not proof of compatibility on newer Android.
+- Existing Messenger APK variants repeatedly failed install on a Mi phone; **no new fixed installer is available yet**. Stop relabeling originals and claiming repaired compatibility. Actual independent code/build and representative OS/ABI installation + full messaging tests are required.
