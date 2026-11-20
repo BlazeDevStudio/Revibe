@@ -25,5 +25,14 @@ jobs:
           python-version: '3.11'
       - name: Install Stage 7 signing-test dependency
         run: python -m pip install 'cryptography>=42,<47'
-      - name: Run offline tests (no APKs or accounts required)
-        run: python -m unittest discover -s tests -v
+      - name: Actual repository preflight and legacy regression tests
+        working-directory: .
+        run: python scripts/revibe_init.py --check
+      - name: Independent diagnostic source contract tests
+        working-directory: .
+        run: python -m unittest discover -s Messenger/install-probe/tests -v
+      - name: V21 product release truth and isolation tests
+        working-directory: .
+        run: |
+          python -m unittest discover -s Messenger/tools/tests -v
+          python Messenger/tools/release_gate.py --check

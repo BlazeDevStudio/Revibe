@@ -1,5 +1,14 @@
 # Revibe / Messenger
 
+## Current V21 product decision (2026-11-21)
+
+**No verified functional personal Meta Messenger client has been built or released.** The canonical product is REVIBE MESSENGER CLIENT. Meta's Page messaging APIs are not consumer Messenger inbox access; the EU/EEA third-party interoperability program requires separate eligibility and does not establish general personal Facebook login for Revibe. Real authentication, two-way message exchange and E2EE are BLOCKED until a supported, authorized integration is established.
+
+`install-probe/` is an independent, debug-signed **NON-MESSENGER** Android installer diagnostic. Its x86/x86_64 emulator test run [44760999284](https://github.com/BlazeDevStudio/Revibe/actions/runs/44760999284) passed API19/21/23/35 install/launch and synthetic callback checks. This is not proof of ARM hardware installation or consumer chats. The diagnostic is not eligible for Messenger release naming.
+
+Canonical evidence: [V21 feasibility report](reports/V21_FEASIBILITY_AND_RELEASE_GATE.md), [compatibility matrix](COMPATIBILITY_MATRIX.md), machine-readable [release state](STATUS.json), [release integrity gate](tools/release_gate.py). Test `python3 Messenger/tools/release_gate.py --check` at the repository root. No proprietary APK or credentials should be added to GitHub.
+
+
 ## Mission
 Explore reviving Messenger for refurbished devices used by older adults, with a large-text, simple, reliable interface.
 
