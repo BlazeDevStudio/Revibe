@@ -43,3 +43,8 @@ Continue ARM64/API28 research only after checking `Messenger/STATUS.json`, `Mess
 - User needs simple APK tap-to-install. Do not demand ADB or a computer for the first step.
 - Standalone package name `org.revibe.orca01` tries to avoid original Messenger installation collisions, but no real-device install/launch or current Meta service compatibility is verified. Signer is Revibe ephemeral, not Meta, and app code is unmodified. **Never represent this as a functional Messenger revival.**
 - Before another modification, distinguish: installed, crashes on launch, or still not installed. Protect existing Messenger data and do not collect private credentials.
+
+## Stage 16 checkpoint — respect no-computer installation
+- User's Mi phone still shows `App not installed` for the side-by-side `org.revibe.orca01` package. No exact Android installer code is known. Avoid claiming that changing the app ID fixed anything.
+- Verifiably prepared a **different original** Meta-signed Messenger 410 API19 ARMv7 APK for one-tap testing (SHA256 `006ca274cf2a2569cf8e5c68c94c2317377c6406957fe4e4daedc0436ee790c8`) as conditional fallback if the Android OS supports ARM32. This is NOT a repaired application. Source `Messenger/engineering/prepare_original_abi_candidate.py`; 13 local tests.
+- Read `Messenger/reports/STAGE16_MI_INSTALL_FALLBACK.md`; do not demand ADB or complex phone steps. Preserve truthful separation between **package verification**, **actual device installation**, and **real server messaging**.
