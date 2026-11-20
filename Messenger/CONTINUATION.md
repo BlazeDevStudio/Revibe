@@ -60,3 +60,10 @@ Third-party APKs must remain off GitHub. No signed APK is distributed by the pub
 - Stage 11 subset: 23 local unit tests passed; no ADB/hardware tests, login, messages, notifications, update-gate bypass or modified new Messenger APK.
 - The old APK includes mandatory-update keyword matches; their mere presence cannot establish a client-side or server-side block.
 - NEXT GATE: first authorized Android 5/6 device install/launch and non-sensitive failure-category observation, followed only by a targeted proven compatibility repair. Keep third-party APKs off GitHub.
+
+## Stage 12 follow-up — first real install failure (2026-11-20)
+- User reports `App not installed` for Revibe research APKs, without the exact package-manager failure code. Do NOT declare a root cause from generic installer text.
+- The public repo includes `Messenger/INSTALL_FAILURE_DIAGNOSIS.md` and read-only-by-default `Messenger/engineering/install_failure_probe.py`.
+- Run without arguments to collect only API level, ARM64 ABI availability, and whether `com.facebook.orca` already exists (no serials/chat data). An opt-in install test requires the pinned original Meta-signed Messenger336 APK plus `--install --ack-test-device`; it refuses to overwrite a pre-existing package.
+- New offline tests: `Messenger/engineering/tests/test_install_failure_probe.py`; check GitHub CI completion before claiming passing results.
+- Next blocker: obtain Android's actual `INSTALL_FAILED_*` or `INSTALL_PARSE_FAILED_*` rejection code from an authorized spare device. Compare original Meta-signed 336 vs any re-signed APK only AFTER documenting the exact cause. No revived Messenger release exists.
