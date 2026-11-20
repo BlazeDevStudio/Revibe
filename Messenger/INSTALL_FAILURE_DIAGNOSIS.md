@@ -45,3 +45,16 @@ The tool refuses to install a wrong-hash APK, refuses to overwrite an existing `
 ## After installation
 
 An install and visible launch do not establish Meta server authorization, default end-to-end encryption compatibility, notifications or actual message delivery. Debug those separately and do not distribute experimental packages as working Messenger.
+
+## Xiaomi / Mi hardware field screenshot (2026-11-20)
+
+A user-supplied Mi-device screenshot shows the Android package installer saying **“App not installed”** beside Messenger's icon and name. It contains **no Android package-manager error code**, version number, APK checksum or installed-package state. This observation cannot distinguish signer collision, downgrade, ABI mismatch, SDK restriction, storage exhaustion, source policy or archive invalidity.
+
+Xiaomi-specific checks, without removing application data:
+
+1. Open Settings → Apps / Manage apps and search for Messenger; check whether an original app or clone exists. Xiaomi supports **Dual apps** and sometimes **Second space**: https://www.mi.com/global/support/article/KA-12531/. Clearing Dual apps can delete clone data, so **do not reset Dual apps or uninstall apps simply to test**.
+2. Under Settings → About phone, record the Android version and MIUI version (not IMEI or serial number). For the Messenger336 ARM64 baseline, Android API21+ and `arm64-v8a` OS ABI support are mandatory.
+3. On a computer with platform-tools and an authorized spare phone, run `adb shell getprop ro.build.version.sdk`, `adb shell getprop ro.product.cpu.abilist`, and `adb shell pm list packages com.facebook.orca`. Then use the repository's safe installer probe with the exact pinned original Meta-signed 336 APK to obtain only the `INSTALL_FAILED_*` category.
+4. Do not disable Xiaomi security controls, force downgrades, or delete cloned/second-space data to make the APK appear installable. Capture the true error first.
+
+**Status:** first-hand UI failure confirmed on an unspecified Mi phone; root cause and underlying package not confirmed. No new Messenger client fix or on-device install success is demonstrated by this screenshot.
