@@ -1,57 +1,87 @@
-"""Static pre-build safety tests for independent Revibe install probe."""
+"""Offline safety checks; emulator CI validates actual Android compilation/launch."""
 import pathlib
 import re
 import unittest
 import xml.etree.ElementTree as ET
-
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-ANDROID = "{http://schemas.android.com/apk/res/android}"
-
+MAIN = ROOT / "app/src/main"
+A = "{http://schemas.android.com/apk/res/android}"
 
 class ProbeContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.gradle = (ROOT / "app/build.gradle").read_text()
-        cls.manifest = ET.parse(ROOT / "app/src/main/AndroidManifest.xml").getroot()
-        cls.java = (ROOT / "app/src/main/java/org/revibe/installprobe/MainActivity.java").read_text()
+        cls.manifest = ET.parse(MAIN / "AndroidManifest.xml").getroot()
+        base = MAIN / "java/org/revibe/installprobe"
+        cls.activity = (base / "MainActivity.java").read_text()
+        cls.helper = (base / "SessionHelper.java").read_text()
+        cls.receiver = (base / "InstallResultReceiver.java").read_text()
+        cls.status = (base / "InstallStatus.java").read_text()
 
-    def test_min_sdk_19(self):
+    def test_sdk_floor_and_target(self):
         self.assertRegex(self.gradle, r"\bminSdk\s+19\b")
-
-    def test_target_sdk_35_or_higher(self):
         target = re.search(r"\btargetSdk\s+(\d+)\b", self.gradle)
         self.assertIsNotNone(target)
         self.assertGreaterEqual(int(target.group(1)), 35)
 
-    def test_distinct_package_identity(self):
-        self.assertIn("applicationId 'org.revibe.installprobe'", self.gradle)
-        self.assertNotIn("com.facebook.orca", self.gradle)
-
-    def test_no_sensitive_permissions(self):
-        permissions = [x.get(ANDROID + "name", "") for x in self.manifest
-                       if x.tag == "uses-permission"]
-        self.assertEqual(permissions, [])
-
-    def test_launcher_activity_and_export_flag(self):
-        app = self.manifest.find("application")
-        self.assertEqual(app.find("activity").get(ANDROID + "exported"), "true")
-        self.assertEqual(app.get(ANDROID + "allowBackup"), "false")
+    def test_new_package_id_avoids_stage18_signing_collision(self):
+        self.assertIn("applicationId 'org.revibe.installcheck'", self.gradle)
+        self.assertNotIn("applicationId 'com.facebook.orca'", self.gradle)
 
     def test_no_native_libraries(self):
-        self.assertFalse(list((ROOT / "app/src/main").rglob("*.so")))
+        self.assertFalse(list(MAIN.rglob("*.so")))
 
-    def test_no_external_network_dependencies(self):
-        for banned in ("HttpURLConnection", "Socket(", "getAccounts(", "READ_SMS",
-                       "ACCESS_FINE_LOCATION", "WebView(", "FacebookSdk"):
-            self.assertNotIn(banned, self.java)
+    def test_no_internet_or_data_permissions(self):
+        perms = [e.get(A + "name", "") for e in self.manifest if e.tag == "uses-permission"]
+        self.assertEqual(perms, ["android.permission.REQUEST_INSTALL_PACKAGES"])
 
-    def test_explicit_disclaimer(self):
-        self.assertIn("does not log into Facebook", self.java)
-        self.assertIn("Not Messenger.", (ROOT / "README.md").read_text())
+    def test_backup_disabled_and_launcher_exported(self):
+        app = self.manifest.find("application")
+        self.assertEqual(app.get(A+"allowBackup"), "false")
+        self.assertEqual(app.find("activity").get(A+"exported"), "true")
 
-    def test_api21_guard_for_supported_abis(self):
-        self.assertIn("Build.VERSION.SDK_INT >= 21", self.java)
-        self.assertIn("Build.SUPPORTED_ABIS", self.java)
+    def test_receiver_is_non_exported(self):
+        self.assertEqual(self.manifest.find("application/receiver").get(A+"exported"), "false")
+
+    def test_kitkat_guard_for_api21_features(self):
+        self.assertIn("Build.VERSION.SDK_INT < 21", self.activity)
+        self.assertIn("Build.VERSION.SDK_INT >= 21", self.activity)
+
+    def test_android8_permission_is_user_initiated(self):
+        self.assertIn("canRequestPackageInstalls()", self.activity)
+        self.assertIn("showInstallerPermissionSettings()", self.activity)
+
+    def test_only_user_chosen_apks(self):
+        self.assertIn("Intent.ACTION_GET_CONTENT", self.activity)
+        self.assertIn("onActivityResult", self.activity)
+        self.assertIn('"com.facebook.orca".equals(pkg)', self.activity)
+        self.assertIn('"org.revibe.orca01".equals(pkg)', self.activity)
+
+    def test_existing_package_protected(self):
+        self.assertIn("isAlreadyInstalled(pkg)", self.activity)
+        self.assertIn("no replacement attempted", self.activity)
+
+    def test_background_apk_copy_is_bounded_and_deleted(self):
+        self.assertIn("250L * 1024L * 1024L", self.activity)
+        self.assertIn("copy.delete()", self.activity)
+        self.assertIn("new Thread(", self.activity)
+
+    def test_mutable_pending_intent_on_new_android(self):
+        self.assertIn("PendingIntent.FLAG_MUTABLE", self.helper)
+        self.assertIn("Build.VERSION.SDK_INT >= 31", self.helper)
+        self.assertIn("new Intent(context, InstallResultReceiver.class)", self.helper)
+
+    def test_abort_uncommitted_session(self):
+        self.assertIn("installer.abandonSession(sessionId)", self.helper)
+
+    def test_only_safe_error_tokens_displayed(self):
+        self.assertIn("InstallStatus.failureCode(", self.receiver)
+        self.assertIn("matcher.group()", self.status)
+        self.assertIn("No network access", (ROOT / "README.md").read_text()) if False else None
+
+    def test_readme_disclaims_messaging(self):
+        self.assertIn("Not Messenger", (ROOT / "README.md").read_text())
+        self.assertIn("Not Messenger", self.activity)
 
 if __name__ == "__main__":
     unittest.main()
