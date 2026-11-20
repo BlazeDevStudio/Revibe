@@ -28,7 +28,9 @@ GitHub Actions successful build: https://github.com/BlazeDevStudio/Revibe/action
 - Extracted APK size 10,042 bytes; SHA-256 `3fd07a210318ae7f69541d5ae61ccb685ef2a4250ba4defdc02a3ced72122ec5`.
 - Local `jarsigner -verify` reported `jar verified`; self-signed debug certificate is expected for a diagnostic APK.
 
-GitHub emulator install-and-launch CI on API19, 23 and 35 has been added at `.github/workflows/revibe-install-probe.yml`. **Do not mark emulator installs verified until the workflow concludes successfully.** As of initial code publication, it was in progress.
+**Emulator installation and launch PASSED on API19, API23 and API35.** CI: https://github.com/BlazeDevStudio/Revibe/actions/runs/44684869636 — all four jobs (build plus three emulator smoke runs) completed successfully. Each emulator ran `adb install`, `am start -W`, and process presence verification. These are virtual Android devices, not the user's Mi phone. Successful install/launch of the independent diagnostic does NOT demonstrate Messenger login, modern encryption, notifications or phone-wide compatibility.
+
+Exact binary from the emulator-verified workflow artifact: **10,044 bytes**, SHA-256 `5945cd715fdf414639d140341b5073eca00d2d30fa1f591dcba80f10ae3947d5`. ZIP archive and APK CRC passed; Java JAR/v1 signature reported verified locally; Android SDK `apksigner` API19 and zipalign tests passed in CI.
 
 ## What a test means
 
