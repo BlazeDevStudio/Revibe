@@ -58,3 +58,8 @@ Continue ARM64/API28 research only after checking `Messenger/STATUS.json`, `Mess
 - Read `Messenger/reports/STAGE18_CLEAN_INSTALL_PROBE.md`. Real native Android source in `Messenger/install-probe/`, compiled with AGP 8.7.3 and API35, minSdk19/targetSdk35, no native libraries and no permissions. GitHub build `44684505264` passed, with signed APK and archive verification.
 - **This is a diagnostic installer, NOT Messenger or a messaging demo.** Do not confuse an install probe with requested secure Meta-to-Meta messaging. The separate app must not gather personal data, contact Meta, or ask for a password.
 - Check latest `.github/workflows/revibe-install-probe.yml` API19/23/35 emulator matrix and its actual conclusions; do not make unsupported install claims. Continue toward consistent APK signing, genuine API19+ platform support, and viable authorized secure messaging interoperability.
+
+## Stage 18 verified platform gate
+- **Real CI evidence:** `Revibe independent API19+ installation probe` workflow run `44684869636` passed APK signature/zipalign and emulator install+launch on API19 (KitKat), API23 (Android 6), API35 (Android 15). Artifact SHA256 `5945cd715fdf414639d140341b5073eca00d2d30fa1f591dcba80f10ae3947d5`.
+- The probe is independent Android code, **not** a Messenger implementation. No Meta auth/chat functionality exists. Do not call this a finished revival or distribute it as one. Keep original Meta APKs outside repo.
+- On continuation: use this working API19+ build/CI foundation, then implement verified **actual** messaging functionality only through authorized service interfaces; track separate login, E2EE, message exchange, background notifications and accessible UI milestones.
