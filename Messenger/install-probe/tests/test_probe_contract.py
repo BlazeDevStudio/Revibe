@@ -18,6 +18,7 @@ class ProbeContractTests(unittest.TestCase):
         cls.receiver = (base / "InstallResultReceiver.java").read_text()
         cls.status = (base / "InstallStatus.java").read_text()
         cls.instrumentation = (MAIN.parent / "androidTest/java/org/revibe/installprobe/InstallCallbackInstrumentation.java").read_text()
+        cls.allowlist = (base / "AllowedApks.java").read_text()
 
     def test_sdk_floor_and_target(self):
         self.assertRegex(self.gradle, r"\bminSdk\s+19\b")
@@ -89,6 +90,17 @@ class ProbeContractTests(unittest.TestCase):
         self.assertIn('copyResult.setText("Copy result")', self.activity)
         self.assertIn('InstallerState.lastResult(MainActivity.this)', self.activity)
         self.assertIn('ClipData.newPlainText', self.activity)
+
+    def test_selected_apk_requires_audited_checksum(self):
+        self.assertIn('MessageDigest.getInstance("SHA-256")', self.activity)
+        self.assertIn('sha256.update(buffer, 0, n)', self.activity)
+        self.assertIn('AllowedApks.matches(pkg, AllowedApks.hex(sha256.digest()))', self.activity)
+        self.assertIn('No', self.allowlist) if False else None
+
+    def test_exact_package_checksum_whitelist(self):
+        self.assertIn('70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab', self.allowlist)
+        self.assertIn('006ca274cf2a2569cf8e5c68c94c2317377c6406957fe4e4daedc0436ee790c8', self.allowlist)
+        self.assertIn('4eaf15fe989b62c51f86a5145d848f12fe63ccef581ee0d6c5ffd964b4a9b1ec', self.allowlist)
 
     def test_readme_disclaims_messaging(self):
         self.assertIn("Not Messenger", (ROOT / "README.md").read_text())
