@@ -1,6 +1,6 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "Stage 14: fixed Android 5/6 absent-package detection; original ARM64 API21 baseline reverified",
+  "latest_milestone": "Stage 15: Android 5 ARM64 side-by-side APK built from Messenger 336 to test package conflicts",
   "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
   "stage6_armv7": {
     "source_version": "410.0.0.17.85",
@@ -64,7 +64,7 @@
     "preflight": "Messenger/engineering/android56_abi_check.py",
     "tests": "six new source-level unit tests in GitHub; 7 local expanded tool tests passed separately"
   },
-  "next_blocker": "Obtain exact ADB Android 5/6 INSTALL_FAILED_* code from a spare phone using original Meta-signed 336; fix observed installer cause, then test client launch. No server compatibility confirmed.",
+  "next_blocker": "Observe installation/launch result for Stage15 side-by-side research APK on spare Mi Android 5/6 ARM64 phone. If install succeeds but launch fails, diagnose changed package identity. If install still rejected, obtain Android installer error without requiring user to run ADB. Meta login and E2EE unverified.",
   "stage9_native_android5_arm64": {
     "candidate": "Messenger 336.0.0.13.142, versionCode 297217556, arm64-v8a nodpi single APK minAPI21",
     "archive_url": "https://www.apkmirror.com/apk/facebook-2/messenger/messenger-336-0-0-13-142-release/facebook-messenger-text-and-video-chat-for-free-336-0-0-13-142-8-android-apk-download/",
@@ -161,5 +161,20 @@
     "fixed_messenger_apk_built": false,
     "messenger_authentication_tested": false,
     "modern_e2ee_tested": false
+  },
+  "stage15": {
+    "source_version": "336.0.0.13.142",
+    "min_sdk": 21,
+    "abi": "arm64-v8a",
+    "original_sha256": "70b1eeb59866900a245b4c15cde557757ba457b2a60c69a7275d05c7bc5a1aab",
+    "research_apk_sha256": "4eaf15fe989b62c51f86a5145d848f12fe63ccef581ee0d6c5ffd964b4a9b1ec",
+    "package_id": "org.revibe.orca01",
+    "changes": "manifest package ID; 18 provider authorities; 6 permission names; unchanged 8 DEX files",
+    "local_offline_checks": "JAR/v1 signature, ZIP integrity, manifest/ABI, 10 synthetic builder tests passed",
+    "android_device_install_verified": false,
+    "secure_login_verified": false,
+    "e2ee_messages_verified": false,
+    "original_meta_signature_preserved": false,
+    "goal": "One-tap package-collision isolation test without uninstalling an existing official Messenger; trial only"
   }
 }
