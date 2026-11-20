@@ -21,3 +21,7 @@ GitHub Actions workflow `.github/workflows/revibe-install-probe.yml` compiles, s
 Meta's public Messenger Platform is based on Facebook Page access tokens. It does not establish consumer personal Messenger-to-Messenger chat interoperability for an unauthorized third-party client. This diagnostic is **not** a revived Messenger.
 ## Build identity and installation limitations
 Stage 20 uses a new app ID because GitHub Actions debug keys are temporary. For a long-term updatable Revibe release, provision a stable private signing key as a protected secret; never commit it to a public Git repository. The emulator receiver tests do **not** verify user-selection and approval through an actual phone installer. The real Mi installation failure remains undiagnosed, and this utility is not a working Messenger.
+
+
+## Stage 20 verification safeguard
+An APK's package name by itself is **not** proof of its provenance. The Stage 20 file picker now computes a SHA-256 digest while copying the selected APK and permits the installation diagnostic only if both the package name AND SHA-256 match an independently audited artifact: original Messenger 336 ARM64, original Messenger 410 ARM32, the Stage 6 ARM32 research version, or the Stage 15 separated-package ARM64 research version. Any other APK is rejected **before** an installation session is created. The hashes are not secrets, and no file data or paths are uploaded. This cannot guarantee modern Messenger messaging and does not fix an incompatible OS.
