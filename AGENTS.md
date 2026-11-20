@@ -37,3 +37,9 @@ Continue ARM64/API28 research only after checking `Messenger/STATUS.json`, `Mess
 - Run the corrected `Messenger/engineering/install_failure_probe.py` on one authorized spare Android 5/6 phone. Its filtered package check now distinguishes missing `com.facebook.orca` from package-manager errors. It refuses to overwrite existing Messenger or test a wrong APK hash.
 - The original Messenger 336 ARM64/API21 remains the **unchanged** baseline; do not resubmit a relabeled, identical APK as a code fix.
 - No live messaging or deprecation-warning removal is verified. Obtain exact install rejection, then test startup, then authentication/E2EE. Never publish Meta APKs in this public repo.
+
+## Stage 15 test checkpoint
+- New app-ID-isolated experimental Android 5 ARM64 package created from user-supplied original Messenger336; see `Messenger/reports/STAGE15_SIDE_BY_SIDE_LOLLIPOP.md`.
+- User needs simple APK tap-to-install. Do not demand ADB or a computer for the first step.
+- Standalone package name `org.revibe.orca01` tries to avoid original Messenger installation collisions, but no real-device install/launch or current Meta service compatibility is verified. Signer is Revibe ephemeral, not Meta, and app code is unmodified. **Never represent this as a functional Messenger revival.**
+- Before another modification, distinguish: installed, crashes on launch, or still not installed. Protect existing Messenger data and do not collect private credentials.
