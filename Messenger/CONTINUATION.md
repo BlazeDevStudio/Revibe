@@ -74,3 +74,10 @@ Third-party APKs must remain off GitHub. No signed APK is distributed by the pub
 - Documents `Messenger/LOLLIPOP_ARM64_INSTALL_TRIAL.md` and `Messenger/reports/lollipop_arm64_test_manifest.json`.
 - Test on authorized disposable Android 5.0/5.1 native ARM64 OS, not merely a 64-bit CPU with 32-bit OS. Do not uninstall existing Messenger with important data. Do not ask recipients to use experimental APKs.
 - **No device install or modern Messenger messages verified.** The user's earlier “App not installed” report still lacks an exact Android `INSTALL_FAILED_*` category. That must be captured before patching code or resigning anything.
+
+## Stage 14 — Android 5/6 Lollipop installation diagnosis (2026-11-20)
+- Reverified original Meta-signed Messenger336 ARM64/API21 bytes; Stage13 test APK remains byte-identical and is NOT a newly revived Messenger.
+- Fixed `Messenger/engineering/install_failure_probe.py`: replaces `pm path` (which can return a nonzero code when a package is merely absent on older Android versions) with exact filtered `pm list packages`, distinguishing present/absent/unknown. New `package_state_probe.py` and tests cover edge cases and avoid exporting installed-app lists.
+- Stage14 report: `Messenger/reports/STAGE14_LOLLIPOP_INSTALL_DIAGNOSIS.md`.
+- Offline tests in local Stage14 sample: 51 passed. Confirm CI for latest GitHub HEAD before claiming remote green.
+- **Still no physical-device install result or repaired login/E2EE protocol.** Next run should prioritize an exact `INSTALL_FAILED_*` code with the safe, opt-in probe on authorized spare hardware. Do not infer a cause from the generic UI prompt.
