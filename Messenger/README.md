@@ -32,3 +32,6 @@ No credentials, tokens, message text, or private conversation logs should be com
 The [Stage 5 toolkit](engineering/README_STAGE5.md) inventories warning-related APK resources and can classify the warning displayed on an authorized Android test device without retaining messages or credentials. [Stage 5 findings](reports/MILESTONE_5_MESSENGER_ANDROID44.md) include three original APK inventories. **It does not fix server enforcement or create an APK.**
 
 Offline tests: 27 passing locally as of 2026-11-20; GitHub Actions tests run without APK binaries. No device or real-account test has been conducted here.
+
+## Updated device-independent requirement (2026-11-20)
+The end-user goal is one-tap installation from **Android 4.4/API19 upward**, without identifying a specific phone model. Prefer one universal APK supporting ARMv7, ARM64 and x86; expand support to later Android releases through actual OS/ABI acceptance tests. This supersedes the earlier Android 10-only *planning* ceiling, **but does not imply wider support is proven**. See [the compatibility contract](DEVICE_INDEPENDENT_COMPATIBILITY.md). Repeated APK install failures remain unresolved. No universal functional Messenger binary has been produced.
