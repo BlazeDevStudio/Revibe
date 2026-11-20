@@ -4,22 +4,16 @@ plugins {
 android {
     namespace 'org.revibe.installprobe'
     compileSdk 35
-
     defaultConfig {
-        applicationId 'org.revibe.installprobe'
+        applicationId 'org.revibe.installcheck'
         minSdk 19
         targetSdk 35
         versionCode 1
-        versionName '0.1.0'
+        versionName '0.2.0'
     }
-
     buildTypes {
-        debug {
-            minifyEnabled false
-        }
-        release {
-            minifyEnabled false
-        }
+        debug { minifyEnabled false }
+        release { minifyEnabled false }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
