@@ -12,7 +12,9 @@ if [ "$API" -ge 21 ]; then
     adb install instrument-artifact/app-debug-androidTest.apk
     RESULT="$(adb shell am instrument -w org.revibe.installcheck2.test/org.revibe.installprobe.InstallCallbackInstrumentation)"
     printf '%s\n' "$RESULT"
-    printf '%s\n' "$RESULT" | grep -F 'INSTRUMENTATION_CODE: 0'
+    # A custom Instrumentation may emit PASS without an INSTRUMENTATION_CODE
+    # footer on old emulator images. Validate actual assertion result instead.
+    printf '%s\n' "$RESULT" | grep -F 'PASS: ' | grep -F 'on-emulator assertions'
 else
     echo "API19: package-install result callbacks need API21; independent app install/launch passed"
 fi
