@@ -79,10 +79,14 @@ def getprop(adb, name):
 
 
 def installed_package(adb):
-    p = command(adb, "shell", "pm", "path", PACKAGE)
-    if p is None or p.returncode != 0:
+    # On Android 5, "pm path" can return a nonzero status when the package
+    # does not exist. Using it here incorrectly blocked the install trial.
+    # Filtered package listing has a reliable successful-empty = absent case.
+    from package_state_probe import parse_package_list
+    p = command(adb, "shell", "pm", "list", "packages", PACKAGE)
+    if p is None:
         return None
-    return "package:" in p.stdout
+    return parse_package_list(p.stdout, p.stderr, p.returncode, PACKAGE)
 
 
 def apk_matches_original(apk):
