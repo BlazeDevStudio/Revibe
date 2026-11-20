@@ -1,0 +1,28 @@
+plugins {
+    id 'com.android.application'
+}
+android {
+    namespace 'org.revibe.installprobe'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'org.revibe.installprobe'
+        minSdk 19
+        targetSdk 35
+        versionCode 1
+        versionName '0.1.0'
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
