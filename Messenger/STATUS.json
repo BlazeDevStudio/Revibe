@@ -39,7 +39,7 @@
     "arm64-v8a",
     "x86"
   ],
-  "android_goal": "Android 4.4/API19 through Android 10/API29; actual artifact support differs",
+  "android_goal": "Android 4.4/API19 onward as device-independent engineering target, NOT validated release support",
   "remaining": [
     "test KitKat launch on spare phone",
     "test ARM64 v588 launch on spare Android 9/10+",
@@ -64,7 +64,7 @@
     "preflight": "Messenger/engineering/android56_abi_check.py",
     "tests": "six new source-level unit tests in GitHub; 7 local expanded tool tests passed separately"
   },
-  "next_blocker": "Obtain device model and actual Android OS version with a Settings > About phone screenshot; use that to select correct ABI/API baseline or identify installer restrictions. Exact package-manager reason remains unobserved. No more speculative APKs.",
+  "next_blocker": "Produce an independently buildable, consistently signed, correct API19+ client across ABI targets and validate installation/startup across representative OS environments, without asking the user to diagnose their phone; genuine Meta login/E2EE remains separate unverified feasibility issue.",
   "stage9_native_android5_arm64": {
     "candidate": "Messenger 336.0.0.13.142, versionCode 297217556, arm64-v8a nodpi single APK minAPI21",
     "archive_url": "https://www.apkmirror.com/apk/facebook-2/messenger/messenger-336-0-0-13-142-release/facebook-messenger-text-and-video-chat-for-free-336-0-0-13-142-8-android-apk-download/",
@@ -210,5 +210,14 @@
     ],
     "caution": "Do not issue a new renamed/identical APK as an installation fix; no claim about signers/OS ABI or Meta server acceptance is possible from this prompt alone.",
     "low_friction_next_evidence": "One screenshot of Settings > About phone showing model and Android version (hide serial/IMEI), plus free internal storage if readily available; no ADB requested."
+  },
+  "product_compatibility_requirement": {
+    "scope": "Android 4.4/API19 through current Android releases, device-model-independent",
+    "preferred_delivery": "one one-tap universal APK with armeabi-v7a, arm64-v8a, x86 (optional x86_64), otherwise auto-selected verified binaries",
+    "user_model_or_adb_required": false,
+    "universal_apk_created": false,
+    "working_messenger_restored": false,
+    "compatibility_evidence": "None beyond offline static APK checks; reported installation failures on Mi",
+    "note": "minSdk19 sets Android floor, not guaranteed future OS install or service compatibility"
   }
 }
