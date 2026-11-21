@@ -1,3 +1,14 @@
+## V22 review handoff — 2026-11-21
+
+- Review branch `revibe/v22-foundation-20261121`, base `main` 396e4ceb232a54ecd495851f743ba247adec5436. PR [#2](https://github.com/BlazeDevStudio/Revibe/pull/2).
+- Added `Messenger/client/`: first independently authored Android Java native app foundation targeting API19 to API35. It uses a **distinct debug-only package** `org.revibe.client.foundation`. The actual production product remains blocked. **No chats, no Page bot, no WebView, no fake messages, no credentials, no INTERNET permission.**
+- Working accessibility code: two large buttons toggle user text size; choice persists as a local non-sensitive boolean; native Activity shows explicit service unavailability; `BackendGate` rejects personal Meta session requests.
+- New separate Gradle/AGP CI workflow compiles and tests the native foundation and attempts emulator install/launch/restart on API19 x86, API21 x86, API23 x86_64, API35 x86_64. [Build run 44911221467](https://github.com/BlazeDevStudio/Revibe/actions/runs/44911221467) completed compilation, signed debug APK verification and 12 source tests. APK SHA-256 `f7b0c704e74281f500541aa817cbd3f2b56ae3eeb7f56c84eb3412bb93c7c85e`, 11,294 bytes, **engineering only, NOT Messenger**. Emulator job conclusions must be checked before claiming install support.
+- No proprietary Meta source, old tested diagnostic, or unrelated project was modified/deleted. Release status continues **NO VERIFIED FUNCTIONAL MESSENGER RELEASE**.
+- Next blocker: official authorized consumer Messenger integration (or eligible approved EEA third-party messaging provider arrangement) with complete transport and genuine E2EE semantics; then actual live bidirectional Meta account tests and verified ARM32/ARM64 hardware support. Do not bypass this via renaming an APK or simulating delivery.
+
+---
+
 ## V21 verified handoff — 2026-11-21
 
 **Actual merged main milestone:** `e9bac43099b18ed8e5971f705c278c48da9b6d2b` (PR #1, squash merge). Branch head `5e7b49416838a8dae5a8e9b5d299ffa841ab1504` passed GitHub CI [44811888443](https://github.com/BlazeDevStudio/Revibe/actions/runs/44811888443): 137 historical Python tests, 19 diagnostic source tests and 7 V21 release-integrity tests = **163 passing; zero failures**. Repo preflight `python scripts/revibe_init.py --check` passed. Post-merge STATUS documentation may have a later documentation-only commit.
