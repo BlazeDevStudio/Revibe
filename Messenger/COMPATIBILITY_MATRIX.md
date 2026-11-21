@@ -1,5 +1,16 @@
 # Revibe Messenger — evidence-separated compatibility matrix
 
+## V22 independent native foundation (NOT FUNCTIONAL MESSENGER)
+
+New independent source is in `Messenger/client/`, package `org.revibe.client.foundation` (separate from real product ID and installer diagnostic), minSdk19/targetSdk35, Java/DEX-only with **no `.so` libraries**, no network permission, and a fail-closed Meta session. Its native status screen has persistent large/standard text controls. **This is not a Messenger client capable of authentication, conversation listing or messages.**
+
+- [Build workflow 44911221467](https://github.com/BlazeDevStudio/Revibe/actions/runs/44911221467): 12 source-contract tests PASS, real Android Gradle compilation and debug APK metadata/signature/zipalign verification PASS.
+- Compiled APK SHA-256 `f7b0c704e74281f500541aa817cbd3f2b56ae3eeb7f56c84eb3412bb93c7c85e`; 11,294 bytes, package `org.revibe.client.foundation`.
+- API19 x86, API21 x86, API23 x86_64 and API35 x86_64 install/launch/restart/instrumentation jobs: **check workflow conclusions** before marking PASS; compilation alone proves none of these.
+- ARM32 and ARM64 emulator/physical hardware: **UNVERIFIED**. Personal Meta login, real bidirectional communication and E2EE: **NOT IMPLEMENTED**.
+- This debug-only foundation cannot be renamed to `Revibe-Messenger-universal.apk`, nor does architecture-neutral DEX prove real service compatibility.
+
+
 Reconciled 2026-11-21. **The product is BLOCKED; no row below claims a functioning personal Messenger release.** Architectural goals and Meta interoperability are separate from installing the independent diagnostic.
 
 ## Actual diagnostic emulator evidence (NON-MESSENGER)
