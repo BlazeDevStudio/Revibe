@@ -1,0 +1,24 @@
+plugins {
+    id 'com.android.application'
+}
+android {
+    namespace 'org.revibe.foundation'
+    compileSdk 35
+    defaultConfig {
+        // Deliberately NOT the eventual production app ID until Meta interoperability works.
+        applicationId 'org.revibe.client.foundation'
+        minSdk 19
+        targetSdk 35
+        versionCode 1
+        versionName '0.1.0-preintegration'
+        testInstrumentationRunner 'org.revibe.foundation.FoundationInstrumentation'
+    }
+    buildTypes {
+        debug { minifyEnabled false }
+        release { minifyEnabled false }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}

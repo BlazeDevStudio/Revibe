@@ -1,5 +1,12 @@
 # Revibe / Messenger
 
+## V22 Android foundation (NOT a functional Messenger app)
+
+Independent native Android source now lives at [`client/`](client/), separately from [`install-probe/`](install-probe/). It has a blocked-service screen, working offline persistent large-text controls, a fail-closed `BackendGate`, `minSdk19`, `targetSdk35`, no INTERNET permission and no native libraries. The debug-only package is `org.revibe.client.foundation`, **not** the reserved production ID. [V22 CI run](https://github.com/BlazeDevStudio/Revibe/actions/runs/44911221467) has passed independent Android compilation and API19 signature/manifest checks, with 12 source tests; all four emulator jobs PASSED install/launch/restart and 13 offline foundation assertions per job (API19/21 x86, API23/35 x86_64). ARM32/ARM64 hardware and Meta messaging remain UNVERIFIED.
+
+This remains **NOT FUNCTIONAL MESSENGER** and must never be distributed as a replacement for personal Meta Messenger. No login, conversation list, end-to-end encryption, message send/receive, notification transport, or Meta partner authorization is implemented.
+
+
 ## Current V21 product decision (2026-11-21)
 
 **No verified functional personal Meta Messenger client has been built or released.** The canonical product is REVIBE MESSENGER CLIENT. Meta's Page messaging APIs are not consumer Messenger inbox access; the EU/EEA third-party interoperability program requires separate eligibility and does not establish general personal Facebook login for Revibe. Real authentication, two-way message exchange and E2EE are BLOCKED until a supported, authorized integration is established.
