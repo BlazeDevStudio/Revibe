@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -83,6 +84,20 @@ public final class FoundationInstrumentation extends Instrumentation {
                 "Must warn that messaging is not implemented");
             require(!text.contains("Enter password"),
                 "No credential collection controls");
+            final Button enlarge = (Button) activity.findViewById(MainActivity.ID_LARGER_TEXT);
+            require(enlarge != null, "Real large-text control required");
+            runOnMainSync(new Runnable() {
+                @Override public void run() { enlarge.performClick(); }
+            });
+            require(AccessibilitySettings.isExtraLarge(getTargetContext()),
+                "Large-text choice must persist in private settings");
+            final Button normal = (Button) activity.findViewById(MainActivity.ID_STANDARD_TEXT);
+            require(normal != null, "Standard text control required");
+            runOnMainSync(new Runnable() {
+                @Override public void run() { normal.performClick(); }
+            });
+            require(!AccessibilitySettings.isExtraLarge(getTargetContext()),
+                "Standard-text choice must persist");
             result.putString("stream", "PASS: " + checks
                 + " on-emulator foundation assertions (NO Meta messaging tested)");
             finish(0, result);
