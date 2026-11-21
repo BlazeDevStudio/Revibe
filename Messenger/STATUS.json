@@ -1,6 +1,6 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "V22 API19 native foundation: compile/signature and API19/21/23/35 x86/x86_64 emulator install/launch/restart PASS; real Messenger remains BLOCKED",
+  "latest_milestone": "V22 merged: independently authored API19 native foundation; 12 source tests, APK build/signing, 4 emulator install/launch/restart and 13 assertions each PASS; no Meta messaging",
   "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
   "stage6_armv7": {
     "source_version": "410.0.0.17.85",
@@ -401,6 +401,9 @@
     "foundation_apk_release_status": "DEBUG-ONLY-NOT-FUNCTIONAL-MESSENGER",
     "foundation_arm32_emulator_verified": false,
     "foundation_arm64_emulator_verified": false,
-    "foundation_hardware_verified": false
+    "foundation_hardware_verified": false,
+    "v22_merged_commit": "a44e9265690242fba23b1483706370e68e373d0d",
+    "v22_verified_build_run": 44911221467,
+    "v22_merged_pr": 2
   }
 }

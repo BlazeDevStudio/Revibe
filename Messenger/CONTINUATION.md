@@ -1,3 +1,13 @@
+## V22 merged, verified milestone — 2026-11-21
+
+Main merge commit `a44e9265690242fba23b1483706370e68e373d0d` via [PR #2](https://github.com/BlazeDevStudio/Revibe/pull/2). New `Messenger/client/` is real native Android source, separate from `install-probe/`. **It is NOT functional Messenger.** Build [44911221467](https://github.com/BlazeDevStudio/Revibe/actions/runs/44911221467) passed 12 static source tests, Android Gradle compile, apksigner API19 and zipalign checks, then emulator install/launch/13 fail-closed and persistent large-text assertions/restart on **API19 x86, API21 x86, API23 x86_64, API35 x86_64**. Debug APK: 11,294 bytes, SHA-256 `f7b0c704e74281f500541aa817cbd3f2b56ae3eeb7f56c84eb3412bb93c7c85e`; own test ID `org.revibe.client.foundation`. No `.so` native libs, network permission, credentials, fabricated chats or backend.
+
+**Still BLOCKED:** no supported Meta personal Messenger authentication or conversation interface, no verified real E2EE/Meta text exchange, no verified ARM32/ARM64 physical device matrix, no stable release signer. NEVER ship this as a restored Messenger APK. V21 release gate stays effective. Check current main CI status separately from the verified pre-merge run above.
+
+Next meaningful work is to establish an authorized supported personal Messenger interop route, then write production transport and perform real Meta-to-Meta E2EE acceptance. Do not repeat re-signing or superficial update-gate removals.
+
+---
+
 ## V22 review handoff — 2026-11-21
 
 - Review branch `revibe/v22-foundation-20261121`, base `main` 396e4ceb232a54ecd495851f743ba247adec5436. PR [#2](https://github.com/BlazeDevStudio/Revibe/pull/2).
