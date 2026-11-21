@@ -8,7 +8,7 @@ adb shell ps | grep -F 'org.revibe.client.foundation'
 adb install instrumentation/app-debug-androidTest.apk
 RESULT="$(adb shell am instrument -w org.revibe.client.foundation.test/org.revibe.foundation.FoundationInstrumentation)"
 printf '%s\n' "$RESULT"
-printf '%s\n' "$RESULT" | grep -F 'PASS: 9 on-emulator foundation assertions'
+printf '%s\n' "$RESULT" | grep -F 'PASS: 13 on-emulator foundation assertions'
 adb shell am force-stop org.revibe.client.foundation
 adb shell am start -W -n org.revibe.client.foundation/org.revibe.foundation.MainActivity
 adb shell ps | grep -F 'org.revibe.client.foundation'
