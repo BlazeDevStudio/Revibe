@@ -16,6 +16,7 @@ class FoundationContract(unittest.TestCase):
         cls.manifest = ET.parse(APP / "AndroidManifest.xml").getroot()
         cls.activity = (APP / "java/org/revibe/foundation/MainActivity.java").read_text()
         cls.gate = (APP / "java/org/revibe/foundation/BackendGate.java").read_text()
+        cls.settings = (APP / "java/org/revibe/foundation/AccessibilitySettings.java").read_text()
         cls.instrument = (ROOT / "app/src/androidTest/java/org/revibe/foundation/FoundationInstrumentation.java").read_text()
         cls.readme = (ROOT / "README.md").read_text()
 
@@ -58,6 +59,13 @@ class FoundationContract(unittest.TestCase):
             self.assertIn(", " + size + ",", self.activity)
         self.assertIn("setImportantForAccessibility", self.activity)
         self.assertIn("ScrollView", self.activity)
+
+    def test_persistent_large_text_ui_is_real(self):
+        self.assertIn('getSharedPreferences', self.settings)
+        self.assertIn('edit.putBoolean(LARGE_TEXT, large)', self.settings)
+        self.assertIn('AccessibilitySettings.setExtraLarge', self.activity)
+        self.assertIn('button.setMinHeight(dp(56))', self.activity)
+        self.assertIn('AccessibilitySettings.isExtraLarge', self.instrument)
 
     def test_instrumentation_denial_checks(self):
         self.assertIn("BackendGate.beginPersonalMessengerSession()", self.instrument)
