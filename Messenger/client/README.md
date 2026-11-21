@@ -6,7 +6,7 @@ This is an independently authored **Android native app foundation**, separate fr
 - Real Android Java source and AGP/Gradle build, with `minSdk 19`, `targetSdk 35`.
 - No `.so` native binaries: the build is DEX-based and architecture-independent in principle.
 - Own debug-only package `org.revibe.client.foundation`. The planned production ID `org.revibe.messenger` is deliberately not used.
-- Large high-contrast native text, ScrollView for small older screens, meaningful screen reader content.
+- Large high-contrast native text, ScrollView for small older screens, meaningful screen reader content. Real on-device persisted large/standard text control with 56dp touch targets and no personal data.
 - No INTERNET permission, credentials, contacts, tracking, WebView, chat placeholders, locally forged messages or unrelated backend.
 - A fail-closed `BackendGate` that rejects session startup. Enabling it by flipping a constant would NOT constitute a feature.
 
