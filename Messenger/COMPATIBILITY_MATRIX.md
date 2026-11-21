@@ -6,7 +6,7 @@ New independent source is in `Messenger/client/`, package `org.revibe.client.fou
 
 - [Build workflow 44911221467](https://github.com/BlazeDevStudio/Revibe/actions/runs/44911221467): 12 source-contract tests PASS, real Android Gradle compilation and debug APK metadata/signature/zipalign verification PASS.
 - Compiled APK SHA-256 `f7b0c704e74281f500541aa817cbd3f2b56ae3eeb7f56c84eb3412bb93c7c85e`; 11,294 bytes, package `org.revibe.client.foundation`.
-- API19 x86, API21 x86, API23 x86_64 and API35 x86_64 install/launch/restart/instrumentation jobs: **check workflow conclusions** before marking PASS; compilation alone proves none of these.
+- API19 x86, API21 x86, API23 x86_64 and API35 x86_64: **PASS** on emulator install/launch/restart and 13 on-device foundation-only assertions per job, run [44911221467](https://github.com/BlazeDevStudio/Revibe/actions/runs/44911221467). These assert disabled Meta sessions and persisted large text, NOT Messenger communications.
 - ARM32 and ARM64 emulator/physical hardware: **UNVERIFIED**. Personal Meta login, real bidirectional communication and E2EE: **NOT IMPLEMENTED**.
 - This debug-only foundation cannot be renamed to `Revibe-Messenger-universal.apk`, nor does architecture-neutral DEX prove real service compatibility.
 
