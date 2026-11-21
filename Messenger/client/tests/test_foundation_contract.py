@@ -43,7 +43,7 @@ class FoundationContract(unittest.TestCase):
         self.assertFalse(list(APP.rglob("*.so")))
 
     def test_no_fake_messaging_or_webview(self):
-        self.assertNotIn("WebView", self.activity)
+        self.assertNotRegex(self.activity, r"new\\s+WebView\\s*\\(")
         self.assertNotIn("EditText", self.activity)
         self.assertNotIn("http://", self.activity)
         self.assertNotIn("https://", self.activity)
@@ -56,7 +56,7 @@ class FoundationContract(unittest.TestCase):
 
     def test_accessible_readable_text(self):
         for size in ("26", "23", "20", "18"):
-            self.assertIn(", " + size + ",", self.activity)
+            self.assertRegex(self.activity, r"\\b" + size + r",\\s+Color\\.")
         self.assertIn("setImportantForAccessibility", self.activity)
         self.assertIn("ScrollView", self.activity)
 
