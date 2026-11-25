@@ -2,9 +2,9 @@
 
 ## V23 Android 17 expansion (2026-11-25)
 
-Android 17 is **API 37**. The V23 release gate requires independently evidenced Android 17 compatibility, not merely targetSdk35. The first API37 foundation job failed because the CI runner looked for `platforms;android-37` instead of `android-37.0`. This is a CI configuration failure, not evidence of app incompatibility. Follow-up: [workflow 45621293805](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621293805) (verify completion before claiming Android 17 PASS). ARM32/ARM64 hardware and actual Meta authentication/E2EE remain unverified.
+Android 17 is **API 37**. The V23 release gate requires independently evidenced Android 17 compatibility, not merely targetSdk35. The first API37 foundation job failed because the CI runner looked for `platforms;android-37` instead of `android-37.0`. This is a CI configuration failure, not evidence of app incompatibility. Follow-up (exploratory, non-blocking for the nonfunctional foundation, but required to pass for any actual Messenger release): [workflow 45621293805](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621293805) (verify completion before claiming Android 17 PASS). ARM32/ARM64 hardware and actual Meta authentication/E2EE remain unverified.
 
-V23 release-integrity unit suite [45621187131](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621187131) passed 175 source/contract tests; none substitute for hardware or real Messenger tests.
+V23 release-integrity unit suite [45621187131](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621187131) passed 175 source/contract tests; latest [45621785540](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621785540) passed 176 after HTTPS evidence validation; none substitute for hardware or real Messenger tests.
 
 
 ## V22 independent native foundation (NOT FUNCTIONAL MESSENGER)

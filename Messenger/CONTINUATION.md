@@ -1,10 +1,10 @@
 ## V23 current handoff — 2026-11-25
 
-Starting main `60f4422b302ddbc52c9ca1ddb060153e3b68f15c`; V23 branch `revibe/v23-artifact-evidence-gate-20261125`. Actual GitHub [offline run 45621187131](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621187131) PASSED **175 tests** (137 existing engineering + 19 independent installation diagnostic + 19 release-gate, including 12 V23-specific tests). No new proprietary or third-party APKs, keys or credentials.
+Starting main `60f4422b302ddbc52c9ca1ddb060153e3b68f15c`; V23 branch `revibe/v23-artifact-evidence-gate-20261125`. Actual GitHub [offline run 45621785540](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621187131) PASSED **176 tests** (137 existing engineering + 19 independent installation diagnostic + 20 release-gate, including 13 V23-specific tests). No new proprietary or third-party APKs, keys or credentials.
 
 **Actual code change:** `Messenger/tools/release_gate.py` now validates compiled package/minSdk/targetSdk with aapt, zipalign, v1+v2 signing and single non-debug signer via apksigner, exact SHA256SUMS and binary inventory; requires truthful OS/ABI evidence through Android17 API37 before a future Messenger release. Negative tests use synthetic SDK text only. `Messenger/install-probe/` and the V22 Android foundation behavior remain unchanged.
 
-**Android17:** first workflow 45620971131 attempted SDK package `android-37` and failed SDK setup; correct package is `android-37.0`. Corrected emulator workflow run 45621293805 must finish and be inspected before recording a PASS. V22 four-OS emulator baseline remains confirmed.
+**Android17:** first workflow 45620971131 attempted SDK package `android-37` and failed SDK setup; correct package is `android-37.0`. Corrected API37.0 emulator workflow run 45621293805 must finish; the API37.0 matrix cell is experimental and non-blocking for foundation CI, but is MANDATORY for any future Messenger release and be inspected before recording a PASS. V22 four-OS emulator baseline remains confirmed.
 
 **Meta blocker:** official Page Graph API does not authorize personal Messenger account chats; eligible European third-party provider interop is a different, restricted model and is not established for Revibe. A personal Meta service, real two-account bidirectional E2EE and stable production signer remain unverified. No working Messenger APK may be released. See [V23 report](reports/V23_RELEASE_INTEGRITY_AND_META_GATE.md).
 

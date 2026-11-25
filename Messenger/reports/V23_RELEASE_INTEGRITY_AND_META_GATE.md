@@ -24,11 +24,11 @@ Prior `Messenger/tools/release_gate.py` depended on manifest JSON and presence o
 4. Requires truthful distinct ABI+Android platform install/launch/restart evidence, including API19, API21, API23, API29, API35, and **API37** before a future release claim. Distinguishes `environment: emulator` from `physical`. These evidence URLs still require independent manual authenticity review.
 5. Rejects an ARM64 APK claiming Android 4.4, prevents ABI-labelled DEX-only duplicates, and retains the existing physical binary hash checks. **The release gate is not evidence of Meta service access.**
 
-Unit fixtures mocking SDK output are synthetics **for negative tests only**, not purported APKs. No Meta APK, credentials or signing secrets were introduced.
+The release gate also rejects insecure HTTP evidence URLs. Unit fixtures mocking SDK output are synthetics **for negative tests only**, not purported APKs. No Meta APK, credentials or signing secrets were introduced.
 
 ## Android 17 validation
 
-Existing verified V22 foundation emulator matrix: API19/x86, API21/x86, API23/x86_64, API35/x86_64; it says nothing about Meta messaging or ARM hardware. V23 adds a separate Android 17/API37 emulator target. The first attempt [45620971131](https://github.com/BlazeDevStudio/Revibe/actions/runs/45620971131) failed SDK setup because the runner requested `platforms;android-37` rather than `android-37.0`. That failure is a **test environment/configuration failure, not an app test pass or crash**. Check the follow-up [45621293805](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621293805) before changing the Android 17 acceptance cell to PASS.
+Existing verified V22 foundation emulator matrix: API19/x86, API21/x86, API23/x86_64, API35/x86_64; it says nothing about Meta messaging or ARM hardware. V23 adds a separate Android 17/API37 emulator target. The first attempt [45620971131](https://github.com/BlazeDevStudio/Revibe/actions/runs/45620971131) failed SDK setup because the runner requested `platforms;android-37` rather than `android-37.0`. That failure is a **test environment/configuration failure, not an app test pass or crash**. Check the follow-up [45621293805](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621293805) before changing the Android 17 acceptance cell to PASS. This exploratory API37.0 foundation matrix entry is non-blocking to prevent a CI environment fault from obscuring the already-proven older emulator matrix; the actual future Messenger release gate continues to require API37 evidence.
 
 ## Current stop/go criteria
 

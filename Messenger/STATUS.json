@@ -408,12 +408,12 @@
     "v23": {
       "source_branch": "revibe/v23-artifact-evidence-gate-20261125",
       "checked_original_main": "60f4422b302ddbc52c9ca1ddb060153e3b68f15c",
-      "security_regression_ci_run": 45621187131,
-      "security_regression_tests_passed": 175,
+      "security_regression_ci_run": 45621785540,
+      "security_regression_tests_passed": 176,
       "groups": {
         "engineering": 137,
         "install_probe": 19,
-        "release_gate_and_v23": 19
+        "release_gate_and_v23": 20
       },
       "strict_release_guard": "Messenger/tools/release_gate.py",
       "checks": [
@@ -430,7 +430,7 @@
       "android17_initial_ci_run": 45620971131,
       "android17_initial_failure": "SDK installer requested platforms;android-37, current package uses android-37.0; no Android 17 install evidence from initial run",
       "android17_corrected_ci_run": 45621293805,
-      "android17_corrected_ci_status": "PENDING_VERIFICATION",
+      "android17_corrected_ci_status": "EXPERIMENTAL_RUN_IN_PROGRESS_NOT_VERIFIED",
       "android17_emulator_passed": false,
       "production_messenger_built": false,
       "real_personal_meta_interop": false,
