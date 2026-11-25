@@ -1,3 +1,15 @@
+## V23 merged handoff — 2026-11-25
+
+Merge [PR #3](https://github.com/BlazeDevStudio/Revibe/pull/3), commit `6a3f96d54b1259843fa1f1e51d44c7bc11008b8a`. Source-test CI [45622301827](https://github.com/BlazeDevStudio/Revibe/actions/runs/45622301827) PASS: **176 Python tests** (137 engineering, 19 installer diagnostic, 20 release gate including 13 V23 additions). No new Messenger-capable app binary was compiled or distributed in this milestone; the only prior V22 foundation debug APK is **NOT FUNCTIONAL MESSENGER**.
+
+**Actual change:** stricter `Messenger/tools/release_gate.py` checks: compiled manifest via aapt, min/target SDK, zipalign, v1+v2 apksigner identity, reject debug/multiple signers, exact SHA256SUMS, unexpected APK/AABs, HTTPS evidence references and separate ABI + API37 compatibility proof. Synthetic test fixtures are not actual device-test evidence. `Messenger/client/` and `Messenger/install-probe/` remain separate, with no personal Meta authentication/chat or E2EE.
+
+**Android 17:** First API37 CI failed on obsolete `android-37` SDK package; corrected to `37.0`. The [corrected exploratory workflow 45621293805](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621293805) had API19/21/23/35 foundation emulator jobs PASS; API37.0 was still running at handoff and is **UNVERIFIED**. API37 exploration is non-blocking for this **nonfunctional debug foundation**, but actual product release gate still requires verified API37 results. Never translate this to ARM hardware or Meta conversation support.
+
+**External gate remains BLOCKED:** Meta's public Page API does not enable general personal Messenger inbox sign-in. EU DMA provider-to-provider interop entails partner eligibility and does not establish Revibe as an authorized provider. Real E2EE/Meta-to-Meta text, account lifecycle, ARM32/ARM64 hardware and protected stable release signing are not done. Do not fabricate or rebrand any download. Next work requires genuine Meta authorization before a functional transport can be built.
+
+---
+
 ## V23 current handoff — 2026-11-25
 
 Starting main `60f4422b302ddbc52c9ca1ddb060153e3b68f15c`; V23 branch `revibe/v23-artifact-evidence-gate-20261125`. Actual GitHub [offline run 45621785540](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621187131) PASSED **176 tests** (137 existing engineering + 19 independent installation diagnostic + 20 release-gate, including 13 V23-specific tests). No new proprietary or third-party APKs, keys or credentials.
