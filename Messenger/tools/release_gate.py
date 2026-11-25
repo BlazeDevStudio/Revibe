@@ -32,7 +32,11 @@ REQUIRED_TESTS = (
     "background_notifications",
     "session_revoke_and_logout",
 )
+# Distinct emulator/platform evidence cannot be silently represented as physical testing.
 REQUIRED_MATRIX = (("armeabi-v7a", 19), ("arm64-v8a", 21), ("x86", 19))
+REQUIRED_ANDROID_APIS = (19, 21, 23, 29, 35)
+APK_NAME = re.compile(r"Revibe-Messenger-(armeabi-v7a|arm64-v8a|x86|universal)\.apk\Z")
+
 
 
 class GateError(Exception):
@@ -66,6 +70,62 @@ def sha256(path):
     return h.hexdigest()
 
 
+def check_sha256sums(dist, files):
+    """The manifest must list exactly the released APKs, without aliases/paths."""
+    location = dist / "SHA256SUMS.txt"
+    require(location.is_file(), "Missing SHA256SUMS.txt")
+    found = {}
+    for line in location.read_text(encoding="utf-8").splitlines():
+        match = re.fullmatch(r"([a-f0-9]{64})  (Revibe-Messenger-(?:armeabi-v7a|arm64-v8a|x86|universal)\.apk)", line)
+        require(match is not None, "Malformed/noncanonical SHA256SUMS line")
+        digest, name = match.groups()
+        require(name not in found, "Duplicate checksum entry: " + name)
+        found[name] = digest
+    expected = {item["filename"]: str(item["sha256"]).lower() for item in files}
+    require(found == expected, "SHA256SUMS must match exactly the release APK manifest")
+
+
+def check_android_metadata(path, apk, signer):
+    """Inspect *compiled* manifest, signatures and alignment; not declarative JSON."""
+    aapt, apksigner, zipalign = (shutil.which(name)
+                                 for name in ("aapt", "apksigner", "zipalign"))
+    require(all((aapt, apksigner, zipalign)),
+            "Android SDK aapt, apksigner and zipalign all required for release")
+    args = [aapt, "dump", "badging", str(path)]
+    result = subprocess.run(args, capture_output=True, text=True)
+    require(result.returncode == 0, "aapt rejected compiled APK: " + path.name)
+    badging = result.stdout
+    package = re.search(r"^package: name='([^']+)'", badging, flags=re.MULTILINE)
+    floor = re.search(r"^sdkVersion:'(\d+)'", badging, flags=re.MULTILINE)
+    target = re.search(r"^targetSdkVersion:'(\d+)'", badging, flags=re.MULTILINE)
+    require(package is not None and package.group(1) == PRODUCT_ID,
+            "Compiled APK package ID is not the release product")
+    require(floor is not None and int(floor.group(1)) == apk["min_sdk"],
+            "Compiled APK minSdk differs from release claim")
+    require(target is not None and int(target.group(1)) == apk["target_sdk"],
+            "Compiled APK targetSdk differs from release claim")
+
+    result = subprocess.run([zipalign, "-c", "-v", "4", str(path)],
+                            capture_output=True, text=True)
+    require(result.returncode == 0, "Unaligned APK: " + path.name)
+
+    result = subprocess.run([apksigner, "verify", "--verbose", "--print-certs",
+                             "--min-sdk-version", str(apk["min_sdk"]), str(path)],
+                            capture_output=True, text=True)
+    require(result.returncode == 0, "apksigner rejected: " + path.name)
+    output = result.stdout
+    require(re.search(r"Verified using v1 scheme \(JAR signing\): true", output),
+            "Missing v1 signature for old Android support")
+    require(re.search(r"Verified using v2 scheme \(APK Signature Scheme v2\): true", output),
+            "Missing v2 signature for modern Android support")
+    require(not re.search(r"certificate DN:.*Android Debug", output, re.IGNORECASE),
+            "Debug certificate may not sign Messenger releases")
+    certs = re.findall(r"certificate SHA-256 digest:\s*([0-9a-f:]+)", output,
+                       flags=re.IGNORECASE)
+    require(any(x.lower().replace(":", "") == signer.lower().replace(":", "")
+                for x in certs), "Release signing certificate mismatch: " + path.name)
+
+
 def verified_apk(path, apk, expected_abi, signer):
     require(path.is_file() and path.stat().st_size > 1024,
             "Missing/empty release APK: " + path.name)
@@ -91,17 +151,7 @@ def verified_apk(path, apk, expected_abi, signer):
     except (OSError, zipfile.BadZipFile) as exc:
         raise GateError("Invalid APK: " + path.name) from exc
 
-    apksigner = shutil.which("apksigner")
-    require(apksigner, "Android SDK apksigner required to verify release; do not assume signed")
-    run = subprocess.run([apksigner, "verify", "--verbose", "--print-certs",
-                          "--min-sdk-version", str(apk["min_sdk"]), str(path)],
-                         capture_output=True, text=True)
-    require(run.returncode == 0, "apksigner rejected: " + path.name)
-    # SDK apksigner reports SHA-256 signer fingerprint; verify selected release certificate.
-    certs = re.findall(r"certificate SHA-256 digest:\s*([0-9a-f:]+)",
-                       run.stdout, flags=re.IGNORECASE)
-    require(any(x.lower().replace(":", "") == signer.lower().replace(":", "")
-                for x in certs), "Release signing certificate mismatch: " + path.name)
+    check_android_metadata(path, apk, signer)
 
 
 def check_release(root, status):
@@ -125,9 +175,16 @@ def check_release(root, status):
     require(isinstance(matrix, list), "Platform evidence must be a list")
     for abi, api in REQUIRED_MATRIX:
         require(any(isinstance(t, dict) and t.get("abi") == abi and t.get("api") == api
+                    and t.get("environment") in ("physical", "emulator")
                     and evidence_ok(t) and t.get("install") is True
                     and t.get("launch") is True and t.get("restart") is True
                     for t in matrix), "Missing installed/launched/restarted platform proof: %s API%d" % (abi, api))
+    for api in REQUIRED_ANDROID_APIS:
+        require(any(isinstance(t, dict) and t.get("api") == api
+                    and t.get("environment") in ("physical", "emulator")
+                    and evidence_ok(t) and t.get("install") is True
+                    and t.get("launch") is True and t.get("restart") is True
+                    for t in matrix), "Missing Android version compatibility evidence: API%d" % api)
     files = spec.get("apks")
     require(isinstance(files, list) and files, "No released APK entries")
     types = [entry.get("abi") for entry in files if isinstance(entry, dict)]
@@ -142,9 +199,12 @@ def check_release(root, status):
         require(name not in seen, "Duplicate release filename")
         seen.add(name)
         require(isinstance(entry.get("min_sdk"), int)
-                and entry["min_sdk"] >= (21 if abi == "arm64-v8a" else 19),
-                "Bad Android SDK floor")
+                and entry["min_sdk"] == (21 if abi == "arm64-v8a" else 19),
+                "Release ABI claims unsupported Android SDK floor")
+        require(isinstance(entry.get("target_sdk"), int) and entry["target_sdk"] >= 35,
+                "Missing modern targetSdk for release")
         verified_apk(root / "Messenger/dist" / name, entry, abi, signer)
+    check_sha256sums(root / "Messenger/dist", files)
     for name in ("SHA256SUMS.txt", "COMPATIBILITY_MATRIX.md", "TEST_REPORT.md"):
         require((root / "Messenger/dist" / name).is_file(),
                 "Missing release record: " + name)
@@ -153,8 +213,11 @@ def check_release(root, status):
 def check(root, release=False):
     status = json_file(root / "Messenger/STATUS.json")
     dist = root / "Messenger/dist"
+    # ANY binary under dist must pass the full release gate. A noncanonical
+    # filename, nested path or AAB cannot bypass an APK-only filename check.
     candidate = (dist / "BUILD_MANIFEST.json").exists() or any(
-        dist.glob("Revibe-Messenger-*.apk"))
+        p.is_file() for p in dist.rglob("*")
+        if p.suffix.lower() in (".apk", ".aab", ".apks", ".xapk"))
     if release or candidate or status.get("release_status") == VERIFIED:
         check_release(root, status)
         return "Release structure, artifact signatures, and evidence references verified; live Meta testing still requires human audit"
