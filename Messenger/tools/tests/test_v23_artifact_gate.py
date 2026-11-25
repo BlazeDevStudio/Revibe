@@ -114,7 +114,7 @@ class V23ArtifactGateTests(unittest.TestCase):
         )
         check_sha256sums(self.dist, [item])
         (self.dist / "SHA256SUMS.txt").write_text(
-            "f" * 64 + "  Revibe-Messenger-universal.apk\n"
+            "f" * 64 + "  Revibe-Messenger-universal.apk\n" +
             "0" * 64 + "  Revibe-Messenger-x86.apk\n"
         )
         with self.assertRaisesRegex(GateError, "match exactly"):
