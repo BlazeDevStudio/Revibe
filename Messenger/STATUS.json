@@ -1,6 +1,6 @@
 {
   "project": "Revibe / Messenger",
-  "latest_milestone": "V22 merged: independently authored API19 native foundation; 12 source tests, APK build/signing, 4 emulator install/launch/restart and 13 assertions each PASS; no Meta messaging",
+  "latest_milestone": "V23 release-integrity qualification: compiled APK metadata, signatures, checksums and source release evidence guarded; personal Meta Messenger remains BLOCKED",
   "release_status": "NO VERIFIED FUNCTIONAL MESSENGER RELEASE",
   "stage6_armv7": {
     "source_version": "410.0.0.17.85",
@@ -64,7 +64,7 @@
     "preflight": "Messenger/engineering/android56_abi_check.py",
     "tests": "six new source-level unit tests in GitHub; 7 local expanded tool tests passed separately"
   },
-  "next_blocker": "Authorized personal Meta Messenger/eligible provider interoperability interface and real E2EE + account-to-account send/receive remain BLOCKED; ARM32/ARM64/physical compatibility and release signer are unverified. Do not publish functional Messenger APK.",
+  "next_blocker": "Authorized personal Meta Messenger/eligible EEA third-party provider interface remains absent. Android17 emulator follow-up pending. Before functional APK release: approved auth/transport/E2EE, genuine two-account send+receive, ARM32/ARM64 physical QA, stable protected signing.",
   "stage9_native_android5_arm64": {
     "candidate": "Messenger 336.0.0.13.142, versionCode 297217556, arm64-v8a nodpi single APK minAPI21",
     "archive_url": "https://www.apkmirror.com/apk/facebook-2/messenger/messenger-336-0-0-13-142-release/facebook-messenger-text-and-video-chat-for-free-336-0-0-13-142-8-android-apk-download/",
@@ -404,6 +404,37 @@
     "foundation_hardware_verified": false,
     "v22_merged_commit": "a44e9265690242fba23b1483706370e68e373d0d",
     "v22_verified_build_run": 44911221467,
-    "v22_merged_pr": 2
+    "v22_merged_pr": 2,
+    "v23": {
+      "source_branch": "revibe/v23-artifact-evidence-gate-20261125",
+      "checked_original_main": "60f4422b302ddbc52c9ca1ddb060153e3b68f15c",
+      "security_regression_ci_run": 45621785540,
+      "security_regression_tests_passed": 176,
+      "groups": {
+        "engineering": 137,
+        "install_probe": 19,
+        "release_gate_and_v23": 20
+      },
+      "strict_release_guard": "Messenger/tools/release_gate.py",
+      "checks": [
+        "Compiled package and SDK levels",
+        "v1 and v2 APK signature verification",
+        "Debug signer rejection",
+        "ZIP alignment",
+        "SHA-256 sums exact match",
+        "No hidden release binaries",
+        "ABI/Android floor and platform acceptance matrix",
+        "Android 17/API37 evidence requirement"
+      ],
+      "android17_platform_target": 37,
+      "android17_initial_ci_run": 45620971131,
+      "android17_initial_failure": "SDK installer requested platforms;android-37, current package uses android-37.0; no Android 17 install evidence from initial run",
+      "android17_corrected_ci_run": 45621293805,
+      "android17_corrected_ci_status": "EXPERIMENTAL_RUN_IN_PROGRESS_NOT_VERIFIED",
+      "android17_emulator_passed": false,
+      "production_messenger_built": false,
+      "real_personal_meta_interop": false,
+      "real_e2ee_exchange_verified": false
+    }
   }
 }

@@ -1,3 +1,5 @@
+> Historical V21 snapshot (2026-11-21). Statements below about `Messenger/client/` being absent reflect that earlier date only. The independently authored **nonfunctional** V22 client foundation now exists; see [V23 current report](V23_RELEASE_INTEGRITY_AND_META_GATE.md) for the current acceptance gate. No functional Messenger release has been verified.
+
 # V21 — verified feasibility, repository inventory, and release acceptance gate
 
 Checked on 2026-11-21 against `main` 5ec2fbdc410a0e0c50b56cb3273914e64484753a, before this review branch. Do not mistake retrospective CI facts for tests on this branch.

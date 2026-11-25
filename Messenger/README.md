@@ -1,5 +1,10 @@
 # Revibe / Messenger
 
+## V23 release-integrity checkpoint (2026-11-25)
+
+[The V23 report](reports/V23_RELEASE_INTEGRITY_AND_META_GATE.md) updates the public Meta API feasibility boundary and hardens the release gate: inspect compiled APK package/min/target SDK, enforce v1+v2 signatures and non-debug signer, verify zipalign and SHA256SUMS, disallow hidden binaries and require distinct Android 17/API37 test evidence. No service integration or credential handling was added. **No verified functional Messenger APK exists.**
+
+
 ## V22 Android foundation (NOT a functional Messenger app)
 
 Independent native Android source now lives at [`client/`](client/), separately from [`install-probe/`](install-probe/). It has a blocked-service screen, working offline persistent large-text controls, a fail-closed `BackendGate`, `minSdk19`, `targetSdk35`, no INTERNET permission and no native libraries. The debug-only package is `org.revibe.client.foundation`, **not** the reserved production ID. [V22 CI run](https://github.com/BlazeDevStudio/Revibe/actions/runs/44911221467) has passed independent Android compilation and API19 signature/manifest checks, with 12 source tests; all four emulator jobs PASSED install/launch/restart and 13 offline foundation assertions per job (API19/21 x86, API23/35 x86_64). ARM32/ARM64 hardware and Meta messaging remain UNVERIFIED.

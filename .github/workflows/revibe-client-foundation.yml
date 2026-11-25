@@ -72,6 +72,9 @@ jobs:
     needs: build-foundation
     runs-on: ubuntu-22.04
     timeout-minutes: 30
+    # API37 is exploratory; never count a failed or skipped run as support.
+    # The independent product release gate still requires a real API37 PASS.
+    continue-on-error: ${{ matrix.api == '37.0' }}
     strategy:
       fail-fast: false
       matrix:
@@ -86,6 +89,9 @@ jobs:
             arch: x86_64
             target: google_apis
           - api: 35
+            arch: x86_64
+            target: google_apis
+          - api: '37.0'
             arch: x86_64
             target: google_apis
     steps:
