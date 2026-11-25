@@ -34,7 +34,7 @@ REQUIRED_TESTS = (
 )
 # Distinct emulator/platform evidence cannot be silently represented as physical testing.
 REQUIRED_MATRIX = (("armeabi-v7a", 19), ("arm64-v8a", 21), ("x86", 19))
-REQUIRED_ANDROID_APIS = (19, 21, 23, 29, 35)
+REQUIRED_ANDROID_APIS = (19, 21, 23, 29, 35, 37)
 APK_NAME = re.compile(r"Revibe-Messenger-(armeabi-v7a|arm64-v8a|x86|universal)\.apk\Z")
 
 
