@@ -122,8 +122,9 @@ def check_android_metadata(path, apk, signer):
             "Debug certificate may not sign Messenger releases")
     certs = re.findall(r"certificate SHA-256 digest:\s*([0-9a-f:]+)", output,
                        flags=re.IGNORECASE)
-    require(any(x.lower().replace(":", "") == signer.lower().replace(":", "")
-                for x in certs), "Release signing certificate mismatch: " + path.name)
+    require(len(certs) == 1 and
+            certs[0].lower().replace(":", "") == signer.lower().replace(":", ""),
+            "Release signing certificate mismatch or multiple signing certificates: " + path.name)
 
 
 def verified_apk(path, apk, expected_abi, signer):
@@ -204,7 +205,14 @@ def check_release(root, status):
         require(isinstance(entry.get("target_sdk"), int) and entry["target_sdk"] >= 35,
                 "Missing modern targetSdk for release")
         verified_apk(root / "Messenger/dist" / name, entry, abi, signer)
-    check_sha256sums(root / "Messenger/dist", files)
+    dist = root / "Messenger/dist"
+    expected_binaries = {dist / item["filename"] for item in files}
+    actual_binaries = {p for p in dist.rglob("*")
+                       if p.is_file() and p.suffix.lower()
+                       in (".apk", ".aab", ".apks", ".xapk")}
+    require(actual_binaries == expected_binaries,
+            "Unexpected binary in release folder or missing verified APK")
+    check_sha256sums(dist, files)
     for name in ("SHA256SUMS.txt", "COMPATIBILITY_MATRIX.md", "TEST_REPORT.md"):
         require((root / "Messenger/dist" / name).is_file(),
                 "Missing release record: " + name)
@@ -230,6 +238,8 @@ def check(root, release=False):
             "Product status must not claim untested real messaging")
     require(product.get("installer_diagnostic_is_messenger") is False,
             "Installer probe must not masquerade as Messenger")
+    require(product.get("foundation_is_working_personal_messenger") is not True,
+            "Blocked foundation must not claim genuine Meta Messenger functionality")
     return "BLOCKED: no Messenger-labelled release candidate; diagnostic remains distinct"
 
 
