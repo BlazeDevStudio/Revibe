@@ -1,3 +1,15 @@
+## V23 current handoff — 2026-11-25
+
+Starting main `60f4422b302ddbc52c9ca1ddb060153e3b68f15c`; V23 branch `revibe/v23-artifact-evidence-gate-20261125`. Actual GitHub [offline run 45621187131](https://github.com/BlazeDevStudio/Revibe/actions/runs/45621187131) PASSED **175 tests** (137 existing engineering + 19 independent installation diagnostic + 19 release-gate, including 12 V23-specific tests). No new proprietary or third-party APKs, keys or credentials.
+
+**Actual code change:** `Messenger/tools/release_gate.py` now validates compiled package/minSdk/targetSdk with aapt, zipalign, v1+v2 signing and single non-debug signer via apksigner, exact SHA256SUMS and binary inventory; requires truthful OS/ABI evidence through Android17 API37 before a future Messenger release. Negative tests use synthetic SDK text only. `Messenger/install-probe/` and the V22 Android foundation behavior remain unchanged.
+
+**Android17:** first workflow 45620971131 attempted SDK package `android-37` and failed SDK setup; correct package is `android-37.0`. Corrected emulator workflow run 45621293805 must finish and be inspected before recording a PASS. V22 four-OS emulator baseline remains confirmed.
+
+**Meta blocker:** official Page Graph API does not authorize personal Messenger account chats; eligible European third-party provider interop is a different, restricted model and is not established for Revibe. A personal Meta service, real two-account bidirectional E2EE and stable production signer remain unverified. No working Messenger APK may be released. See [V23 report](reports/V23_RELEASE_INTEGRITY_AND_META_GATE.md).
+
+---
+
 ## V22 merged, verified milestone — 2026-11-21
 
 Main merge commit `a44e9265690242fba23b1483706370e68e373d0d` via [PR #2](https://github.com/BlazeDevStudio/Revibe/pull/2). New `Messenger/client/` is real native Android source, separate from `install-probe/`. **It is NOT functional Messenger.** Build [44911221467](https://github.com/BlazeDevStudio/Revibe/actions/runs/44911221467) passed 12 static source tests, Android Gradle compile, apksigner API19 and zipalign checks, then emulator install/launch/13 fail-closed and persistent large-text assertions/restart on **API19 x86, API21 x86, API23 x86_64, API35 x86_64**. Debug APK: 11,294 bytes, SHA-256 `f7b0c704e74281f500541aa817cbd3f2b56ae3eeb7f56c84eb3412bb93c7c85e`; own test ID `org.revibe.client.foundation`. No `.so` native libs, network permission, credentials, fabricated chats or backend.
