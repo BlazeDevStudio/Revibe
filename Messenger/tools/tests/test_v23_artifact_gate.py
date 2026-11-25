@@ -12,7 +12,7 @@ from unittest.mock import patch
 
 from Messenger.tools.release_gate import (
     BLOCKED, VERIFIED, GateError, REQUIRED_TESTS,
-    check, check_android_metadata, check_release, check_sha256sums,
+    check, check_android_metadata, check_release, check_sha256sums, evidence_ok,
 )
 
 
@@ -141,6 +141,16 @@ class V23ArtifactGateTests(unittest.TestCase):
         (nested / "copy.aab").write_bytes(b"no release")
         with self.assertRaisesRegex(GateError, "still BLOCKED"):
             check(self.root)
+
+    def test_release_evidence_links_must_use_https(self):
+        self.assertFalse(evidence_ok({
+            "passed": True,
+            "evidence": "http://example.org/unverified",
+        }))
+        self.assertTrue(evidence_ok({
+            "passed": True,
+            "evidence": "https://example.org/independent-evidence",
+        }))
 
     def test_android_17_evidence_required_for_future_release(self):
         evidence = {"passed": True, "evidence": "https://github.com/org/repo/actions/runs/123"}
